@@ -967,3 +967,161 @@ code {
     padding: 80px 28px;
   }
 }
+
+/* =========================================================
+   FINAL VISUAL FIXES
+   ========================================================= */
+
+/* --- 1. SOFTER, MORE VISIBLE PAPER TEXTURE --- */
+
+.section-navy,
+.hero {
+  background-color: var(--navy);
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.07), transparent 28%),
+    radial-gradient(circle at 85% 75%, rgba(0,0,0,.20), transparent 35%),
+    repeating-radial-gradient(
+      circle at 20% 30%,
+      rgba(255,255,255,.018) 0,
+      rgba(255,255,255,.018) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+.section-burgundy {
+  background-color: var(--burgundy);
+  background-image:
+    radial-gradient(circle at 78% 18%, rgba(228,199,107,.10), transparent 30%),
+    radial-gradient(circle at 15% 82%, rgba(0,0,0,.18), transparent 36%),
+    repeating-radial-gradient(
+      circle at 70% 40%,
+      rgba(255,255,255,.016) 0,
+      rgba(255,255,255,.016) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+.section-olive {
+  background-color: var(--olive);
+  background-image:
+    radial-gradient(circle at 22% 22%, rgba(244,240,231,.07), transparent 28%),
+    radial-gradient(circle at 85% 80%, rgba(0,0,0,.19), transparent 36%),
+    repeating-radial-gradient(
+      circle at 40% 60%,
+      rgba(255,255,255,.016) 0,
+      rgba(255,255,255,.016) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+.section-ivory {
+  background-color: var(--ivory);
+  color: var(--ink);
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(228,199,107,.12), transparent 30%),
+    radial-gradient(circle at 84% 74%, rgba(100,23,42,.08), transparent 34%),
+    repeating-radial-gradient(
+      circle at 30% 40%,
+      rgba(36,35,31,.018) 0,
+      rgba(36,35,31,.018) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+}
+
+/* --- 2. STOP CAPTIONS FROM RUNNING INTO OTHER TEXT --- */
+
+.photo-caption {
+  left: 14px;
+  right: 14px;
+  bottom: 6px;
+
+  color: #2e2c27;
+  font: italic 10px/1.05 var(--body);
+
+  /* allow captions to wrap */
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: clip;
+
+  /* give longer captions room */
+  max-height: 22px;
+
+  text-align: center;
+}
+
+.photo-caption + .photo-number {
+  bottom: 24px;
+}
+
+/* Make the caption area slightly more readable */
+.photo-paper {
+  padding-bottom: 34px;
+}
+
+/* --- 3. KEEP SECTION HEADINGS CLEAR OF THE PHOTOS --- */
+
+.section-heading {
+  position: relative;
+  z-index: 200;
+  margin-bottom: 55px;
+}
+
+.photo-pile {
+  position: relative;
+  z-index: 1;
+  margin-top: 85px;
+}
+
+/* Specifically give the scrapbook heading breathing room */
+.scrapbook .section-heading {
+  margin-bottom: 20px;
+}
+
+.scrapbook .photo-pile {
+  margin-top: 85px;
+}
+
+/* --- 4. MAKE LONG CAPTIONS FIT BETTER --- */
+
+.memory-photo {
+  overflow: visible;
+}
+
+.photo-paper {
+  overflow: hidden;
+}
+
+/* --- 5. MOBILE CAPTION FIX --- */
+
+@media (max-width: 900px) {
+  .photo-caption {
+    font-size: 8px;
+    line-height: 1;
+    max-height: 18px;
+    left: 9px;
+    right: 9px;
+  }
+
+  .photo-caption + .photo-number {
+    bottom: 20px;
+  }
+
+  .photo-pile {
+    margin-top: 70px;
+  }
+}
+
+@media (max-width: 560px) {
+  .scrapbook .photo-pile {
+    margin-top: 65px;
+  }
+
+  .photo-caption {
+    font-size: 7px;
+    max-height: 16px;
+  }
+}
