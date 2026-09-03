@@ -1,118 +1,656 @@
-const $ = (s) => document.querySelector(s);
-const $$ = (s) => [...document.querySelectorAll(s)];
+document.addEventListener("DOMContentLoaded", () => {
 
-// ===================== MENU =====================
-const drawer = $('#indexDrawer');
-$('#menuButton').addEventListener('click', () => { drawer.classList.add('open'); drawer.setAttribute('aria-hidden','false'); });
-$('#drawerClose').addEventListener('click', () => { drawer.classList.remove('open'); drawer.setAttribute('aria-hidden','true'); });
-$$('.drawer-inner nav a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+  /* =========================================================
+     THE ITSU × RAKHU SOCIETY
+     Interactive archive
+     ========================================================= */
 
-// ===================== I WISH YOU WERE HERE =====================
-const wishResponses = [
-  'Me too. Extremely too.',
-  'Me too — this is becoming administratively inconvenient.',
-  'Me too. Come here immediately.',
-  'Me too. I have filed a formal complaint with geography.',
-  'Me too. Distance remains deeply overrated.',
-  'Me too. Unfortunately, Estonia is still where you are.',
-  'Me too. I would like to skip to the part where you are next to me.',
-  'ME TOO. In capital letters.',
-  'Me too. Come back and collect your girlfriend.',
-  'Me too. Still us, just with more screen time.'
-];
-$('#wishButton').addEventListener('click', () => {
-  const box = $('#wishResponse');
-  box.animate([{opacity:0,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:300});
-  box.textContent = wishResponses[Math.floor(Math.random()*wishResponses.length)];
-});
+  /* ---------- MENU ---------- */
 
-// ===================== VIDEO / CORRESPONDENCE MODAL =====================
-const modal = $('#modal');
-const closeModal = () => { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); $('#modalMedia').innerHTML=''; };
-$$('[data-close-modal]').forEach(el => el.addEventListener('click', closeModal));
-$$('.envelope').forEach(card => card.addEventListener('click', () => {
-  const title = card.dataset.title;
-  const url = card.dataset.video;
-  $('#modalEyebrow').textContent = 'PRIVATE CORRESPONDENCE';
-  $('#modalTitle').textContent = title;
-  if (url) {
-    $('#modalMedia').innerHTML = `<iframe src="${url}" title="${title}" style="width:100%;height:100%;border:0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
-    $('#modalNote').textContent = 'For your eyes only.';
-  } else {
-    $('#modalMedia').textContent = 'VIDEO SLOT — ADD URL IN SCRIPT.JS';
-    $('#modalNote').textContent = 'This envelope is ready. Add the private/unlisted video URL to its data-video attribute in index.html.';
+  const menuButton = document.getElementById("menuButton");
+  const drawer = document.getElementById("indexDrawer");
+  const drawerClose = document.getElementById("drawerClose");
+
+  if (menuButton && drawer) {
+    menuButton.addEventListener("click", () => {
+      drawer.classList.add("open");
+      drawer.setAttribute("aria-hidden", "false");
+    });
   }
-  modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
-}));
 
-// ===================== QUIZ =====================
-const quiz = [
-  {q:'What is the most reliable way to tell that we have been together for a while?', options:['We own matching luggage.','There are too many inside jokes to explain.','We have stopped taking photos.','We agree on everything.'], correct:1},
-  {q:'When one of us says “I am fine,” what does it usually mean?', options:['Everything is objectively perfect.','Please conduct a full investigation.','They would like a snack.','Nothing at all.'], correct:1},
-  {q:'What is the Society’s official stance on long distance?', options:['A tragic ending.','A temporary administrative inconvenience.','A personality trait.','An excuse to stop dating.'], correct:1},
-  {q:'What belongs in the Society archive?', options:['Only perfect memories.','Only important dates.','The good, the chaotic and the deeply unserious.','Tax documents.'], correct:2},
-  {q:'What is the correct answer to “Who loves who more?”', options:['Itsu.','Rakhu.','A mathematically impossible tie.','The person reading this.'], correct:2}
-];
-let qi=0, score=0;
-function renderQuiz(){
-  if(qi>=quiz.length){
-    const label = score===5?'FOUNDER-LEVEL KNOWLEDGE':score>=4?'DISTINGUISHED MEMBER':score>=3?'ACCEPTABLE. BARELY.':'PROBATIONARY MEMBER';
-    $('#quizProgress').textContent='EXAMINATION COMPLETE'; $('#quizScore').textContent=`SCORE ${String(score).padStart(2,'0')} / 05`;
-    $('#quizQuestion').innerHTML=`${label}<br><small style="font:italic 22px var(--body)">You have been provisionally certified as someone who knows us quite well.</small>`;
-    $('#quizOptions').innerHTML=''; $('#quizRestart').classList.remove('hidden'); return;
+  if (drawerClose && drawer) {
+    drawerClose.addEventListener("click", () => {
+      drawer.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
+    });
   }
-  const item=quiz[qi]; $('#quizProgress').textContent=`QUESTION ${String(qi+1).padStart(2,'0')} / 05`; $('#quizScore').textContent=`SCORE ${String(score).padStart(2,'0')}`; $('#quizQuestion').textContent=item.q;
-  $('#quizOptions').innerHTML=item.options.map((o,i)=>`<button class="quiz-option" data-i="${i}">${o}</button>`).join('');
-  $$('.quiz-option').forEach(btn=>btn.addEventListener('click',()=>{
-    const selected=Number(btn.dataset.i); $$('.quiz-option').forEach(b=>b.disabled=true);
-    if(selected===item.correct){score++;btn.classList.add('correct')}else{btn.classList.add('wrong');$$('.quiz-option')[item.correct].classList.add('correct')}
-    setTimeout(()=>{qi++;renderQuiz()},650);
-  }));
-}
-$('#quizRestart').addEventListener('click',()=>{qi=0;score=0;$('#quizRestart').classList.add('hidden');renderQuiz()});
-renderQuiz();
 
-// ===================== ARCADE =====================
-const defaultGames = [
-  {name:'Codenames',desc:'Teams, clues and an opportunity to accuse each other of being terrible at words.',meta:'2+ PLAYERS · BROWSER',url:'https://codenames.game/'},
-  {name:'Gartic Phone',desc:'Telephone, but with drawings. The results will be used as evidence against everyone involved.',meta:'4+ PLAYERS · BROWSER',url:'https://garticphone.com/'},
-  {name:'GeoGuessr',desc:'Travel the world from separate rooms and discover who has suspiciously good geography instincts.',meta:'2 PLAYERS · BROWSER',url:'https://www.geoguessr.com/'},
-];
-let customGames = JSON.parse(localStorage.getItem('itsuRakhuGames')||'[]');
-function renderGames(){
- const games=[...defaultGames,...customGames];
- $('#arcadeCount').textContent=`${String(games.length).padStart(2,'0')} APPROVED GAMES`;
- $('#gameGrid').innerHTML=games.map(g=>`<article class="game-card"><span class="eyebrow">SOCIETY APPROVED</span><h3>${escapeHtml(g.name)}</h3><p>${escapeHtml(g.desc)}</p><div class="game-meta"><span>${escapeHtml(g.meta||'BROWSER')}</span><span>FREE / CHECK SITE</span></div>${g.url?`<a href="${escapeAttr(g.url)}" target="_blank" rel="noopener">OPEN GAME ↗</a>`:''}</article>`).join('');
-}
-function escapeHtml(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
-function escapeAttr(s){return String(s).replace(/"/g,'&quot;')}
-$('#addGameButton').addEventListener('click',()=>{
- const name=prompt('Game name?'); if(!name) return; const url=prompt('Game link? (optional)')||''; const desc=prompt('One-line description?')||'An approved recreational activity for members.'; customGames.push({name,url,desc,meta:'ADDED BY A MEMBER'}); localStorage.setItem('itsuRakhuGames',JSON.stringify(customGames)); renderGames();
+  document.querySelectorAll(".index-drawer nav a").forEach(link => {
+    link.addEventListener("click", () => {
+      drawer.classList.remove("open");
+      drawer.setAttribute("aria-hidden", "true");
+    });
+  });
+
+
+  /* ---------- PHOTO ARCHIVE ---------- */
+
+  /*
+    Your GitHub images should be named:
+
+    RXS Photo 1.jpg
+    RXS Photo 2.jpg
+    ...
+    RXS Photo 26.jpg
+
+    If your uploaded files use .jpeg or .png instead,
+    the script automatically tries those too.
+  */
+
+  const photoExtensions = [".jpg", ".jpeg", ".png", ".webp"];
+
+  document.querySelectorAll(".memory-photo img").forEach(img => {
+
+    const base = img.dataset.base;
+
+    let extensionIndex = 0;
+
+    const tryNextImage = () => {
+      if (extensionIndex >= photoExtensions.length) {
+        img.style.opacity = "0";
+        return;
+      }
+
+      const extension = photoExtensions[extensionIndex++];
+      img.src = "./" + base + extension;
+    };
+
+    img.addEventListener("error", tryNextImage);
+
+    tryNextImage();
+  });
+
+
+  /* Bring a photograph to the front when clicked/tapped */
+
+  document.querySelectorAll(".memory-photo").forEach(photo => {
+
+    photo.addEventListener("click", () => {
+
+      document.querySelectorAll(".memory-photo").forEach(other => {
+        other.classList.remove("selected-photo");
+      });
+
+      photo.classList.add("selected-photo");
+    });
+
+  });
+
+
+  /* ---------- I WISH YOU WERE HERE ---------- */
+
+  const wishButton = document.getElementById("wishButton");
+  const wishResponse = document.getElementById("wishResponse");
+
+  const wishResponses = [
+    "Me too. Annoyingly much.",
+    "Me too. Come here immediately.",
+    "Me too. I'd already be stealing your side of the bed.",
+    "Me too. Same distance, same feeling.",
+    "Me too. Estonia is being very inconvenient about this.",
+    "Me too. But we're still us, wherever we are.",
+    "Me too. Consider this an official complaint against geography.",
+    "Me too. Very, very much.",
+    "Me too. Five minutes with you would fix everything.",
+    "Me too. And I'd probably annoy you within seven minutes.",
+    "Me too. Distance has terrible taste.",
+    "Me too. Now come collect your imaginary hug."
+  ];
+
+  if (wishButton && wishResponse) {
+
+    wishButton.addEventListener("click", () => {
+
+      const current = wishResponse.textContent;
+
+      let next;
+
+      do {
+        next =
+          wishResponses[
+            Math.floor(Math.random() * wishResponses.length)
+          ];
+      } while (next === current && wishResponses.length > 1);
+
+      wishResponse.style.opacity = "0";
+
+      setTimeout(() => {
+        wishResponse.textContent = next;
+        wishResponse.style.opacity = "1";
+      }, 180);
+
+    });
+
+  }
+
+
+  /* ---------- QUIZ ---------- */
+
+  const quizQuestions = [
+
+    {
+      question: "Who is more likely to say “let's just do it” before thinking it through?",
+      options: [
+        "Itsu",
+        "Rakhu",
+        "Both of us",
+        "Neither — we're extremely sensible"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "Who is more likely to turn a tiny inconvenience into a full investigation?",
+      options: [
+        "Itsu",
+        "Rakhu",
+        "Both of us",
+        "Depends how tired we are"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "What is the official founding date of the Society?",
+      options: [
+        "14.02.2022",
+        "16.04.2022",
+        "01.01.2023",
+        "Whenever we decided this was serious"
+      ],
+      answer: 1
+    },
+
+    {
+      question: "What is our greatest collective talent?",
+      options: [
+        "Planning perfectly",
+        "Being on time",
+        "Making memories out of random things",
+        "Remembering where we put things"
+      ],
+      answer: 2
+    },
+
+    {
+      question: "What is the Society's official duration?",
+      options: [
+        "Until Estonia",
+        "Until graduation",
+        "Five years",
+        "Forever"
+      ],
+      answer: 3
+    }
+
+  ];
+
+  let quizIndex = 0;
+  let quizScore = 0;
+
+  const quizQuestion = document.getElementById("quizQuestion");
+  const quizOptions = document.getElementById("quizOptions");
+  const quizNext = document.getElementById("quizNext");
+  const quizResult = document.getElementById("quizResult");
+
+  function renderQuizQuestion() {
+
+    if (!quizQuestion || !quizOptions) return;
+
+    const question = quizQuestions[quizIndex];
+
+    quizQuestion.textContent =
+      `${quizIndex + 1}. ${question.question}`;
+
+    quizOptions.innerHTML = "";
+
+    question.options.forEach((option, index) => {
+
+      const button = document.createElement("button");
+
+      button.className = "quiz-option";
+      button.textContent = option;
+
+      button.addEventListener("click", () => {
+
+        document
+          .querySelectorAll(".quiz-option")
+          .forEach(btn => btn.disabled = true);
+
+        if (index === question.answer) {
+          button.classList.add("correct");
+          quizScore++;
+        }
+
+      });
+
+      quizOptions.appendChild(button);
+
+    });
+
+  }
+
+  if (quizNext) {
+
+    quizNext.addEventListener("click", () => {
+
+      if (quizIndex < quizQuestions.length - 1) {
+
+        quizIndex++;
+        renderQuizQuestion();
+
+      } else {
+
+        quizQuestion.textContent = "Examination complete.";
+        quizOptions.innerHTML = "";
+
+        quizResult.textContent =
+          `You scored ${quizScore} / ${quizQuestions.length}. 
+           Official Society assessment: 
+           ${quizScore >= 4 ? "Excellent. You may remain members." : "Further study is required. Fortunately, we have forever."}`;
+
+        quizNext.textContent = "START AGAIN ↻";
+
+        quizNext.onclick = () => {
+          quizIndex = 0;
+          quizScore = 0;
+          quizResult.textContent = "";
+          quizNext.textContent = "NEXT QUESTION →";
+          renderQuizQuestion();
+        };
+
+      }
+
+    });
+
+  }
+
+  renderQuizQuestion();
+
+
+  /* ---------- LONG-DISTANCE ARCADE ---------- */
+
+  const defaultGames = [
+    {
+      title: "Codenames",
+      description: "Team up, compete, and discover how differently your brains interpret one word.",
+      url: "https://codenames.game/"
+    },
+    {
+      title: "Gartic Phone",
+      description: "Draw badly. Guess badly. Laugh at each other's artistic crimes.",
+      url: "https://garticphone.com/"
+    },
+    {
+      title: "GeoGuessr",
+      description: "Drop into a random place and see who can figure out where you are.",
+      url: "https://www.geoguessr.com/"
+    }
+  ];
+
+  const gameGrid = document.getElementById("gameGrid");
+  const addGameButton = document.getElementById("addGameButton");
+  const arcadeCount = document.getElementById("arcadeCount");
+
+  function loadGames() {
+
+    let savedGames = [];
+
+    try {
+      savedGames =
+        JSON.parse(localStorage.getItem("itsuRakhuGames")) || [];
+    } catch (error) {
+      savedGames = [];
+    }
+
+    return [...defaultGames, ...savedGames];
+
+  }
+
+  function renderGames() {
+
+    if (!gameGrid) return;
+
+    const games = loadGames();
+
+    gameGrid.innerHTML = "";
+
+    games.forEach(game => {
+
+      const card = document.createElement("article");
+
+      card.className = "game-card";
+
+      card.innerHTML = `
+        <h3>${escapeHtml(game.title)}</h3>
+        <p>${escapeHtml(game.description)}</p>
+        <a href="${escapeAttribute(game.url)}" target="_blank" rel="noopener">
+          PLAY / VISIT →
+        </a>
+      `;
+
+      gameGrid.appendChild(card);
+
+    });
+
+    if (arcadeCount) {
+      arcadeCount.textContent =
+        `${games.length.toString().padStart(2, "0")} APPROVED GAMES`;
+    }
+
+  }
+
+  function escapeHtml(value) {
+
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+  }
+
+  function escapeAttribute(value) {
+
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;");
+
+  }
+
+  if (addGameButton) {
+
+    addGameButton.addEventListener("click", () => {
+
+      const title = prompt("What should we call the game?");
+
+      if (!title) return;
+
+      const description =
+        prompt("Short description?") ||
+        "A game for two members of the Society.";
+
+      const url =
+        prompt("Paste the game link:");
+
+      if (!url) return;
+
+      let savedGames = [];
+
+      try {
+        savedGames =
+          JSON.parse(localStorage.getItem("itsuRakhuGames")) || [];
+      } catch (error) {
+        savedGames = [];
+      }
+
+      savedGames.push({
+        title,
+        description,
+        url
+      });
+
+      localStorage.setItem(
+        "itsuRakhuGames",
+        JSON.stringify(savedGames)
+      );
+
+      renderGames();
+
+    });
+
+  }
+
+  renderGames();
+
+
+  /* ---------- DATE GENERATOR ---------- */
+
+  const dateButton = document.getElementById("dateButton");
+  const dateResult = document.getElementById("dateResult");
+
+  const dateIdeas = [
+    "Cook the same meal together over video call.",
+    "Order each other dinner without telling the other person what it is.",
+    "Watch the same terrible film and provide live commentary.",
+    "Dress up for absolutely no reason and have a fancy virtual dinner.",
+    "Play 20 questions — but make every question increasingly ridiculous.",
+    "Build a shared Spotify playlist and listen to it together.",
+    "Take each other on a virtual tour of your current neighbourhood.",
+    "Have a PowerPoint night. The more unnecessary the topic, the better.",
+    "Recreate one of our old dates from wherever we are.",
+    "Open Google Maps and randomly choose somewhere we will visit together.",
+    "Have a nostalgia night and look through old photographs.",
+    "Make each other a five-song playlist with absolutely no explanation.",
+    "Order the same dessert and rate it like extremely serious food critics.",
+    "Plan our next trip together.",
+    "Have a completely phone-free dinner — except for the call.",
+    "Draw each other without looking at the paper.",
+    "Read something to each other before going to sleep.",
+    "Make a ridiculous bucket list for our next five years.",
+    "Have a 'first date' again — pretend we don't know each other.",
+    "Do absolutely nothing together. Sometimes that's the date."
+  ];
+
+  if (dateButton && dateResult) {
+
+    dateButton.addEventListener("click", () => {
+
+      const randomIdea =
+        dateIdeas[Math.floor(Math.random() * dateIdeas.length)];
+
+      dateResult.style.opacity = "0";
+
+      setTimeout(() => {
+        dateResult.textContent = randomIdea;
+        dateResult.style.opacity = "1";
+      }, 180);
+
+    });
+
+  }
+
+
+  /* ---------- THE VAULT ---------- */
+
+  document.querySelectorAll(".vault-card").forEach(card => {
+
+    const button = card.querySelector(".vault-open");
+    const status = card.querySelector(".vault-status");
+
+    if (!button || !status) return;
+
+    button.addEventListener("click", () => {
+
+      const month = Number(card.dataset.month);
+      const day = Number(card.dataset.day);
+
+      const today = new Date();
+
+      const currentMonth = today.getMonth() + 1;
+      const currentDay = today.getDate();
+
+      const isUnlocked =
+        currentMonth === month &&
+        currentDay === day;
+
+      if (isUnlocked) {
+
+        status.textContent = "UNLOCKED";
+        status.style.color = "#e4c76b";
+
+        button.textContent = "OPEN →";
+
+        button.onclick = () => {
+
+          const title =
+            card.querySelector("h3")?.textContent ||
+            "A message from the Society";
+
+          openModal(
+            title,
+            `
+              <p style="font-size:22px;line-height:1.35;">
+                This is where your private note for this occasion will go.
+              </p>
+            `
+          );
+
+        };
+
+      } else {
+
+        status.textContent = "SEALED UNTIL THE APPOINTED DATE";
+
+        openModal(
+          "Still sealed.",
+          `
+            <p style="font-size:22px;line-height:1.35;">
+              Nice try.
+            </p>
+            <p style="font-size:20px;line-height:1.35;">
+              The Society takes temporal security extremely seriously.
+            </p>
+          `
+        );
+
+      }
+
+    });
+
+  });
+
+
+  /* ---------- MODAL ---------- */
+
+  const modal = document.getElementById("modal");
+  const modalClose = document.getElementById("modalClose");
+  const modalBackdrop = document.getElementById("modalBackdrop");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalBody = document.getElementById("modalBody");
+
+  function openModal(title, body) {
+
+    if (!modal) return;
+
+    modalTitle.textContent = title;
+    modalBody.innerHTML = body;
+
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden", "false");
+
+  }
+
+  function closeModal() {
+
+    if (!modal) return;
+
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden", "true");
+
+  }
+
+  if (modalClose) {
+    modalClose.addEventListener("click", closeModal);
+  }
+
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener("click", closeModal);
+  }
+
+  document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+      closeModal();
+    }
+
+  });
+
+
+  /* ---------- OPEN WHEN ---------- */
+
+  document.querySelectorAll(".envelope").forEach(envelope => {
+
+    envelope.addEventListener("click", () => {
+
+      const title =
+        envelope.dataset.title ||
+        "Private correspondence";
+
+      const video =
+        envelope.dataset.video;
+
+      if (video) {
+
+        openModal(
+          title,
+          `
+            <div style="aspect-ratio:16/9;">
+              <iframe
+                src="${escapeAttribute(video)}"
+                title="${escapeAttribute(title)}"
+                style="width:100%;height:100%;border:0;"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+          `
+        );
+
+      } else {
+
+        openModal(
+          title,
+          `
+            <p style="font-size:22px;line-height:1.35;">
+              This envelope is waiting for its video.
+            </p>
+            <p style="font-size:18px;opacity:.65;">
+              Add the video URL to the <code>data-video</code> field
+              in <code>index.html</code> when you're ready.
+            </p>
+          `
+        );
+
+      }
+
+    });
+
+  });
+
+
+  /* ---------- SMALL INTERACTION: FADE-IN ---------- */
+
+  const observer = new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+
+      });
+
+    },
+    { threshold: 0.12 }
+  );
+
+  document
+    .querySelectorAll(".section-heading, .wish-machine, .date-machine, .quiz-box")
+    .forEach(element => observer.observe(element));
+
 });
-renderGames();
-
-// ===================== DATE GENERATOR =====================
-const dates=[
- 'Cook the same meal together, then rate each other’s plating like an unnecessarily serious food critic.',
- 'Pick a city neither of you knows well and spend 45 minutes planning an imaginary weekend there.',
- 'Order each other’s favourite food and eat it together on video call.',
- 'Get dressed up as if you are going somewhere fancy. You are not allowed to explain why.',
- 'Watch the same terrible film and live-text commentary to each other throughout.',
- 'Take each other on a 20-minute walking tour of wherever you are. No itinerary required.',
- 'Build the most chaotic shared playlist possible, one song at a time.',
- 'Have a tiny PowerPoint night: five minutes each on a topic you are weirdly passionate about.',
- 'Make a shared bucket list for your first month together after the distance ends.',
- 'Have dessert for dinner. The Society has approved this.'
-];
-$('#dateButton').addEventListener('click',()=>{
- const r=dates[Math.floor(Math.random()*dates.length)]; $('#dateResult').animate([{opacity:0},{opacity:1}],{duration:300}); $('#dateResult').textContent=r;
-});
-
-// ===================== VAULT =====================
-$$('.vault-card').forEach(card=>card.querySelector('.vault-open').addEventListener('click',()=>{
- const m=Number(card.dataset.month), d=Number(card.dataset.day), now=new Date();
- const unlocked=(now.getMonth()+1===m && now.getDate()===d);
- const status=card.querySelector('.vault-status');
- status.textContent=unlocked?'UNLOCKED FOR TODAY':'LOCKED — NOT THE DATE';
- if(unlocked){status.style.color='var(--mustard)'; card.querySelector('.vault-open').textContent='OPEN';}
-}));
