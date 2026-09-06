@@ -4,27 +4,76 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#27385F" />
+
   <title>The Itsu × Rakhu Society</title>
-  <meta name="description" content="A private archive of memories, correspondence, adventures and other matters of great importance." />
+
+  <meta
+    name="description"
+    content="A private archive of memories, correspondence, adventures and other matters of great importance."
+  />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Italianno&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600;6..96,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Italianno&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-  <div class="grain"></div>
+
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- =========================================================
+       TOP BAR
+  ========================================================== -->
 
   <header class="topbar">
-    <a class="monogram" href="#top" aria-label="Back to top">I × R</a>
-    <button class="menu-button" id="menuButton" aria-label="Open archive index">INDEX</button>
+    <a class="monogram" href="#top" aria-label="Back to top">
+      I × R
+    </a>
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      type="button"
+      aria-label="Open archive index"
+      aria-controls="indexDrawer"
+      aria-expanded="false"
+    >
+      INDEX
+    </button>
   </header>
 
-  <aside class="index-drawer" id="indexDrawer" aria-hidden="true">
+
+  <!-- =========================================================
+       ARCHIVE DRAWER
+  ========================================================== -->
+
+  <aside
+    class="index-drawer"
+    id="indexDrawer"
+    aria-hidden="true"
+  >
     <div class="drawer-inner">
-      <button class="drawer-close" id="drawerClose">CLOSE ×</button>
+
+      <button
+        class="drawer-close"
+        id="drawerClose"
+        type="button"
+        aria-label="Close archive index"
+      >
+        CLOSE ×
+      </button>
+
       <p class="eyebrow">PRIVATE ARCHIVE</p>
+
       <h2>Society Index</h2>
-      <nav>
+
+      <nav aria-label="Archive sections">
         <a href="#good-stuff">01 — The Good Stuff</a>
         <a href="#open-when">02 — Open When</a>
         <a href="#wish">03 — I Wish You Were Here</a>
@@ -34,498 +83,1254 @@
         <a href="#dates">07 — The Date Generator</a>
         <a href="#vault">08 — The Vault</a>
       </nav>
+
     </div>
   </aside>
 
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+
   <main id="top">
 
-    <!-- HERO -->
+
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+
     <section class="hero section-navy">
+
       <div class="hero-copy">
-        <p class="kicker archive-yellow">THE ITSU × RAKHU SOCIETY</p>
-        <p class="byline">A SURVIVAL KIT FOR LOVING EACH OTHER FROM SEPARATE JURISDICTIONS</p>
+
+        <p class="kicker archive-yellow">
+          THE ITSU × RAKHU SOCIETY
+        </p>
+
+        <p class="byline">
+          A SURVIVAL KIT FOR LOVING EACH OTHER FROM SEPARATE JURISDICTIONS
+        </p>
+
 
         <div class="hero-title-wrap">
-          <h1>THE<br><span>Society</span></h1>
+
+          <h1>
+            THE<br>
+            <span>Society</span>
+          </h1>
+
           <div class="seal" aria-hidden="true">
             <span>IR</span>
-            <small>EST.<br>16.04.2022</small>
+            <small>
+              EST.<br>
+              16.04.2022
+            </small>
           </div>
+
         </div>
 
+
         <p class="hero-intro">
-          A private collection of memories, correspondence, adventures & other matters of great importance.
+          A private collection of memories, correspondence, adventures &
+          other matters of great importance.
         </p>
+
 
         <div class="hero-meta">
           <span>FOUNDED BY ITSU & RAKHU</span>
-          <span class="archive-yellow">16.04.2022 — FOREVER</span>
+          <span class="archive-yellow">
+            16.04.2022 — FOREVER
+          </span>
         </div>
+
 
         <a class="button button-light" href="#good-stuff">
-          ENTER THE ARCHIVE <span>↓</span>
+          ENTER THE ARCHIVE
+          <span aria-hidden="true">↓</span>
         </a>
+
       </div>
 
+
       <div class="hero-polaroid">
+
         <div class="polaroid-frame">
-          <img src="./hero-polaroid.jpg" alt="A Polaroid photograph from the Society archive">
-          <p>PROPERTY OF THE SOCIETY · ARCHIVE 001</p>
+
+          <img
+            src="./hero-polaroid.jpg"
+            alt="A Polaroid photograph from the Society archive"
+          >
+
+          <p>
+            PROPERTY OF THE SOCIETY · ARCHIVE 001
+          </p>
+
         </div>
+
       </div>
+
     </section>
 
 
-    <!-- THE GOOD STUFF -->
-    <section id="good-stuff" class="section section-ivory scrapbook">
+
+    <!-- =======================================================
+         THE GOOD STUFF
+    ======================================================== -->
+
+    <section
+      id="good-stuff"
+      class="section section-ivory scrapbook"
+    >
+
       <div class="section-heading dark-text centered">
-        <p class="eyebrow">SELECTED MATERIALS FROM THE SOCIETY ARCHIVES</p>
-        <h2>The Good <em>Stuff</em></h2>
-        <p class="section-lede">Twenty-six pieces of evidence, filed somewhat irresponsibly.</p>
+
+        <p class="eyebrow">
+          SELECTED MATERIALS FROM THE SOCIETY ARCHIVES
+        </p>
+
+        <h2>
+          The Good <em>Stuff</em>
+        </h2>
+
+        <p class="section-lede">
+          Twenty-six pieces of evidence, filed somewhat irresponsibly.
+        </p>
+
       </div>
+
 
       <div class="photo-pile" id="photoPile">
 
-        <button class="memory-photo" data-photo="1" aria-label="RXS Photo 1">
+
+        <button
+          class="memory-photo"
+          data-photo="1"
+          type="button"
+          aria-label="Open RXS Photo 1"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 1" data-base="RXS Photo 1">
+            <img
+              alt="RXS Photo 1"
+              data-base="RXS Photo 1"
+            >
             <span class="photo-number">RXS · 01</span>
-            <span class="photo-caption">Overpaying to prove you're Atlas</span>
+            <span class="photo-caption">
+              Overpaying to prove you're Atlas
+            </span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="2" aria-label="RXS Photo 2">
+
+        <button
+          class="memory-photo"
+          data-photo="2"
+          type="button"
+          aria-label="Open RXS Photo 2"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 2" data-base="RXS Photo 2">
+            <img
+              alt="RXS Photo 2"
+              data-base="RXS Photo 2"
+            >
             <span class="photo-number">RXS · 02</span>
-            <span class="photo-caption">Ticking things off our bucket lists in the most meaningful way: Together</span>
+            <span class="photo-caption">
+              Ticking things off our bucket lists in the most meaningful way:
+              Together
+            </span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="3" aria-label="RXS Photo 3">
+
+        <button
+          class="memory-photo"
+          data-photo="3"
+          type="button"
+          aria-label="Open RXS Photo 3"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 3" data-base="RXS Photo 3">
+            <img
+              alt="RXS Photo 3"
+              data-base="RXS Photo 3"
+            >
             <span class="photo-number">RXS · 03</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="4" aria-label="RXS Photo 4">
+
+        <button
+          class="memory-photo"
+          data-photo="4"
+          type="button"
+          aria-label="Open RXS Photo 4"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 4" data-base="RXS Photo 4">
+            <img
+              alt="RXS Photo 4"
+              data-base="RXS Photo 4"
+            >
             <span class="photo-number">RXS · 04</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="5" aria-label="RXS Photo 5">
+
+        <button
+          class="memory-photo"
+          data-photo="5"
+          type="button"
+          aria-label="Open RXS Photo 5"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 5" data-base="RXS Photo 5">
+            <img
+              alt="RXS Photo 5"
+              data-base="RXS Photo 5"
+            >
             <span class="photo-number">RXS · 05</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="6" aria-label="RXS Photo 6">
+
+        <button
+          class="memory-photo"
+          data-photo="6"
+          type="button"
+          aria-label="Open RXS Photo 6"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 6" data-base="RXS Photo 6">
+            <img
+              alt="RXS Photo 6"
+              data-base="RXS Photo 6"
+            >
             <span class="photo-number">RXS · 06</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="7" aria-label="RXS Photo 7">
+
+        <button
+          class="memory-photo"
+          data-photo="7"
+          type="button"
+          aria-label="Open RXS Photo 7"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 7" data-base="RXS Photo 7">
+            <img
+              alt="RXS Photo 7"
+              data-base="RXS Photo 7"
+            >
             <span class="photo-number">RXS · 07</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="8" aria-label="RXS Photo 8">
+
+        <button
+          class="memory-photo"
+          data-photo="8"
+          type="button"
+          aria-label="Open RXS Photo 8"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 8" data-base="RXS Photo 8">
+            <img
+              alt="RXS Photo 8"
+              data-base="RXS Photo 8"
+            >
             <span class="photo-number">RXS · 08</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="9" aria-label="RXS Photo 9">
+
+        <button
+          class="memory-photo"
+          data-photo="9"
+          type="button"
+          aria-label="Open RXS Photo 9"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 9" data-base="RXS Photo 9">
+            <img
+              alt="RXS Photo 9"
+              data-base="RXS Photo 9"
+            >
             <span class="photo-number">RXS · 09</span>
-            <span class="photo-caption">Cuteness aggression or just aggression? :P</span>
+            <span class="photo-caption">
+              Cuteness aggression or just aggression? :P
+            </span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="10" aria-label="RXS Photo 10">
+
+        <button
+          class="memory-photo"
+          data-photo="10"
+          type="button"
+          aria-label="Open RXS Photo 10"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 10" data-base="RXS Photo 10">
+            <img
+              alt="RXS Photo 10"
+              data-base="RXS Photo 10"
+            >
             <span class="photo-number">RXS · 10</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="11" aria-label="RXS Photo 11">
+
+        <button
+          class="memory-photo"
+          data-photo="11"
+          type="button"
+          aria-label="Open RXS Photo 11"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 11" data-base="RXS Photo 11">
+            <img
+              alt="RXS Photo 11"
+              data-base="RXS Photo 11"
+            >
             <span class="photo-number">RXS · 11</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="12" aria-label="RXS Photo 12">
+
+        <button
+          class="memory-photo"
+          data-photo="12"
+          type="button"
+          aria-label="Open RXS Photo 12"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 12" data-base="RXS Photo 12">
+            <img
+              alt="RXS Photo 12"
+              data-base="RXS Photo 12"
+            >
             <span class="photo-number">RXS · 12</span>
-            <span class="photo-caption">Battling awkward moments together</span>
+            <span class="photo-caption">
+              Battling awkward moments together
+            </span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="13" aria-label="RXS Photo 13">
+
+        <button
+          class="memory-photo"
+          data-photo="13"
+          type="button"
+          aria-label="Open RXS Photo 13"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 13" data-base="RXS Photo 13">
+            <img
+              alt="RXS Photo 13"
+              data-base="RXS Photo 13"
+            >
             <span class="photo-number">RXS · 13</span>
-            <span class="photo-caption">Fighting the fear of heights</span>
+            <span class="photo-caption">
+              Fighting the fear of heights
+            </span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="14" aria-label="RXS Photo 14">
+
+        <button
+          class="memory-photo"
+          data-photo="14"
+          type="button"
+          aria-label="Open RXS Photo 14"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 14" data-base="RXS Photo 14">
+            <img
+              alt="RXS Photo 14"
+              data-base="RXS Photo 14"
+            >
             <span class="photo-number">RXS · 14</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="15" aria-label="RXS Photo 15">
+
+        <button
+          class="memory-photo"
+          data-photo="15"
+          type="button"
+          aria-label="Open RXS Photo 15"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 15" data-base="RXS Photo 15">
+            <img
+              alt="RXS Photo 15"
+              data-base="RXS Photo 15"
+            >
             <span class="photo-number">RXS · 15</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="16" aria-label="RXS Photo 16">
+
+        <button
+          class="memory-photo"
+          data-photo="16"
+          type="button"
+          aria-label="Open RXS Photo 16"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 16" data-base="RXS Photo 16">
+            <img
+              alt="RXS Photo 16"
+              data-base="RXS Photo 16"
+            >
             <span class="photo-number">RXS · 16</span>
-            <span class="photo-caption">Breaking rules if it means being a part of each other's lives &lt;3</span>
+            <span class="photo-caption">
+              Breaking rules if it means being a part of each other's lives &lt;3
+            </span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="17" aria-label="RXS Photo 17">
+
+        <button
+          class="memory-photo"
+          data-photo="17"
+          type="button"
+          aria-label="Open RXS Photo 17"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 17" data-base="RXS Photo 17">
+            <img
+              alt="RXS Photo 17"
+              data-base="RXS Photo 17"
+            >
             <span class="photo-number">RXS · 17</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="18" aria-label="RXS Photo 18">
+
+        <button
+          class="memory-photo"
+          data-photo="18"
+          type="button"
+          aria-label="Open RXS Photo 18"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 18" data-base="RXS Photo 18">
+            <img
+              alt="RXS Photo 18"
+              data-base="RXS Photo 18"
+            >
             <span class="photo-number">RXS · 18</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="19" aria-label="RXS Photo 19">
+
+        <button
+          class="memory-photo"
+          data-photo="19"
+          type="button"
+          aria-label="Open RXS Photo 19"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 19" data-base="RXS Photo 19">
+            <img
+              alt="RXS Photo 19"
+              data-base="RXS Photo 19"
+            >
             <span class="photo-number">RXS · 19</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="20" aria-label="RXS Photo 20">
+
+        <button
+          class="memory-photo"
+          data-photo="20"
+          type="button"
+          aria-label="Open RXS Photo 20"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 20" data-base="RXS Photo 20">
+            <img
+              alt="RXS Photo 20"
+              data-base="RXS Photo 20"
+            >
             <span class="photo-number">RXS · 20</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="21" aria-label="RXS Photo 21">
+
+        <button
+          class="memory-photo"
+          data-photo="21"
+          type="button"
+          aria-label="Open RXS Photo 21"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 21" data-base="RXS Photo 21">
+            <img
+              alt="RXS Photo 21"
+              data-base="RXS Photo 21"
+            >
             <span class="photo-number">RXS · 21</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="22" aria-label="RXS Photo 22">
+
+        <button
+          class="memory-photo"
+          data-photo="22"
+          type="button"
+          aria-label="Open RXS Photo 22"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 22" data-base="RXS Photo 22">
+            <img
+              alt="RXS Photo 22"
+              data-base="RXS Photo 22"
+            >
             <span class="photo-number">RXS · 22</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="23" aria-label="RXS Photo 23">
+
+        <button
+          class="memory-photo"
+          data-photo="23"
+          type="button"
+          aria-label="Open RXS Photo 23"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 23" data-base="RXS Photo 23">
+            <img
+              alt="RXS Photo 23"
+              data-base="RXS Photo 23"
+            >
             <span class="photo-number">RXS · 23</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="24" aria-label="RXS Photo 24">
+
+        <button
+          class="memory-photo"
+          data-photo="24"
+          type="button"
+          aria-label="Open RXS Photo 24"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 24" data-base="RXS Photo 24">
+            <img
+              alt="RXS Photo 24"
+              data-base="RXS Photo 24"
+            >
             <span class="photo-number">RXS · 24</span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="25" aria-label="RXS Photo 25">
+
+        <button
+          class="memory-photo"
+          data-photo="25"
+          type="button"
+          aria-label="Open RXS Photo 25"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 25" data-base="RXS Photo 25">
+            <img
+              alt="RXS Photo 25"
+              data-base="RXS Photo 25"
+            >
             <span class="photo-number">RXS · 25</span>
-            <span class="photo-caption">Exploring pinterest boards</span>
+            <span class="photo-caption">
+              Exploring pinterest boards
+            </span>
           </div>
         </button>
 
-        <button class="memory-photo" data-photo="26" aria-label="RXS Photo 26">
+
+        <button
+          class="memory-photo"
+          data-photo="26"
+          type="button"
+          aria-label="Open RXS Photo 26"
+        >
           <div class="photo-paper">
-            <img alt="RXS Photo 26" data-base="RXS Photo 26">
+            <img
+              alt="RXS Photo 26"
+              data-base="RXS Photo 26"
+            >
             <span class="photo-number">RXS · 26</span>
           </div>
         </button>
 
       </div>
 
-      <p class="scroll-note">A private collection. Handle with care.</p>
+
+      <p class="scroll-note">
+        A private collection. Handle with care.
+      </p>
+
     </section>
 
 
-    <!-- OPEN WHEN -->
-    <section id="open-when" class="section section-burgundy correspondence">
-      <div class="section-scattered-images section-images-left" aria-hidden="true">
+
+    <!-- =======================================================
+         OPEN WHEN
+    ======================================================== -->
+
+    <section
+      id="open-when"
+      class="section section-burgundy correspondence"
+    >
+
+      <div
+        class="section-scattered-images section-images-left"
+        aria-hidden="true"
+      >
         <img src="./section-3-photos/RXS-Sec3-img1.jpeg" alt="">
         <img src="./section-3-photos/RXS-Sec3-img2.jpeg" alt="">
         <img src="./section-3-photos/RXS-Sec3-img3.jpeg" alt="">
       </div>
+
+
       <div class="section-heading light-text centered">
-        <p class="eyebrow">PRIVATE CORRESPONDENCE</p>
-        <h2>Open <em>When</em></h2>
-        <p class="section-lede">For circumstances requiring immediate access to a familiar voice.</p>
+
+        <p class="eyebrow">
+          PRIVATE CORRESPONDENCE
+        </p>
+
+        <h2>
+          Open <em>When</em>
+        </h2>
+
+        <p class="section-lede">
+          For circumstances requiring immediate access to a familiar voice.
+        </p>
+
       </div>
 
+
       <div class="envelope-grid">
-        <button class="envelope" data-video="" data-title="Open when you miss me">
+
+        <button
+          class="envelope"
+          type="button"
+          data-video=""
+          data-title="Open when you miss me"
+        >
           <span class="wax">IR</span>
           <b>OPEN WHEN</b>
           <strong>you miss me</strong>
           <small>Correspondence No. 01</small>
         </button>
 
-        <button class="envelope" data-video="" data-title="Open when you have had a bad day">
+
+        <button
+          class="envelope"
+          type="button"
+          data-video=""
+          data-title="Open when you have had a bad day"
+        >
           <span class="wax">IR</span>
           <b>OPEN WHEN</b>
           <strong>you've had a bad day</strong>
           <small>Correspondence No. 02</small>
         </button>
 
-        <button class="envelope" data-video="" data-title="Open when you need a reminder">
+
+        <button
+          class="envelope"
+          type="button"
+          data-video=""
+          data-title="Open when you need a reminder"
+        >
           <span class="wax">IR</span>
           <b>OPEN WHEN</b>
           <strong>you need a reminder</strong>
           <small>Correspondence No. 03</small>
         </button>
 
-        <button class="envelope" data-video="" data-title="Open when Estonia feels too far away">
+
+        <button
+          class="envelope"
+          type="button"
+          data-video=""
+          data-title="Open when Estonia feels too far away"
+        >
           <span class="wax">IR</span>
           <b>OPEN WHEN</b>
           <strong>Estonia feels too far away</strong>
           <small>Correspondence No. 04</small>
         </button>
+
       </div>
 
-      <p class="microcopy">Click an envelope once its video URL has been added in <code>script.js</code>.</p>
+
+      <p class="microcopy">
+        Click an envelope once its video URL has been added in
+        <code>script.js</code>.
+      </p>
+
     </section>
 
 
-    <!-- I WISH YOU WERE HERE -->
-    <section id="wish" class="section section-olive wish-section">
-      <div class="section-scattered-images section-images-right" aria-hidden="true">
+
+    <!-- =======================================================
+         I WISH YOU WERE HERE
+    ======================================================== -->
+
+    <section
+      id="wish"
+      class="section section-olive wish-section"
+    >
+
+      <div
+        class="section-scattered-images section-images-right"
+        aria-hidden="true"
+      >
         <img src="./section-4-photos/RXS-Sec4-img1.jpeg" alt="">
         <img src="./section-4-photos/RXS-Sec4-img2.jpeg" alt="">
         <img src="./section-4-photos/RXS-Sec4-img3.jpeg" alt="">
       </div>
+
+
       <div class="section-heading light-text centered">
-        <p class="eyebrow archive-yellow">LONG-DISTANCE COMMUNICATIONS</p>
-        <h2>I Wish You Were <em>Here</em></h2>
-        <p class="section-lede">For moments when you miss me, here is a real time response, or two :) Go wild!</p>
+
+        <p class="eyebrow archive-yellow">
+          LONG-DISTANCE COMMUNICATIONS
+        </p>
+
+        <h2>
+          I Wish You Were <em>Here</em>
+        </h2>
+
+        <p class="section-lede">
+          For moments when you miss me, here is a real time response,
+          or two :) Go wild!
+        </p>
+
       </div>
 
+
       <div class="wish-machine">
-        <p id="wishResponse">I wish you were here.</p>
-        <button class="button button-light" id="wishButton">TELL ME AGAIN ↻</button>
+
+        <p id="wishResponse">
+          I wish you were here.
+        </p>
+
+        <button
+          class="button button-light"
+          id="wishButton"
+          type="button"
+        >
+          TELL ME AGAIN ↻
+        </button>
+
       </div>
+
     </section>
 
 
-    <!-- PEOPLE -->
-    <section id="people" class="section section-navy people-section">
-      <div class="section-scattered-images section-images-left" aria-hidden="true">
+
+    <!-- =======================================================
+         PEOPLE
+    ======================================================== -->
+
+    <section
+      id="people"
+      class="section section-navy people-section"
+    >
+
+      <div
+        class="section-scattered-images section-images-left"
+        aria-hidden="true"
+      >
         <img src="./section-5-photos/RXS-Sec5-img1.jpeg" alt="">
         <img src="./section-5-photos/RXS-Sec5-img2.jpeg" alt="">
         <img src="./section-5-photos/RXS-Sec5-img3.jpeg" alt="">
       </div>
+
+
       <div class="section-heading light-text centered">
-        <p class="eyebrow archive-yellow">STATEMENTS FROM ASSOCIATED PARTIES</p>
-        <h2>From The People<br>Who <em>Love You</em></h2>
-        <p class="section-lede">A collection of testimonials from individuals who have unfortunately grown fond of you.</p>
+
+        <p class="eyebrow archive-yellow">
+          STATEMENTS FROM ASSOCIATED PARTIES
+        </p>
+
+        <h2>
+          From The People<br>
+          Who <em>Love You</em>
+        </h2>
+
+        <p class="section-lede">
+          A collection of testimonials from individuals who have
+          unfortunately grown fond of you.
+        </p>
+
       </div>
+
 
       <div class="video-card-grid">
-        <article class="video-card">
-          <div class="video-placeholder">VIDEO 01</div>
-          <h3>From the people who'll miss you</h3>
-          <p>Add your friend's video link in <code>index.html</code>.</p>
-        </article>
 
         <article class="video-card">
-          <div class="video-placeholder">VIDEO 02</div>
-          <h3>A message for your next chapter</h3>
-          <p>Add another video when ready.</p>
+
+          <div class="video-placeholder">
+            VIDEO 01
+          </div>
+
+          <h3>
+            From the people who'll miss you
+          </h3>
+
+          <p>
+            Add your friend's video link in
+            <code>index.html</code>.
+          </p>
+
         </article>
 
+
         <article class="video-card">
-          <div class="video-placeholder">VIDEO 03</div>
-          <h3>Official Society encouragement</h3>
-          <p>Because apparently one goodbye wasn't enough.</p>
+
+          <div class="video-placeholder">
+            VIDEO 02
+          </div>
+
+          <h3>
+            A message for your next chapter
+          </h3>
+
+          <p>
+            Add another video when ready.
+          </p>
+
         </article>
+
+
+        <article class="video-card">
+
+          <div class="video-placeholder">
+            VIDEO 03
+          </div>
+
+          <h3>
+            Official Society encouragement
+          </h3>
+
+          <p>
+            Because apparently one goodbye wasn't enough.
+          </p>
+
+        </article>
+
       </div>
+
     </section>
 
 
-    <!-- QUIZ -->
-    <section id="quiz" class="section section-ivory quiz-section">
-      <div class="section-scattered-images section-images-right" aria-hidden="true">
+
+    <!-- =======================================================
+         QUIZ
+    ======================================================== -->
+
+    <section
+      id="quiz"
+      class="section section-ivory quiz-section"
+    >
+
+      <div
+        class="section-scattered-images section-images-right"
+        aria-hidden="true"
+      >
         <img src="./section-6-photos/RXS-Sec6-img1.jpeg" alt="">
         <img src="./section-6-photos/RXS-Sec6-img2.jpeg" alt="">
         <img src="./section-6-photos/RXS-Sec6-img3.jpeg" alt="">
       </div>
+
+
       <div class="section-heading dark-text centered">
-        <p class="eyebrow">MEMBERSHIP ASSESSMENT</p>
-        <h2>How Well Do We<br><em>Know Us?</em></h2>
-        <p class="section-lede">A highly rigorous examination of matters that should probably already be known.</p>
+
+        <p class="eyebrow">
+          MEMBERSHIP ASSESSMENT
+        </p>
+
+        <h2>
+          How Well Do We<br>
+          <em>Know Us?</em>
+        </h2>
+
+        <p class="section-lede">
+          A highly rigorous examination of matters that should
+          probably already be known.
+        </p>
+
       </div>
 
+
       <div class="quiz-box">
+
         <div id="quizQuestion"></div>
+
         <div id="quizOptions"></div>
-        <button class="button button-dark" id="quizNext">NEXT QUESTION →</button>
+
+        <button
+          class="button button-dark"
+          id="quizNext"
+          type="button"
+        >
+          NEXT QUESTION →
+        </button>
+
         <div id="quizResult"></div>
+
       </div>
+
     </section>
 
 
-    <!-- ARCADE -->
-    <section id="arcade" class="section section-burgundy arcade-section">
-      <div class="section-scattered-images section-images-left" aria-hidden="true">
+
+    <!-- =======================================================
+         ARCADE
+    ======================================================== -->
+
+    <section
+      id="arcade"
+      class="section section-burgundy arcade-section"
+    >
+
+      <div
+        class="section-scattered-images section-images-left"
+        aria-hidden="true"
+      >
         <img src="./section-7-photos/RXS-Sec7-img1.jpeg" alt="">
         <img src="./section-7-photos/RXS-Sec7-img2.jpeg" alt="">
         <img src="./section-7-photos/RXS-Sec7-img3.jpeg" alt="">
       </div>
+
+
       <div class="section-heading light-text centered">
-        <p class="eyebrow archive-yellow">RECREATIONAL DEPARTMENT</p>
-        <h2>The Long-Distance <em>Arcade</em></h2>
-        <p class="section-lede">Games approved for members operating from inconveniently distant jurisdictions.</p>
+
+        <p class="eyebrow archive-yellow">
+          RECREATIONAL DEPARTMENT
+        </p>
+
+        <h2>
+          The Long-Distance <em>Arcade</em>
+        </h2>
+
+        <p class="section-lede">
+          Games approved for members operating from inconveniently
+          distant jurisdictions.
+        </p>
+
       </div>
+
 
       <div class="arcade-tools">
-        <span id="arcadeCount">03 APPROVED GAMES</span>
-        <button class="button button-light" id="addGameButton">+ ADD TO ARCADE</button>
+
+        <span id="arcadeCount">
+          03 APPROVED GAMES
+        </span>
+
+        <button
+          class="button button-light"
+          id="addGameButton"
+          type="button"
+        >
+          + ADD TO ARCADE
+        </button>
+
       </div>
 
-      <div class="game-grid" id="gameGrid"></div>
+
+      <div
+        class="game-grid"
+        id="gameGrid"
+      ></div>
+
     </section>
 
 
-    <!-- DATE GENERATOR -->
-    <section id="dates" class="section section-olive dates-section">
-      <div class="section-scattered-images section-images-right" aria-hidden="true">
+
+    <!-- =======================================================
+         DATE GENERATOR
+    ======================================================== -->
+
+    <section
+      id="dates"
+      class="section section-olive dates-section"
+    >
+
+      <div
+        class="section-scattered-images section-images-right"
+        aria-hidden="true"
+      >
         <img src="./section-8-photos/RXS-Sec8-img1.jpeg" alt="">
         <img src="./section-8-photos/RXS-Sec8-img2.jpeg" alt="">
         <img src="./section-8-photos/RXS-Sec8-img3.jpeg" alt="">
       </div>
+
+
       <div class="section-heading light-text centered">
-        <p class="eyebrow archive-yellow">OFFICIAL SOCIAL CALENDAR</p>
-        <h2>The Date <em>Generator</em></h2>
-        <p class="section-lede">For when “what do you want to do?” has become an unacceptable question.</p>
+
+        <p class="eyebrow archive-yellow">
+          OFFICIAL SOCIAL CALENDAR
+        </p>
+
+        <h2>
+          The Date <em>Generator</em>
+        </h2>
+
+        <p class="section-lede">
+          For when “what do you want to do?” has become an
+          unacceptable question.
+        </p>
+
       </div>
 
+
       <div class="date-machine">
-        <p class="date-label">THE SOCIETY SUGGESTS:</p>
-        <div class="date-result" id="dateResult">
+
+        <p class="date-label">
+          THE SOCIETY SUGGESTS:
+        </p>
+
+        <div
+          class="date-result"
+          id="dateResult"
+        >
           Press the button. Trust the Society.
         </div>
-        <button class="button button-light" id="dateButton">GENERATE A DATE ↻</button>
+
+        <button
+          class="button button-light"
+          id="dateButton"
+          type="button"
+        >
+          GENERATE A DATE ↻
+        </button>
+
       </div>
+
     </section>
 
 
-    <!-- VAULT -->
-    <section id="vault" class="section section-navy vault-section">
-      <div class="section-scattered-images section-images-left" aria-hidden="true">
+
+    <!-- =======================================================
+         VAULT
+    ======================================================== -->
+
+    <section
+      id="vault"
+      class="section section-navy vault-section"
+    >
+
+      <div
+        class="section-scattered-images section-images-left"
+        aria-hidden="true"
+      >
         <img src="./section-9-photos/RXS-Sec9-img1.jpeg" alt="">
         <img src="./section-9-photos/RXS-Sec9-img2.jpeg" alt="">
         <img src="./section-9-photos/RXS-Sec9-img3.jpeg" alt="">
       </div>
+
+
       <div class="section-heading light-text centered">
-        <p class="eyebrow archive-yellow">TEMPORALLY RESTRICTED MATERIAL</p>
-        <h2>The <em>Vault</em></h2>
-        <p class="section-lede">Certain correspondence is to remain sealed until the appointed occasion.</p>
+
+        <p class="eyebrow archive-yellow">
+          TEMPORALLY RESTRICTED MATERIAL
+        </p>
+
+        <h2>
+          The <em>Vault</em>
+        </h2>
+
+        <p class="section-lede">
+          Certain correspondence is to remain sealed until
+          the appointed occasion.
+        </p>
+
       </div>
+
 
       <div class="vault-grid">
 
-        <article class="vault-card" data-month="10" data-day="20">
-          <span class="vault-date">20 OCT</span>
-          <h3>For your birthday</h3>
-          <p>A note from the Society, sealed until the appropriate date.</p>
-          <button class="vault-open">CHECK DATE</button>
-          <small class="vault-status">LOCKED</small>
+
+        <article
+          class="vault-card"
+          data-month="10"
+          data-day="20"
+        >
+
+          <span class="vault-date">
+            20 OCT
+          </span>
+
+          <h3>
+            For your birthday
+          </h3>
+
+          <p>
+            A note from the Society, sealed until the appropriate date.
+          </p>
+
+          <button
+            class="vault-open"
+            type="button"
+          >
+            CHECK DATE
+          </button>
+
+          <small class="vault-status">
+            LOCKED
+          </small>
+
         </article>
 
-        <article class="vault-card" data-month="10" data-day="20">
-          <span class="vault-date">DIWALI</span>
-          <h3>For Diwali</h3>
-          <p>Open only when the lights are officially on.</p>
-          <button class="vault-open">CHECK DATE</button>
-          <small class="vault-status">LOCKED</small>
+
+        <article
+          class="vault-card"
+          data-month="10"
+          data-day="20"
+        >
+
+          <span class="vault-date">
+            DIWALI
+          </span>
+
+          <h3>
+            For Diwali
+          </h3>
+
+          <p>
+            Open only when the lights are officially on.
+          </p>
+
+          <button
+            class="vault-open"
+            type="button"
+          >
+            CHECK DATE
+          </button>
+
+          <small class="vault-status">
+            LOCKED
+          </small>
+
         </article>
 
-        <article class="vault-card" data-month="12" data-day="25">
-          <span class="vault-date">25 DEC</span>
-          <h3>For Christmas</h3>
-          <p>A seasonal dispatch from headquarters.</p>
-          <button class="vault-open">CHECK DATE</button>
-          <small class="vault-status">LOCKED</small>
+
+        <article
+          class="vault-card"
+          data-month="12"
+          data-day="25"
+        >
+
+          <span class="vault-date">
+            25 DEC
+          </span>
+
+          <h3>
+            For Christmas
+          </h3>
+
+          <p>
+            A seasonal dispatch from headquarters.
+          </p>
+
+          <button
+            class="vault-open"
+            type="button"
+          >
+            CHECK DATE
+          </button>
+
+          <small class="vault-status">
+            LOCKED
+          </small>
+
         </article>
 
-        <article class="vault-card" data-month="12" data-day="31">
-          <span class="vault-date">31 DEC</span>
-          <h3>For New Year's Eve</h3>
-          <p>One final message before the next chapter begins.</p>
-          <button class="vault-open">CHECK DATE</button>
-          <small class="vault-status">LOCKED</small>
+
+        <article
+          class="vault-card"
+          data-month="12"
+          data-day="31"
+        >
+
+          <span class="vault-date">
+            31 DEC
+          </span>
+
+          <h3>
+            For New Year's Eve
+          </h3>
+
+          <p>
+            One final message before the next chapter begins.
+          </p>
+
+          <button
+            class="vault-open"
+            type="button"
+          >
+            CHECK DATE
+          </button>
+
+          <small class="vault-status">
+            LOCKED
+          </small>
+
         </article>
 
       </div>
+
     </section>
 
 
-    <!-- FINAL NOTE — DO NOT CHANGE -->
+
+    <!-- =======================================================
+         FINAL NOTE — DO NOT CHANGE
+    ======================================================== -->
+
     <section class="final-note section-ivory">
-      <div class="section-10-images" aria-hidden="true">
-      <div class="section-10-top">
-         <img src="./section-10-photos/RXS-Sec10-img1.jpeg" alt="">
-         <img src="./section-10-photos/RXS-Sec10-img2.jpeg" alt="">
+
+      <div
+        class="section-10-images"
+        aria-hidden="true"
+      >
+
+        <div class="section-10-top">
+
+          <img
+            src="./section-10-photos/RXS-Sec10-img1.jpeg"
+            alt=""
+          >
+
+          <img
+            src="./section-10-photos/RXS-Sec10-img2.jpeg"
+            alt=""
+          >
+
+        </div>
+
+
+        <div class="section-10-bottom">
+
+          <img
+            src="./section-10-photos/RXS-Sec10-img3.jpeg"
+            alt=""
+          >
+
+          <img
+            src="./section-10-photos/RXS-Sec10-img4.jpeg"
+            alt=""
+          >
+
+        </div>
+
       </div>
 
-      <div class="section-10-bottom">
-         <img src="./section-10-photos/RXS-Sec10-img3.jpeg" alt="">
-         <img src="./section-10-photos/RXS-Sec10-img4.jpeg" alt="">
-      </div>
-      </div>
+
       <div class="final-inner">
-        <p class="eyebrow">FINAL NOTICE FROM HEADQUARTERS</p>
-        <h2>This is not the<br><em>end.</em></h2>
+
+        <p class="eyebrow">
+          FINAL NOTICE FROM HEADQUARTERS
+        </p>
+
+
+        <h2>
+          This is not the<br>
+          <em>end.</em>
+        </h2>
+
 
         <p class="final-copy">
           This is just another adventure.
         </p>
 
+
         <p class="final-copy">
-          In five years — maybe less — we'll probably laugh about how nervous
-          we were about a little distance.
+          In five years — maybe less — we'll probably laugh about
+          how nervous we were about a little distance.
         </p>
+
 
         <p class="final-copy">
           Until then, there will be calls, terrible internet connections,
@@ -534,26 +1339,74 @@
           <span>I wish you were here.</span>
         </p>
 
+
         <div class="final-signature">
+
           <span>Always,</span>
+
           <strong>Itsu</strong>
+
         </div>
 
-        <p class="final-mark">THE ITSU × RAKHU SOCIETY · 16.04.2022 — FOREVER</p>
+
+        <p class="final-mark">
+          THE ITSU × RAKHU SOCIETY · 16.04.2022 — FOREVER
+        </p>
+
       </div>
+
     </section>
 
   </main>
 
-  <div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-backdrop" id="modalBackdrop"></div>
+
+
+  <!-- =========================================================
+       MODAL
+  ========================================================== -->
+
+  <div
+    class="modal"
+    id="modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+  >
+
+    <div
+      class="modal-backdrop"
+      id="modalBackdrop"
+    ></div>
+
+
     <div class="modal-card">
-      <button class="modal-close" id="modalClose">×</button>
+
+      <button
+        class="modal-close"
+        id="modalClose"
+        type="button"
+        aria-label="Close dialog"
+      >
+        ×
+      </button>
+
+
       <h3 id="modalTitle"></h3>
+
       <div id="modalBody"></div>
+
     </div>
+
   </div>
 
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+
   <script src="./script.js"></script>
+
 </body>
 </html>
