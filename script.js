@@ -93,19 +93,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const wishResponse = document.getElementById("wishResponse");
 
   const wishResponses = [
-    "Me too. Annoyingly much.",
-    "Me too. Come here immediately.",
-    "Me too. I'd already be stealing your side of the bed.",
-    "Me too. Same distance, same feeling.",
-    "Me too. Estonia is being very inconvenient about this.",
-    "Me too. But we're still us, wherever we are.",
-    "Me too. Consider this an official complaint against geography.",
-    "Me too. Very, very much.",
-    "Me too. Five minutes with you would fix everything.",
-    "Me too. And I'd probably annoy you within seven minutes.",
-    "Me too. Distance has terrible taste.",
-    "Me too. Now come collect your imaginary hug."
-  ];
+  "I wish you were here too.",
+  "I you know how rarely I say this, but I told you so :)",
+  "Breaking news: I miss you too. More than I previously reported.",
+  "Same, can we start a coffee shop together already?",
+  "Me too! I would go through our first date again to have you next to me (it wasn’t torture, but you know how I felt)",
+  "Book a flight back. NOW.",
+  "I miss you more than daily coffee and you know that is saying something.",
+  "I think a midnight coffee run with you would heal me, but I will have to wait until April.",
+  "I miss you so much it's basically a full-time feeling now.",
+  "Same energy, except mine has extra sighing.",
+  "Feels stupid how much time we spent just fighting right? You should just apologize next time :)",
+  "Me too. Come here immediately.",
+  "I do too my love, but we’re us in all geographies <3",
+  "I do too, consider this an official complaint against geography.",
+  "Me too. Estonia is being very inconvenient about this.",
+  "Me too. And I'd probably annoy you within seven minutes.",
+];
 
   if (wishButton && wishResponse) {
 
