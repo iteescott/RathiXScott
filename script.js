@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
      THE ITSU × RAKHU SOCIETY
      Interactive archive
-     ========================================================= */
+  ========================================================= */
+
 
   /* ---------- MENU ---------- */
 
@@ -35,18 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ---------- PHOTO ARCHIVE ---------- */
 
-  /*
-    Your GitHub images should be named:
-
-    RXS Photo 1.jpg
-    RXS Photo 2.jpg
-    ...
-    RXS Photo 26.jpg
-
-    If your uploaded files use .jpeg or .png instead,
-    the script automatically tries those too.
-  */
-
   const photoExtensions = [".jpg", ".jpeg", ".png", ".webp"];
 
   document.querySelectorAll(".memory-photo img").forEach(img => {
@@ -56,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let extensionIndex = 0;
 
     const tryNextImage = () => {
+
       if (extensionIndex >= photoExtensions.length) {
         img.style.opacity = "0";
         return;
@@ -93,23 +83,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const wishResponse = document.getElementById("wishResponse");
 
   const wishResponses = [
-  "I wish you were here too.",
-  "I you know how rarely I say this, but I told you so :)",
-  "Breaking news: I miss you too. More than I previously reported.",
-  "Same, can we start a coffee shop together already?",
-  "Me too! I would go through our first date again to have you next to me (it wasn’t torture, but you know how I felt)",
-  "Book a flight back. NOW.",
-  "I miss you more than daily coffee and you know that is saying something.",
-  "I think a midnight coffee run with you would heal me, but I will have to wait until April.",
-  "I miss you so much it's basically a full-time feeling now.",
-  "Same energy, except mine has extra sighing.",
-  "Feels stupid how much time we spent just fighting right? You should just apologize next time :)",
-  "Me too. Come here immediately.",
-  "I do too my love, but we’re us in all geographies <3",
-  "I do too, consider this an official complaint against geography.",
-  "Me too. Estonia is being very inconvenient about this.",
-  "Me too. And I'd probably annoy you within seven minutes.",
-];
+    "I wish you were here too.",
+    "I you know how rarely I say this, but I told you so :)",
+    "Breaking news: I miss you too. More than I previously reported.",
+    "Same, can we start a coffee shop together already?",
+    "Me too! I would go through our first date again to have you next to me (it wasn’t torture, but you know how I felt)",
+    "Book a flight back. NOW.",
+    "I miss you more than daily coffee and you know that is saying something.",
+    "I think a midnight coffee run with you would heal me, but I will have to wait until April.",
+    "I miss you so much it's basically a full-time feeling now.",
+    "Same energy, except mine has extra sighing.",
+    "Feels stupid how much time we spent just fighting right? You should just apologize next time :)",
+    "Me too. Come here immediately.",
+    "I do too my love, but we’re us in all geographies <3",
+    "I do too, consider this an official complaint against geography.",
+    "Me too. Estonia is being very inconvenient about this.",
+    "Me too. And I'd probably annoy you within seven minutes.",
+  ];
 
   if (wishButton && wishResponse) {
 
@@ -259,17 +249,21 @@ document.addEventListener("DOMContentLoaded", () => {
         quizOptions.innerHTML = "";
 
         quizResult.textContent =
-          `You scored ${quizScore} / ${quizQuestions.length}. 
-           Official Society assessment: 
-           ${quizScore >= 4 ? "Excellent. You may remain members." : "Further study is required. Fortunately, we have forever."}`;
+          `You scored ${quizScore} / ${quizQuestions.length}.
+           Official Society assessment:
+           ${quizScore >= 4
+            ? "Excellent. You may remain members."
+            : "Further study is required. Fortunately, we have forever."}`;
 
         quizNext.textContent = "START AGAIN ↻";
 
         quizNext.onclick = () => {
+
           quizIndex = 0;
           quizScore = 0;
           quizResult.textContent = "";
           quizNext.textContent = "NEXT QUESTION →";
+
           renderQuizQuestion();
         };
 
@@ -338,7 +332,9 @@ document.addEventListener("DOMContentLoaded", () => {
       card.innerHTML = `
         <h3>${escapeHtml(game.title)}</h3>
         <p>${escapeHtml(game.description)}</p>
-        <a href="${escapeAttribute(game.url)}" target="_blank" rel="noopener">
+        <a href="${escapeAttribute(game.url)}"
+           target="_blank"
+           rel="noopener">
           PLAY / VISIT →
         </a>
       `;
@@ -348,8 +344,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (arcadeCount) {
+
       arcadeCount.textContent =
         `${games.length.toString().padStart(2, "0")} APPROVED GAMES`;
+
     }
 
   }
@@ -459,8 +457,10 @@ document.addEventListener("DOMContentLoaded", () => {
       dateResult.style.opacity = "0";
 
       setTimeout(() => {
+
         dateResult.textContent = randomIdea;
         dateResult.style.opacity = "1";
+
       }, 180);
 
     });
@@ -517,7 +517,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       } else {
 
-        status.textContent = "SEALED UNTIL THE APPOINTED DATE";
+        status.textContent =
+          "SEALED UNTIL THE APPOINTED DATE";
 
         openModal(
           "Still sealed.",
@@ -525,6 +526,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <p style="font-size:22px;line-height:1.35;">
               Nice try.
             </p>
+
             <p style="font-size:20px;line-height:1.35;">
               The Society takes temporal security extremely seriously.
             </p>
@@ -556,14 +558,40 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
 
+    document.body.classList.add("modal-open");
+
   }
 
   function closeModal() {
 
     if (!modal) return;
 
+    /* Stop any currently playing video */
+
+    const videos = modal.querySelectorAll("video");
+
+    videos.forEach(video => {
+
+      video.pause();
+      video.currentTime = 0;
+
+    });
+
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
+
+    document.body.classList.remove("modal-open");
+
+    /* Clear modal contents after closing */
+
+    setTimeout(() => {
+
+      if (!modal.classList.contains("open")) {
+        modalBody.innerHTML = "";
+        modalTitle.textContent = "";
+      }
+
+    }, 250);
 
   }
 
@@ -599,20 +627,55 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (video) {
 
+        /*
+          Cloudinary provides a direct MP4 file.
+
+          We therefore use a native HTML5 <video>
+          instead of an iframe.
+        */
+
         openModal(
           title,
           `
-            <div style="aspect-ratio:16/9;">
-              <iframe
-                src="${escapeAttribute(video)}"
-                title="${escapeAttribute(title)}"
-                style="width:100%;height:100%;border:0;"
-                allow="autoplay; encrypted-media; picture-in-picture"
-                allowfullscreen>
-              </iframe>
+            <div class="modal-video-wrap">
+
+              <video
+                class="modal-video"
+                controls
+                playsinline
+                preload="metadata"
+                title="${escapeAttribute(title)}">
+
+                <source
+                  src="${escapeAttribute(video)}"
+                  type="video/mp4">
+
+                Your browser does not support HTML5 video.
+              </video>
+
             </div>
           `
         );
+
+        /* Start playback after the modal has rendered */
+
+        setTimeout(() => {
+
+          const videoElement =
+            modal.querySelector(".modal-video");
+
+          if (videoElement) {
+
+            videoElement.play().catch(() => {
+              /*
+                Autoplay may be blocked by the browser.
+                The controls remain available.
+              */
+            });
+
+          }
+
+        }, 120);
 
       } else {
 
@@ -622,8 +685,10 @@ document.addEventListener("DOMContentLoaded", () => {
             <p style="font-size:22px;line-height:1.35;">
               This envelope is waiting for its video.
             </p>
+
             <p style="font-size:18px;opacity:.65;">
-              Add the video URL to the <code>data-video</code> field
+              Add the video URL to the
+              <code>data-video</code> field
               in <code>index.html</code> when you're ready.
             </p>
           `
@@ -650,11 +715,15 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
     },
-    { threshold: 0.12 }
+    {
+      threshold: 0.12
+    }
   );
 
   document
-    .querySelectorAll(".section-heading, .wish-machine, .date-machine, .quiz-box")
+    .querySelectorAll(
+      ".section-heading, .wish-machine, .date-machine, .quiz-box"
+    )
     .forEach(element => observer.observe(element));
 
 });
