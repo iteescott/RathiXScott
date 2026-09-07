@@ -25,34 +25,24 @@
 
 <body>
 
-  <div class="grain" aria-hidden="true"></div>
+  <div class="grain"></div>
 
-  <!-- =========================================================
-       TOP BAR
-  ========================================================== -->
-
+  <!-- TOP BAR -->
   <header class="topbar">
-    <a class="monogram" href="#top" aria-label="Back to top">
-      I × R
-    </a>
+    <a class="monogram" href="#top" aria-label="Back to top">I × R</a>
 
     <button
       class="menu-button"
       id="menuButton"
-      type="button"
       aria-label="Open archive index"
-      aria-controls="indexDrawer"
-      aria-expanded="false"
+      type="button"
     >
       INDEX
     </button>
   </header>
 
 
-  <!-- =========================================================
-       ARCHIVE DRAWER
-  ========================================================== -->
-
+  <!-- INDEX DRAWER -->
   <aside
     class="index-drawer"
     id="indexDrawer"
@@ -64,7 +54,6 @@
         class="drawer-close"
         id="drawerClose"
         type="button"
-        aria-label="Close archive index"
       >
         CLOSE ×
       </button>
@@ -73,7 +62,7 @@
 
       <h2>Society Index</h2>
 
-      <nav aria-label="Archive sections">
+      <nav>
         <a href="#good-stuff">01 — The Good Stuff</a>
         <a href="#open-when">02 — Open When</a>
         <a href="#wish">03 — I Wish You Were Here</a>
@@ -88,16 +77,12 @@
   </aside>
 
 
-  <!-- =========================================================
-       MAIN
-  ========================================================== -->
-
   <main id="top">
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          HERO
-    ======================================================== -->
+    ========================================================== -->
 
     <section class="hero section-navy">
 
@@ -121,6 +106,7 @@
 
           <div class="seal" aria-hidden="true">
             <span>IR</span>
+
             <small>
               EST.<br>
               16.04.2022
@@ -131,13 +117,14 @@
 
 
         <p class="hero-intro">
-          A private collection of memories, correspondence, adventures &
+          A private collection of memories, correspondence, adventures &amp;
           other matters of great importance.
         </p>
 
 
         <div class="hero-meta">
-          <span>FOUNDED BY ITSU & RAKHU</span>
+          <span>FOUNDED BY ITSU &amp; RAKHU</span>
+
           <span class="archive-yellow">
             16.04.2022 — FOREVER
           </span>
@@ -145,8 +132,7 @@
 
 
         <a class="button button-light" href="#good-stuff">
-          ENTER THE ARCHIVE
-          <span aria-hidden="true">↓</span>
+          ENTER THE ARCHIVE <span>↓</span>
         </a>
 
       </div>
@@ -173,9 +159,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          THE GOOD STUFF
-    ======================================================== -->
+    ========================================================== -->
 
     <section
       id="good-stuff"
@@ -201,274 +187,121 @@
 
       <div class="photo-pile" id="photoPile">
 
-
-        <button
-          class="memory-photo"
-          data-photo="1"
-          type="button"
-          aria-label="Open RXS Photo 1"
-        >
+        <button class="memory-photo" data-photo="1" aria-label="RXS Photo 1" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 1"
-              data-base="RXS Photo 1"
-            >
+            <img alt="RXS Photo 1" data-base="RXS Photo 1">
             <span class="photo-number">RXS · 01</span>
-            <span class="photo-caption">
-              Overpaying to prove you're Atlas
-            </span>
+            <span class="photo-caption">Overpaying to prove you're Atlas</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="2"
-          type="button"
-          aria-label="Open RXS Photo 2"
-        >
+        <button class="memory-photo" data-photo="2" aria-label="RXS Photo 2" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 2"
-              data-base="RXS Photo 2"
-            >
+            <img alt="RXS Photo 2" data-base="RXS Photo 2">
             <span class="photo-number">RXS · 02</span>
             <span class="photo-caption">
-              Ticking things off our bucket lists in the most meaningful way:
-              Together
+              Ticking things off our bucket lists in the most meaningful way: Together
             </span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="3"
-          type="button"
-          aria-label="Open RXS Photo 3"
-        >
+        <button class="memory-photo" data-photo="3" aria-label="RXS Photo 3" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 3"
-              data-base="RXS Photo 3"
-            >
+            <img alt="RXS Photo 3" data-base="RXS Photo 3">
             <span class="photo-number">RXS · 03</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="4"
-          type="button"
-          aria-label="Open RXS Photo 4"
-        >
+        <button class="memory-photo" data-photo="4" aria-label="RXS Photo 4" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 4"
-              data-base="RXS Photo 4"
-            >
+            <img alt="RXS Photo 4" data-base="RXS Photo 4">
             <span class="photo-number">RXS · 04</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="5"
-          type="button"
-          aria-label="Open RXS Photo 5"
-        >
+        <button class="memory-photo" data-photo="5" aria-label="RXS Photo 5" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 5"
-              data-base="RXS Photo 5"
-            >
+            <img alt="RXS Photo 5" data-base="RXS Photo 5">
             <span class="photo-number">RXS · 05</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="6"
-          type="button"
-          aria-label="Open RXS Photo 6"
-        >
+        <button class="memory-photo" data-photo="6" aria-label="RXS Photo 6" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 6"
-              data-base="RXS Photo 6"
-            >
+            <img alt="RXS Photo 6" data-base="RXS Photo 6">
             <span class="photo-number">RXS · 06</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="7"
-          type="button"
-          aria-label="Open RXS Photo 7"
-        >
+        <button class="memory-photo" data-photo="7" aria-label="RXS Photo 7" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 7"
-              data-base="RXS Photo 7"
-            >
+            <img alt="RXS Photo 7" data-base="RXS Photo 7">
             <span class="photo-number">RXS · 07</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="8"
-          type="button"
-          aria-label="Open RXS Photo 8"
-        >
+        <button class="memory-photo" data-photo="8" aria-label="RXS Photo 8" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 8"
-              data-base="RXS Photo 8"
-            >
+            <img alt="RXS Photo 8" data-base="RXS Photo 8">
             <span class="photo-number">RXS · 08</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="9"
-          type="button"
-          aria-label="Open RXS Photo 9"
-        >
+        <button class="memory-photo" data-photo="9" aria-label="RXS Photo 9" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 9"
-              data-base="RXS Photo 9"
-            >
+            <img alt="RXS Photo 9" data-base="RXS Photo 9">
             <span class="photo-number">RXS · 09</span>
-            <span class="photo-caption">
-              Cuteness aggression or just aggression? :P
-            </span>
+            <span class="photo-caption">Cuteness aggression or just aggression? :P</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="10"
-          type="button"
-          aria-label="Open RXS Photo 10"
-        >
+        <button class="memory-photo" data-photo="10" aria-label="RXS Photo 10" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 10"
-              data-base="RXS Photo 10"
-            >
+            <img alt="RXS Photo 10" data-base="RXS Photo 10">
             <span class="photo-number">RXS · 10</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="11"
-          type="button"
-          aria-label="Open RXS Photo 11"
-        >
+        <button class="memory-photo" data-photo="11" aria-label="RXS Photo 11" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 11"
-              data-base="RXS Photo 11"
-            >
+            <img alt="RXS Photo 11" data-base="RXS Photo 11">
             <span class="photo-number">RXS · 11</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="12"
-          type="button"
-          aria-label="Open RXS Photo 12"
-        >
+        <button class="memory-photo" data-photo="12" aria-label="RXS Photo 12" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 12"
-              data-base="RXS Photo 12"
-            >
+            <img alt="RXS Photo 12" data-base="RXS Photo 12">
             <span class="photo-number">RXS · 12</span>
-            <span class="photo-caption">
-              Battling awkward moments together
-            </span>
+            <span class="photo-caption">Battling awkward moments together</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="13"
-          type="button"
-          aria-label="Open RXS Photo 13"
-        >
+        <button class="memory-photo" data-photo="13" aria-label="RXS Photo 13" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 13"
-              data-base="RXS Photo 13"
-            >
+            <img alt="RXS Photo 13" data-base="RXS Photo 13">
             <span class="photo-number">RXS · 13</span>
-            <span class="photo-caption">
-              Fighting the fear of heights
-            </span>
+            <span class="photo-caption">Fighting the fear of heights</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="14"
-          type="button"
-          aria-label="Open RXS Photo 14"
-        >
+        <button class="memory-photo" data-photo="14" aria-label="RXS Photo 14" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 14"
-              data-base="RXS Photo 14"
-            >
+            <img alt="RXS Photo 14" data-base="RXS Photo 14">
             <span class="photo-number">RXS · 14</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="15"
-          type="button"
-          aria-label="Open RXS Photo 15"
-        >
+        <button class="memory-photo" data-photo="15" aria-label="RXS Photo 15" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 15"
-              data-base="RXS Photo 15"
-            >
+            <img alt="RXS Photo 15" data-base="RXS Photo 15">
             <span class="photo-number">RXS · 15</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="16"
-          type="button"
-          aria-label="Open RXS Photo 16"
-        >
+        <button class="memory-photo" data-photo="16" aria-label="RXS Photo 16" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 16"
-              data-base="RXS Photo 16"
-            >
+            <img alt="RXS Photo 16" data-base="RXS Photo 16">
             <span class="photo-number">RXS · 16</span>
             <span class="photo-caption">
               Breaking rules if it means being a part of each other's lives &lt;3
@@ -476,171 +309,78 @@
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="17"
-          type="button"
-          aria-label="Open RXS Photo 17"
-        >
+        <button class="memory-photo" data-photo="17" aria-label="RXS Photo 17" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 17"
-              data-base="RXS Photo 17"
-            >
+            <img alt="RXS Photo 17" data-base="RXS Photo 17">
             <span class="photo-number">RXS · 17</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="18"
-          type="button"
-          aria-label="Open RXS Photo 18"
-        >
+        <button class="memory-photo" data-photo="18" aria-label="RXS Photo 18" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 18"
-              data-base="RXS Photo 18"
-            >
+            <img alt="RXS Photo 18" data-base="RXS Photo 18">
             <span class="photo-number">RXS · 18</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="19"
-          type="button"
-          aria-label="Open RXS Photo 19"
-        >
+        <button class="memory-photo" data-photo="19" aria-label="RXS Photo 19" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 19"
-              data-base="RXS Photo 19"
-            >
+            <img alt="RXS Photo 19" data-base="RXS Photo 19">
             <span class="photo-number">RXS · 19</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="20"
-          type="button"
-          aria-label="Open RXS Photo 20"
-        >
+        <button class="memory-photo" data-photo="20" aria-label="RXS Photo 20" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 20"
-              data-base="RXS Photo 20"
-            >
+            <img alt="RXS Photo 20" data-base="RXS Photo 20">
             <span class="photo-number">RXS · 20</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="21"
-          type="button"
-          aria-label="Open RXS Photo 21"
-        >
+        <button class="memory-photo" data-photo="21" aria-label="RXS Photo 21" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 21"
-              data-base="RXS Photo 21"
-            >
+            <img alt="RXS Photo 21" data-base="RXS Photo 21">
             <span class="photo-number">RXS · 21</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="22"
-          type="button"
-          aria-label="Open RXS Photo 22"
-        >
+        <button class="memory-photo" data-photo="22" aria-label="RXS Photo 22" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 22"
-              data-base="RXS Photo 22"
-            >
+            <img alt="RXS Photo 22" data-base="RXS Photo 22">
             <span class="photo-number">RXS · 22</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="23"
-          type="button"
-          aria-label="Open RXS Photo 23"
-        >
+        <button class="memory-photo" data-photo="23" aria-label="RXS Photo 23" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 23"
-              data-base="RXS Photo 23"
-            >
+            <img alt="RXS Photo 23" data-base="RXS Photo 23">
             <span class="photo-number">RXS · 23</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="24"
-          type="button"
-          aria-label="Open RXS Photo 24"
-        >
+        <button class="memory-photo" data-photo="24" aria-label="RXS Photo 24" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 24"
-              data-base="RXS Photo 24"
-            >
+            <img alt="RXS Photo 24" data-base="RXS Photo 24">
             <span class="photo-number">RXS · 24</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="25"
-          type="button"
-          aria-label="Open RXS Photo 25"
-        >
+        <button class="memory-photo" data-photo="25" aria-label="RXS Photo 25" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 25"
-              data-base="RXS Photo 25"
-            >
+            <img alt="RXS Photo 25" data-base="RXS Photo 25">
             <span class="photo-number">RXS · 25</span>
-            <span class="photo-caption">
-              Exploring pinterest boards
-            </span>
+            <span class="photo-caption">Exploring pinterest boards</span>
           </div>
         </button>
 
-
-        <button
-          class="memory-photo"
-          data-photo="26"
-          type="button"
-          aria-label="Open RXS Photo 26"
-        >
+        <button class="memory-photo" data-photo="26" aria-label="RXS Photo 26" type="button">
           <div class="photo-paper">
-            <img
-              alt="RXS Photo 26"
-              data-base="RXS Photo 26"
-            >
+            <img alt="RXS Photo 26" data-base="RXS Photo 26">
             <span class="photo-number">RXS · 26</span>
           </div>
         </button>
 
       </div>
-
 
       <p class="scroll-note">
         A private collection. Handle with care.
@@ -650,9 +390,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          OPEN WHEN
-    ======================================================== -->
+    ========================================================== -->
 
     <section
       id="open-when"
@@ -688,72 +428,100 @@
 
       <div class="envelope-grid">
 
+
+        <!-- VIDEO 01 -->
+
         <button
           class="envelope"
+          data-video="https://res.cloudinary.com/zvcnmpyk/video/upload/v1788727626/RXS-cant-sleep.mp4"
+          data-title="Open when you can't sleep"
           type="button"
-          data-video=""
-          data-title="Open when you miss me"
         >
           <span class="wax">IR</span>
+
           <b>OPEN WHEN</b>
-          <strong>you miss me</strong>
-          <small>Correspondence No. 01</small>
+
+          <strong>You can't sleep</strong>
+
+          <small>
+            Correspondence No. 01
+          </small>
         </button>
 
 
+        <!-- VIDEO 02 -->
+
         <button
           class="envelope"
+          data-video="https://res.cloudinary.com/zvcnmpyk/video/upload/v1788727752/RXS-feeling-lonely.mp4"
+          data-title="Open when you're feeling lonely"
           type="button"
-          data-video=""
-          data-title="Open when you have had a bad day"
         >
           <span class="wax">IR</span>
+
           <b>OPEN WHEN</b>
-          <strong>you've had a bad day</strong>
-          <small>Correspondence No. 02</small>
+
+          <strong>You're feeling lonely</strong>
+
+          <small>
+            Correspondence No. 02
+          </small>
         </button>
 
 
+        <!-- VIDEO 03 -->
+
         <button
           class="envelope"
+          data-video="https://res.cloudinary.com/zvcnmpyk/video/upload/v1788727777/RXS-fighting.mp4"
+          data-title="Open when we're fighting"
           type="button"
-          data-video=""
-          data-title="Open when you need a reminder"
         >
           <span class="wax">IR</span>
+
           <b>OPEN WHEN</b>
-          <strong>you need a reminder</strong>
-          <small>Correspondence No. 03</small>
+
+          <strong>We're fighting</strong>
+
+          <small>
+            Correspondence No. 03
+          </small>
         </button>
 
 
+        <!-- VIDEO 04 -->
+
         <button
           class="envelope"
+          data-video="https://res.cloudinary.com/zvcnmpyk/video/upload/v1788727808/RXS-need-encouragement.mp4"
+          data-title="Open when you need hyping up!"
           type="button"
-          data-video=""
-          data-title="Open when Estonia feels too far away"
         >
           <span class="wax">IR</span>
+
           <b>OPEN WHEN</b>
-          <strong>Estonia feels too far away</strong>
-          <small>Correspondence No. 04</small>
+
+          <strong>You need hyping up!</strong>
+
+          <small>
+            Correspondence No. 04
+          </small>
         </button>
 
       </div>
 
 
       <p class="microcopy">
-        Click an envelope once its video URL has been added in
-        <code>script.js</code>.
+        Click an envelope to open its private correspondence.
       </p>
 
     </section>
 
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          I WISH YOU WERE HERE
-    ======================================================== -->
+    ========================================================== -->
 
     <section
       id="wish"
@@ -808,9 +576,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          PEOPLE
-    ======================================================== -->
+    ========================================================== -->
 
     <section
       id="people"
@@ -859,8 +627,7 @@
           </h3>
 
           <p>
-            Add your friend's video link in
-            <code>index.html</code>.
+            Add your friend's video link in <code>index.html</code>.
           </p>
 
         </article>
@@ -905,9 +672,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          QUIZ
-    ======================================================== -->
+    ========================================================== -->
 
     <section
       id="quiz"
@@ -965,9 +732,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          ARCADE
-    ======================================================== -->
+    ========================================================== -->
 
     <section
       id="arcade"
@@ -1028,9 +795,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          DATE GENERATOR
-    ======================================================== -->
+    ========================================================== -->
 
     <section
       id="dates"
@@ -1058,8 +825,8 @@
         </h2>
 
         <p class="section-lede">
-          For when “what do you want to do?” has become an
-          unacceptable question.
+          For when “what do you want to do?” has become
+          an unacceptable question.
         </p>
 
       </div>
@@ -1092,9 +859,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          VAULT
-    ======================================================== -->
+    ========================================================== -->
 
     <section
       id="vault"
@@ -1265,9 +1032,9 @@
 
 
 
-    <!-- =======================================================
+    <!-- =========================================================
          FINAL NOTE — DO NOT CHANGE
-    ======================================================== -->
+    ========================================================== -->
 
     <section class="final-note section-ivory">
 
@@ -1314,7 +1081,6 @@
           FINAL NOTICE FROM HEADQUARTERS
         </p>
 
-
         <h2>
           This is not the<br>
           <em>end.</em>
@@ -1342,9 +1108,13 @@
 
         <div class="final-signature">
 
-          <span>Always,</span>
+          <span>
+            Always,
+          </span>
 
-          <strong>Itsu</strong>
+          <strong>
+            Itsu
+          </strong>
 
         </div>
 
@@ -1362,16 +1132,14 @@
 
 
   <!-- =========================================================
-       MODAL
-  ========================================================== -->
+       SHARED MODAL
+       Used by Open When, photos and other interactive content
+    ========================================================== -->
 
   <div
     class="modal"
     id="modal"
     aria-hidden="true"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modalTitle"
   >
 
     <div
@@ -1380,19 +1148,25 @@
     ></div>
 
 
-    <div class="modal-card">
+    <div
+      class="modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+    >
 
       <button
         class="modal-close"
         id="modalClose"
         type="button"
-        aria-label="Close dialog"
+        aria-label="Close"
       >
         ×
       </button>
 
 
       <h3 id="modalTitle"></h3>
+
 
       <div id="modalBody"></div>
 
@@ -1402,10 +1176,7 @@
 
 
 
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================== -->
-
+  <!-- JAVASCRIPT -->
   <script src="./script.js"></script>
 
 </body>
