@@ -6,20 +6,41 @@ document.addEventListener("DOMContentLoaded", () => {
   ========================================================== */
 
 
-  /* ---------- MENU ---------- */
+  /* =========================================================
+     MENU
+  ========================================================== */
 
   const menuButton = document.getElementById("menuButton");
   const drawer = document.getElementById("indexDrawer");
   const drawerClose = document.getElementById("drawerClose");
 
-  if (menuButton && drawer) {
-    menuButton.addEventListener("click", () => {
-      drawer.classList.add("open");
-      drawer.setAttribute("aria-hidden", "false");
-    });
+  function openDrawer() {
+    if (!drawer) return;
+
+    drawer.classList.add("open");
+    drawer.setAttribute("aria-hidden", "false");
+
+    if (menuButton) {
+      menuButton.setAttribute("aria-expanded", "true");
+    }
   }
 
-  if (drawerClose && drawer) {
+  function closeDrawer() {
+    if (!drawer) return;
+
+    drawer.classList.remove("open");
+    drawer.setAttribute("aria-hidden", "true");
+
+    if (menuButton) {
+      menuButton.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  if (menuButton) {
+    menuButton.addEventListener("click", openDrawer);
+  }
+
+  if (drawerClose) {
     drawerClose.addEventListener("click", closeDrawer);
   }
 
@@ -27,15 +48,10 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener("click", closeDrawer);
   });
 
-  function closeDrawer() {
-    if (!drawer) return;
 
-    drawer.classList.remove("open");
-    drawer.setAttribute("aria-hidden", "true");
-  }
-
-
-  /* ---------- PHOTO ARCHIVE ---------- */
+  /* =========================================================
+     PHOTO ARCHIVE
+  ========================================================== */
 
   const photoExtensions = [
     ".jpg",
@@ -47,6 +63,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".memory-photo img").forEach(img => {
 
     const base = img.dataset.base;
+
+    if (!base) return;
+
     let extensionIndex = 0;
 
     function tryNextImage() {
@@ -56,11 +75,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      img.src =
-        "./" +
-        base +
-        photoExtensions[extensionIndex++];
+      const extension = photoExtensions[extensionIndex];
 
+      extensionIndex++;
+
+      img.src = "./" + base + extension;
     }
 
     img.addEventListener("error", tryNextImage);
@@ -87,207 +106,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  /* ---------- MODAL ---------- */
+  /* =========================================================
+     I WISH YOU WERE HERE
+  ========================================================== */
 
-  const modal = document.getElementById("modal");
-  const modalClose = document.getElementById("modalClose");
-  const modalBackdrop = document.getElementById("modalBackdrop");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalBody = document.getElementById("modalBody");
-
-  function openModal(title, body) {
-
-    if (!modal) return;
-
-    modalTitle.textContent = title;
-    modalBody.innerHTML = body;
-
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-
-    document.body.classList.add("modal-open");
-
-  }
-
-
-  function closeModal() {
-
-    if (!modal) return;
-
-    modal.querySelectorAll("video").forEach(video => {
-      video.pause();
-      video.removeAttribute("src");
-      video.load();
-    });
-
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-
-    document.body.classList.remove("modal-open");
-
-    setTimeout(() => {
-
-      if (!modal.classList.contains("open")) {
-        modalBody.innerHTML = "";
-        modalTitle.textContent = "";
-      }
-
-    }, 250);
-
-  }
-
-
-  if (modalClose) {
-    modalClose.addEventListener("click", closeModal);
-  }
-
-  if (modalBackdrop) {
-    modalBackdrop.addEventListener("click", closeModal);
-  }
-
-  document.addEventListener("keydown", event => {
-
-    if (event.key === "Escape") {
-      closeModal();
-    }
-
-  });
-
-
-  /* ---------- OPEN WHEN VIDEOS ---------- */
-
-  document.querySelectorAll(".envelope").forEach(envelope => {
-
-    envelope.addEventListener("click", () => {
-
-      const title =
-        envelope.dataset.title ||
-        "Private correspondence";
-
-      const videoUrl =
-        envelope.dataset.video;
-
-      if (!videoUrl) {
-        openModal(
-          title,
-          `
-            <p class="modal-message">
-              This envelope is waiting for its video.
-            </p>
-          `
-        );
-
-        return;
-      }
-
-
-      openModal(
-        title,
-        `
-          <div class="modal-video-wrap">
-
-            <video
-              class="modal-video"
-              controls
-              playsinline
-              webkit-playsinline
-              preload="metadata"
-            >
-              <source
-                src="${escapeAttribute(videoUrl)}"
-                type="video/mp4"
-              >
-            </video>
-
-          </div>
-        `
-      );
-
-
-      const video = modal.querySelector(".modal-video");
-
-      if (!video) return;
-
-
-      /*
-       * Attempt playback once the video is ready.
-       * If the browser blocks autoplay, the controls
-       * remain available.
-       */
-
-      video.addEventListener(
-        "loadedmetadata",
-        () => {
-          video.play().catch(() => {});
-        },
-        { once: true }
-      );
-
-
-      /*
-       * Some browsers may already have metadata available.
-       */
-
-      if (video.readyState >= 1) {
-        video.play().catch(() => {});
-      }
-
-    });
-
-  });
-
-
-  /* ---------- I WISH YOU WERE HERE ---------- */
-
-  const wishButton =
-    document.getElementById("wishButton");
-
-  const wishResponse =
-    document.getElementById("wishResponse");
+  const wishButton = document.getElementById("wishButton");
+  const wishResponse = document.getElementById("wishResponse");
 
   const wishResponses = [
-
     "I wish you were here too.",
-
     "I you know how rarely I say this, but I told you so :)",
-
     "Breaking news: I miss you too. More than I previously reported.",
-
     "Same, can we start a coffee shop together already?",
-
     "Me too! I would go through our first date again to have you next to me (it wasn’t torture, but you know how I felt)",
-
     "Book a flight back. NOW.",
-
     "I miss you more than daily coffee and you know that is saying something.",
-
     "I think a midnight coffee run with you would heal me, but I will have to wait until April.",
-
     "I miss you so much it's basically a full-time feeling now.",
-
     "Same energy, except mine has extra sighing.",
-
     "Feels stupid how much time we spent just fighting right? You should just apologize next time :)",
-
     "Me too. Come here immediately.",
-
     "I do too my love, but we’re us in all geographies <3",
-
     "I do too, consider this an official complaint against geography.",
-
     "Me too. Estonia is being very inconvenient about this.",
-
     "Me too. And I'd probably annoy you within seven minutes."
-
   ];
-
 
   if (wishButton && wishResponse) {
 
     wishButton.addEventListener("click", () => {
 
-      const current =
-        wishResponse.textContent;
+      const current = wishResponse.textContent;
 
       let next;
 
@@ -295,17 +144,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
         next =
           wishResponses[
-            Math.floor(
-              Math.random() *
-              wishResponses.length
-            )
+            Math.floor(Math.random() * wishResponses.length)
           ];
 
       } while (
         next === current &&
         wishResponses.length > 1
       );
-
 
       wishResponse.style.opacity = "0";
 
@@ -321,7 +166,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* ---------- QUIZ ---------- */
+  /* =========================================================
+     QUIZ
+  ========================================================== */
 
   const quizQuestions = [
 
@@ -397,9 +244,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ];
 
-
   let quizIndex = 0;
   let quizScore = 0;
+  let quizAnswered = false;
 
   const quizQuestion =
     document.getElementById("quizQuestion");
@@ -421,6 +268,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const question =
       quizQuestions[quizIndex];
 
+    quizAnswered = false;
+
     quizQuestion.textContent =
       `${quizIndex + 1}. ${question.question}`;
 
@@ -431,13 +280,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const button =
         document.createElement("button");
 
-      button.className =
-        "quiz-option";
-
-      button.textContent =
-        option;
+      button.className = "quiz-option";
+      button.type = "button";
+      button.textContent = option;
 
       button.addEventListener("click", () => {
+
+        if (quizAnswered) return;
+
+        quizAnswered = true;
 
         document
           .querySelectorAll(".quiz-option")
@@ -450,6 +301,19 @@ document.addEventListener("DOMContentLoaded", () => {
           button.classList.add("correct");
           quizScore++;
 
+        } else {
+
+          button.classList.add("incorrect");
+
+          const correctButton =
+            document.querySelectorAll(".quiz-option")[
+              question.answer
+            ];
+
+          if (correctButton) {
+            correctButton.classList.add("correct");
+          }
+
         }
 
       });
@@ -461,52 +325,57 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  function resetQuiz() {
+
+    quizIndex = 0;
+    quizScore = 0;
+    quizAnswered = false;
+
+    if (quizResult) {
+      quizResult.textContent = "";
+    }
+
+    if (quizNext) {
+      quizNext.textContent =
+        "NEXT QUESTION →";
+    }
+
+    renderQuizQuestion();
+
+  }
+
+
   if (quizNext) {
 
     quizNext.addEventListener("click", () => {
 
-      if (
-        quizIndex <
-        quizQuestions.length - 1
-      ) {
+      if (quizIndex < quizQuestions.length - 1) {
 
         quizIndex++;
         renderQuizQuestion();
 
-        return;
-      }
+      } else {
 
+        quizQuestion.textContent =
+          "Examination complete.";
 
-      quizQuestion.textContent =
-        "Examination complete.";
+        quizOptions.innerHTML = "";
 
-      quizOptions.innerHTML = "";
-
-      quizResult.textContent =
-        `You scored ${quizScore} / ${quizQuestions.length}. ` +
-        `Official Society assessment: ` +
-        `${
-          quizScore >= 4
-            ? "Excellent. You may remain members."
-            : "Further study is required. Fortunately, we have forever."
-        }`;
-
-      quizNext.textContent =
-        "START AGAIN ↻";
-
-      quizNext.onclick = () => {
-
-        quizIndex = 0;
-        quizScore = 0;
-
-        quizResult.textContent = "";
+        quizResult.textContent =
+          `You scored ${quizScore} / ${quizQuestions.length}. ` +
+          `Official Society assessment: ` +
+          (
+            quizScore >= 4
+              ? "Excellent. You may remain members."
+              : "Further study is required. Fortunately, we have forever."
+          );
 
         quizNext.textContent =
-          "NEXT QUESTION →";
+          "START AGAIN ↻";
 
-        renderQuizQuestion();
+        quizNext.onclick = resetQuiz;
 
-      };
+      }
 
     });
 
@@ -515,7 +384,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderQuizQuestion();
 
 
-  /* ---------- LONG-DISTANCE ARCADE ---------- */
+  /* =========================================================
+     LONG-DISTANCE ARCADE
+  ========================================================== */
 
   const defaultGames = [
 
@@ -548,7 +419,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   ];
 
-
   const gameGrid =
     document.getElementById("gameGrid");
 
@@ -567,13 +437,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       savedGames =
         JSON.parse(
-          localStorage.getItem(
-            "itsuRakhuGames"
-          )
+          localStorage.getItem("itsuRakhuGames")
         ) || [];
 
-    } catch {
+      if (!Array.isArray(savedGames)) {
+        savedGames = [];
+      }
+
+    } catch (error) {
+
       savedGames = [];
+
     }
 
     return [
@@ -584,12 +458,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  function escapeHtml(value) {
+
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+  }
+
+
+  function escapeAttribute(value) {
+
+    return String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;");
+
+  }
+
+
   function renderGames() {
 
     if (!gameGrid) return;
 
-    const games =
-      loadGames();
+    const games = loadGames();
 
     gameGrid.innerHTML = "";
 
@@ -598,8 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const card =
         document.createElement("article");
 
-      card.className =
-        "game-card";
+      card.className = "game-card";
 
       card.innerHTML = `
         <h3>${escapeHtml(game.title)}</h3>
@@ -609,7 +504,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <a
           href="${escapeAttribute(game.url)}"
           target="_blank"
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           PLAY / VISIT →
         </a>
@@ -618,7 +513,6 @@ document.addEventListener("DOMContentLoaded", () => {
       gameGrid.appendChild(card);
 
     });
-
 
     if (arcadeCount) {
 
@@ -654,22 +548,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
         savedGames =
           JSON.parse(
-            localStorage.getItem(
-              "itsuRakhuGames"
-            )
+            localStorage.getItem("itsuRakhuGames")
           ) || [];
 
-      } catch {
-        savedGames = [];
-      }
+        if (!Array.isArray(savedGames)) {
+          savedGames = [];
+        }
 
+      } catch (error) {
+
+        savedGames = [];
+
+      }
 
       savedGames.push({
         title,
         description,
         url
       });
-
 
       localStorage.setItem(
         "itsuRakhuGames",
@@ -682,18 +578,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
 
-
   renderGames();
 
 
-  /* ---------- DATE GENERATOR ---------- */
+  /* =========================================================
+     DATE GENERATOR
+  ========================================================== */
 
   const dateButton =
     document.getElementById("dateButton");
 
   const dateResult =
     document.getElementById("dateResult");
-
 
   const dateIdeas = [
 
@@ -747,8 +643,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const randomIdea =
         dateIdeas[
           Math.floor(
-            Math.random() *
-            dateIdeas.length
+            Math.random() * dateIdeas.length
           )
         ];
 
@@ -768,7 +663,371 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  /* ---------- VAULT ---------- */
+  /* =========================================================
+     MODAL
+  ========================================================== */
+
+  const modal =
+    document.getElementById("modal");
+
+  const modalClose =
+    document.getElementById("modalClose");
+
+  const modalBackdrop =
+    document.getElementById("modalBackdrop");
+
+  const modalTitle =
+    document.getElementById("modalTitle");
+
+  const modalBody =
+    document.getElementById("modalBody");
+
+  let activeVideo = null;
+
+
+  function openModal(title, body) {
+
+    if (
+      !modal ||
+      !modalTitle ||
+      !modalBody
+    ) {
+      return;
+    }
+
+    modalTitle.textContent = title;
+    modalBody.innerHTML = body;
+
+    modal.classList.add("open");
+    modal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.classList.add(
+      "modal-open"
+    );
+
+    const modalCard =
+      modal.querySelector(".modal-card");
+
+    if (modalCard) {
+      modalCard.focus();
+    }
+
+  }
+
+
+  function stopActiveVideo() {
+
+    if (!activeVideo) return;
+
+    try {
+
+      activeVideo.pause();
+      activeVideo.removeAttribute("src");
+      activeVideo.load();
+
+    } catch (error) {
+      /* Nothing else required. */
+    }
+
+    activeVideo = null;
+
+  }
+
+
+  function closeModal() {
+
+    if (!modal) return;
+
+    stopActiveVideo();
+
+    modal.classList.remove("open");
+
+    modal.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+    document.body.classList.remove(
+      "modal-open"
+    );
+
+    setTimeout(() => {
+
+      if (!modal.classList.contains("open")) {
+
+        if (modalBody) {
+          modalBody.innerHTML = "";
+        }
+
+        if (modalTitle) {
+          modalTitle.textContent = "";
+        }
+
+      }
+
+    }, 250);
+
+  }
+
+
+  if (modalClose) {
+    modalClose.addEventListener(
+      "click",
+      closeModal
+    );
+  }
+
+
+  if (modalBackdrop) {
+    modalBackdrop.addEventListener(
+      "click",
+      closeModal
+    );
+  }
+
+
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (event.key === "Escape") {
+        closeModal();
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     OPEN WHEN — SECTION 4 VIDEO HANDLER
+  ========================================================== */
+
+  document
+    .querySelectorAll(".envelope")
+    .forEach(envelope => {
+
+      envelope.addEventListener(
+        "click",
+        () => {
+
+          const title =
+            envelope.dataset.title ||
+            "Private correspondence";
+
+          const videoUrl =
+            envelope.dataset.video;
+
+          if (!videoUrl) {
+
+            openModal(
+              title,
+              `
+                <div class="video-error">
+                  <strong>Correspondence unavailable.</strong>
+                  This envelope is waiting for its video.
+                </div>
+              `
+            );
+
+            return;
+          }
+
+
+          /*
+            Important:
+
+            The URL comes directly from the data-video
+            attribute in index.html.
+
+            It must be a plain URL, not a Markdown link.
+          */
+
+          const safeTitle =
+            escapeAttribute(title);
+
+          const safeUrl =
+            escapeAttribute(videoUrl);
+
+
+          openModal(
+            title,
+            `
+              <div class="modal-video-wrap">
+
+                <div
+                  class="video-loading"
+                  id="videoLoading"
+                >
+                  LOADING PRIVATE CORRESPONDENCE…
+                </div>
+
+                <video
+                  id="sectionVideo"
+                  class="modal-video"
+                  controls
+                  playsinline
+                  preload="auto"
+                  title="${safeTitle}"
+                >
+                  <source
+                    src="${safeUrl}"
+                    type="video/mp4"
+                  >
+
+                  Your browser does not support HTML5 video.
+                </video>
+
+                <div
+                  class="video-error"
+                  id="videoError"
+                  hidden
+                >
+                  <strong>Unable to play this correspondence.</strong>
+                  The video could not be loaded. Please check the
+                  Cloudinary file or try again.
+                </div>
+
+              </div>
+            `
+          );
+
+
+          const videoElement =
+            document.getElementById(
+              "sectionVideo"
+            );
+
+          const loadingElement =
+            document.getElementById(
+              "videoLoading"
+            );
+
+          const errorElement =
+            document.getElementById(
+              "videoError"
+            );
+
+
+          if (!videoElement) return;
+
+          activeVideo =
+            videoElement;
+
+
+          /*
+            Hide the loading message once enough
+            metadata has loaded.
+          */
+
+          videoElement.addEventListener(
+            "loadedmetadata",
+            () => {
+
+              if (loadingElement) {
+                loadingElement.hidden = true;
+              }
+
+            },
+            { once: true }
+          );
+
+
+          /*
+            Also hide loading once playback actually starts.
+          */
+
+          videoElement.addEventListener(
+            "playing",
+            () => {
+
+              if (loadingElement) {
+                loadingElement.hidden = true;
+              }
+
+            },
+            { once: true }
+          );
+
+
+          /*
+            Show a useful error instead of leaving
+            the user staring at a blank modal.
+          */
+
+          videoElement.addEventListener(
+            "error",
+            () => {
+
+              if (loadingElement) {
+                loadingElement.hidden = true;
+              }
+
+              if (errorElement) {
+                errorElement.hidden = false;
+              }
+
+            },
+            { once: true }
+          );
+
+
+          /*
+            Start playback after the video element has
+            been inserted into the modal.
+
+            If the browser blocks autoplay, the normal
+            video controls remain available.
+          */
+
+          setTimeout(() => {
+
+            if (
+              !videoElement ||
+              !modal.classList.contains("open")
+            ) {
+              return;
+            }
+
+            const playPromise =
+              videoElement.play();
+
+            if (
+              playPromise &&
+              typeof playPromise.catch === "function"
+            ) {
+
+              playPromise.catch(() => {
+
+                /*
+                  Autoplay being blocked is normal
+                  on some browsers.
+
+                  The video controls are still visible,
+                  so the user can press play.
+                */
+
+                if (loadingElement) {
+                  loadingElement.hidden = true;
+                }
+
+              });
+
+            }
+
+          }, 100);
+
+        }
+      );
+
+    });
+
+
+  /* =========================================================
+     VAULT
+  ========================================================== */
 
   document
     .querySelectorAll(".vault-card")
@@ -783,133 +1042,139 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!button || !status) return;
 
 
-      button.addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-        const month =
-          Number(card.dataset.month);
+          const month =
+            Number(card.dataset.month);
 
-        const day =
-          Number(card.dataset.day);
+          const day =
+            Number(card.dataset.day);
 
-        const today =
-          new Date();
+          const today =
+            new Date();
 
-        const currentMonth =
-          today.getMonth() + 1;
+          const currentMonth =
+            today.getMonth() + 1;
 
-        const currentDay =
-          today.getDate();
+          const currentDay =
+            today.getDate();
+
+          const isUnlocked =
+            currentMonth === month &&
+            currentDay === day;
 
 
-        const unlocked =
-          currentMonth === month &&
-          currentDay === day;
+          if (isUnlocked) {
+
+            status.textContent =
+              "UNLOCKED";
+
+            status.style.color =
+              "#e4c76b";
+
+            button.textContent =
+              "OPEN →";
 
 
-        if (unlocked) {
+            button.onclick = () => {
 
-          status.textContent =
-            "UNLOCKED";
+              const title =
+                card.querySelector("h3")?.textContent ||
+                "A message from the Society";
 
-          button.textContent =
-            "OPEN →";
+              openModal(
+                title,
+                `
+                  <p style="
+                    font-size:22px;
+                    line-height:1.35;
+                  ">
+                    This is where your private note for
+                    this occasion will go.
+                  </p>
+                `
+              );
 
-          button.onclick = () => {
+            };
 
-            const title =
-              card.querySelector("h3")?.textContent ||
-              "A message from the Society";
+          } else {
+
+            status.textContent =
+              "SEALED UNTIL THE APPOINTED DATE";
 
             openModal(
-              title,
+              "Still sealed.",
               `
-                <p class="modal-message">
-                  This is where your private note
-                  for this occasion will go.
+                <p style="
+                  font-size:22px;
+                  line-height:1.35;
+                ">
+                  Nice try.
+                </p>
+
+                <p style="
+                  font-size:20px;
+                  line-height:1.35;
+                ">
+                  The Society takes temporal security
+                  extremely seriously.
                 </p>
               `
             );
 
-          };
-
-        } else {
-
-          status.textContent =
-            "SEALED UNTIL THE APPOINTED DATE";
-
-          openModal(
-            "Still sealed.",
-            `
-              <p class="modal-message">
-                Nice try.
-              </p>
-
-              <p class="modal-message secondary">
-                The Society takes temporal security
-                extremely seriously.
-              </p>
-            `
-          );
+          }
 
         }
+      );
+
+    });
+
+
+  /* =========================================================
+     SMALL INTERACTION — FADE IN
+  ========================================================== */
+
+  if ("IntersectionObserver" in window) {
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
+    document
+      .querySelectorAll(
+        ".section-heading, .wish-machine, .date-machine, .quiz-box"
+      )
+      .forEach(element => {
+
+        observer.observe(element);
 
       });
 
-    });
-
-
-  /* ---------- HELPERS ---------- */
-
-  function escapeHtml(value) {
-
-    return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("'", "&#039;");
-
   }
-
-
-  function escapeAttribute(value) {
-
-    return String(value)
-      .replaceAll("&", "&amp;")
-      .replaceAll('"', "&quot;")
-      .replaceAll("<", "&lt;")
-      .replaceAll(">", "&gt;");
-
-  }
-
-
-  /* ---------- FADE IN ---------- */
-
-  const observer =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-
-        });
-
-      },
-      {
-        threshold: 0.12
-      }
-    );
-
-
-  document
-    .querySelectorAll(
-      ".section-heading, .wish-machine, .date-machine, .quiz-box"
-    )
-    .forEach(element => {
-      observer.observe(element);
-    });
 
 });
