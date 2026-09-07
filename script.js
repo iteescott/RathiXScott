@@ -385,6 +385,234 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* =========================================================
+     SECTION 5
+     FROM THE PEOPLE WHO LOVE YOU
+     
+     Videos are rendered directly into the Section 5 cards.
+     This makes them native HTML5 videos rather than relying
+     on iframes or external embeds.
+  ========================================================== */
+
+  const section5Videos = [
+
+    {
+      title: "The love you had before you knew it: Your mom",
+      description:
+        "A message from one of the original members of the Society.",
+
+      url:
+        "https://res.cloudinary.com/zvcnmpyk/video/upload/RXS-Sec5-AuntyVid.mp4"
+    },
+
+    {
+      title: "The love less talked about: Your dad",
+      description:
+        "A message from the Society's more quietly sentimental department.",
+
+      url:
+        "https://res.cloudinary.com/zvcnmpyk/video/upload/RXS-Sec5-UncleVid.mp4"
+    },
+
+    {
+      title: "Your Partner in crime: Chikki",
+      description:
+        "Evidence from someone who has clearly seen too much.",
+
+      url:
+        "https://res.cloudinary.com/zvcnmpyk/video/upload/RXS-Sec5-ChikkiVid.mp4"
+    },
+
+    {
+      title: "12 years to togetherness: Prabhav",
+      description:
+        "Twelve years of history, memories, and probably several questionable decisions.",
+
+      url:
+        "https://res.cloudinary.com/zvcnmpyk/video/upload/RXS-Sec5-PrabhavVid.mp4"
+    },
+
+    {
+      title: "No fare-thee-wells: Harsh",
+      description:
+        "Because apparently goodbye was never going to be quite that simple.",
+
+      url:
+        "https://res.cloudinary.com/zvcnmpyk/video/upload/RXS-Sec5-HarshVid.mp4"
+    }
+
+  ];
+
+
+  const section5Grid =
+    document.querySelector("#people .video-card-grid");
+
+
+  function renderSection5Videos() {
+
+    if (!section5Grid) return;
+
+    section5Grid.innerHTML = "";
+
+    section5Videos.forEach((item, index) => {
+
+      const card =
+        document.createElement("article");
+
+      card.className = "video-card";
+
+      const videoNumber =
+        String(index + 1).padStart(2, "0");
+
+
+      const videoWrap =
+        document.createElement("div");
+
+      videoWrap.className = "video-placeholder";
+
+
+      const video =
+        document.createElement("video");
+
+      video.className = "section5-video";
+
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+
+      video.setAttribute(
+        "title",
+        item.title
+      );
+
+      video.setAttribute(
+        "aria-label",
+        item.title
+      );
+
+
+      const source =
+        document.createElement("source");
+
+      source.src = item.url;
+      source.type = "video/mp4";
+
+      video.appendChild(source);
+
+
+      const fallback =
+        document.createTextNode(
+          "Your browser does not support HTML5 video."
+        );
+
+      video.appendChild(fallback);
+
+      videoWrap.appendChild(video);
+
+
+      const title =
+        document.createElement("h3");
+
+      title.textContent =
+        item.title;
+
+
+      const description =
+        document.createElement("p");
+
+      description.textContent =
+        item.description;
+
+
+      const playLabel =
+        document.createElement("button");
+
+      playLabel.type = "button";
+      playLabel.className = "video-play-label";
+      playLabel.textContent = "PLAY VIDEO →";
+
+
+      /*
+        Clicking PLAY VIDEO focuses the actual video
+        and starts playback.
+      */
+
+      playLabel.addEventListener("click", () => {
+
+        video.scrollIntoView({
+          behavior: "smooth",
+          block: "center"
+        });
+
+        const playPromise =
+          video.play();
+
+        if (
+          playPromise &&
+          typeof playPromise.catch === "function"
+        ) {
+          playPromise.catch(() => {
+            /*
+              Browser may require direct interaction
+              before playback. The native controls
+              remain available.
+            */
+          });
+        }
+
+      });
+
+
+      /*
+        If the video cannot be loaded, replace the
+        loading/blank appearance with a useful message.
+      */
+
+      video.addEventListener("error", () => {
+
+        videoWrap.classList.add(
+          "video-load-error"
+        );
+
+        if (
+          !videoWrap.querySelector(
+            ".section5-video-error"
+          )
+        ) {
+
+          const errorMessage =
+            document.createElement("span");
+
+          errorMessage.className =
+            "section5-video-error";
+
+          errorMessage.textContent =
+            "VIDEO UNAVAILABLE — PLEASE CHECK THE FILE";
+
+          videoWrap.appendChild(
+            errorMessage
+          );
+
+        }
+
+      });
+
+
+      card.appendChild(videoWrap);
+      card.appendChild(title);
+      card.appendChild(description);
+      card.appendChild(playLabel);
+
+      section5Grid.appendChild(card);
+
+    });
+
+  }
+
+
+  renderSection5Videos();
+
+
+  /* =========================================================
      LONG-DISTANCE ARCADE
   ========================================================== */
 
@@ -396,7 +624,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Team up, compete, and discover how differently your brains interpret one word.",
 
-      url: "https://codenames.game/"
+      url:
+        "https://codenames.game/"
     },
 
     {
@@ -405,7 +634,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Draw badly. Guess badly. Laugh at each other's artistic crimes.",
 
-      url: "https://garticphone.com/"
+      url:
+        "https://garticphone.com/"
     },
 
     {
@@ -414,7 +644,8 @@ document.addEventListener("DOMContentLoaded", () => {
       description:
         "Drop into a random place and see who can figure out where you are.",
 
-      url: "https://www.geoguessr.com/"
+      url:
+        "https://www.geoguessr.com/"
     }
 
   ];
@@ -699,6 +930,7 @@ document.addEventListener("DOMContentLoaded", () => {
     modalBody.innerHTML = body;
 
     modal.classList.add("open");
+
     modal.setAttribute(
       "aria-hidden",
       "false"
@@ -707,13 +939,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add(
       "modal-open"
     );
-
-    const modalCard =
-      modal.querySelector(".modal-card");
-
-    if (modalCard) {
-      modalCard.focus();
-    }
 
   }
 
@@ -725,7 +950,9 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
 
       activeVideo.pause();
+
       activeVideo.removeAttribute("src");
+
       activeVideo.load();
 
     } catch (error) {
@@ -820,6 +1047,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const videoUrl =
             envelope.dataset.video;
 
+
           if (!videoUrl) {
 
             openModal(
@@ -835,15 +1063,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
           }
 
-
-          /*
-            Important:
-
-            The URL comes directly from the data-video
-            attribute in index.html.
-
-            It must be a plain URL, not a Markdown link.
-          */
 
           const safeTitle =
             escapeAttribute(title);
@@ -872,12 +1091,14 @@ document.addEventListener("DOMContentLoaded", () => {
                   preload="auto"
                   title="${safeTitle}"
                 >
+
                   <source
                     src="${safeUrl}"
                     type="video/mp4"
                   >
 
                   Your browser does not support HTML5 video.
+
                 </video>
 
                 <div
@@ -885,9 +1106,13 @@ document.addEventListener("DOMContentLoaded", () => {
                   id="videoError"
                   hidden
                 >
-                  <strong>Unable to play this correspondence.</strong>
-                  The video could not be loaded. Please check the
-                  Cloudinary file or try again.
+                  <strong>
+                    Unable to play this correspondence.
+                  </strong>
+
+                  The video could not be loaded.
+                  Please check the Cloudinary file or try again.
+
                 </div>
 
               </div>
@@ -917,11 +1142,6 @@ document.addEventListener("DOMContentLoaded", () => {
             videoElement;
 
 
-          /*
-            Hide the loading message once enough
-            metadata has loaded.
-          */
-
           videoElement.addEventListener(
             "loadedmetadata",
             () => {
@@ -935,10 +1155,6 @@ document.addEventListener("DOMContentLoaded", () => {
           );
 
 
-          /*
-            Also hide loading once playback actually starts.
-          */
-
           videoElement.addEventListener(
             "playing",
             () => {
@@ -951,11 +1167,6 @@ document.addEventListener("DOMContentLoaded", () => {
             { once: true }
           );
 
-
-          /*
-            Show a useful error instead of leaving
-            the user staring at a blank modal.
-          */
 
           videoElement.addEventListener(
             "error",
@@ -973,14 +1184,6 @@ document.addEventListener("DOMContentLoaded", () => {
             { once: true }
           );
 
-
-          /*
-            Start playback after the video element has
-            been inserted into the modal.
-
-            If the browser blocks autoplay, the normal
-            video controls remain available.
-          */
 
           setTimeout(() => {
 
@@ -1000,14 +1203,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ) {
 
               playPromise.catch(() => {
-
-                /*
-                  Autoplay being blocked is normal
-                  on some browsers.
-
-                  The video controls are still visible,
-                  so the user can press play.
-                */
 
                 if (loadingElement) {
                   loadingElement.hidden = true;
