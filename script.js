@@ -423,7 +423,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
-      title: "12 years to togetherness: Prabhav",
+      title: "12 years of togetherness: Prabhav",
       description:
         "Twelve years of history, memories, and probably several questionable decisions.",
 
