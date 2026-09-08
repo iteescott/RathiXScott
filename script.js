@@ -834,35 +834,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     "Play 20 questions — but make every question increasingly ridiculous.",
 
-    "Build a shared Spotify playlist and listen to it together.",
+    "Clay night! Find inspiration online and mould 5 pieces.",
 
-    "Take each other on a virtual tour of your current neighbourhood.",
+    "Watch a movie of Itsu's choice.",
 
     "Have a PowerPoint night. The more unnecessary the topic, the better.",
 
-    "Recreate one of our old dates from wherever we are.",
+    "Watch a movie of Rakhu's choice.",
 
-    "Open Google Maps and randomly choose somewhere we will visit together.",
+    "Create a grid of 9 images describing how you see each other.",
 
     "Have a nostalgia night and look through old photographs.",
 
-    "Make each other a five-song playlist with absolutely no explanation.",
+    "Recommend a book, read 2 chapters and discuss.",
 
-    "Order the same dessert and rate it like extremely serious food critics.",
+    "Play 'We're not really strangers' online.",
 
-    "Plan our next trip together.",
+    "Choose songs from Rathi+Scott and ask each other to guess it in 3 seconds.",
 
-    "Have a completely phone-free dinner — except for the call.",
+    "Play (free) NYT or LinkedIn games and see who solves them more efficiently.",
 
-    "Draw each other without looking at the paper.",
+    "Skincare night! Masks, eye patches and Rakhu's fav nose strips.",
 
-    "Read something to each other before going to sleep.",
+    "Play a game from Long Distance Arcade.",
 
-    "Make a ridiculous bucket list for our next five years.",
+    "Itsu say a random word. Rakhu has has 5 seconds to sing a song with that word in it. 5 rounds, then swap places.",
 
     "Have a 'first date' again — pretend we don't know each other.",
 
     "Do absolutely nothing together. Sometimes that's the date."
+    
+    "Influencers decide tonight! Open IG and recreate the first couples reel on each of our feeds."
+  
+    "Recreate the first conversation. Imagine we don't know each other."
+  
 
   ];
 
