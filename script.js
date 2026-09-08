@@ -423,7 +423,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
-      title: "12 years of togetherness: Prabhav",
+      title: "12 years to togetherness: Prabhav",
       description:
         "Twelve years of history, memories, and probably several questionable decisions.",
 
@@ -834,40 +834,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
     "Play 20 questions — but make every question increasingly ridiculous.",
 
-    "Clay night! Find inspiration online and mould 5 pieces.",
+    "Build a shared Spotify playlist and listen to it together.",
 
-    "Watch a movie of Itsu's choice.",
+    "Take each other on a virtual tour of your current neighbourhood.",
 
     "Have a PowerPoint night. The more unnecessary the topic, the better.",
 
-    "Watch a movie of Rakhu's choice.",
+    "Recreate one of our old dates from wherever we are.",
 
-    "Create a grid of 9 images describing how you see each other.",
+    "Open Google Maps and randomly choose somewhere we will visit together.",
 
     "Have a nostalgia night and look through old photographs.",
 
-    "Recommend a book, read 2 chapters and discuss.",
+    "Make each other a five-song playlist with absolutely no explanation.",
 
-    "Play 'We're not really strangers' online.",
+    "Order the same dessert and rate it like extremely serious food critics.",
 
-    "Choose songs from Rathi+Scott and ask each other to guess it in 3 seconds.",
+    "Plan our next trip together.",
 
-    "Play (free) NYT or LinkedIn games and see who solves them more efficiently.",
+    "Have a completely phone-free dinner — except for the call.",
 
-    "Skincare night! Masks, eye patches and Rakhu's fav nose strips.",
+    "Draw each other without looking at the paper.",
 
-    "Play a game from Long Distance Arcade.",
+    "Read something to each other before going to sleep.",
 
-    "Itsu say a random word. Rakhu has has 5 seconds to sing a song with that word in it. 5 rounds, then swap places.",
+    "Make a ridiculous bucket list for our next five years.",
 
     "Have a 'first date' again — pretend we don't know each other.",
 
     "Do absolutely nothing together. Sometimes that's the date."
-    
-    "Influencers decide tonight! Open IG and recreate the first couples reel on each of our feeds."
-  
-    "Recreate the first conversation. Imagine we don't know each other."
-  
 
   ];
 
