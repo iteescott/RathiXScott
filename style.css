@@ -927,26 +927,38 @@ a {
 
 
 /* =========================================================
-   PEOPLE
+   PEOPLE / VIDEO TESTIMONIALS
 ========================================================= */
 
 .video-card-grid {
   position: relative;
   z-index: 4;
-  max-width: 1100px;
+  max-width: 850px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 25px;
+  gap: 28px;
+  align-items: start;
 }
 
 .video-card {
-  padding: 20px;
+  padding: 14px;
   border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.03);
 }
 
+/*
+   Small, controlled video thumbnail.
+   The card remains in the 3-column layout,
+   while the actual thumbnail stays compact.
+*/
+
 .video-placeholder {
-  aspect-ratio: 16 / 10;
+  width: 180px;
+  max-width: 100%;
+  height: 240px;
+  margin: 0 auto;
+  overflow: hidden;
   display: grid;
   place-items: center;
   background: rgba(0,0,0,0.18);
@@ -955,8 +967,16 @@ a {
   letter-spacing: 0.15em;
 }
 
+.video-placeholder img,
+.video-placeholder video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
 .video-card h3 {
-  margin: 25px 0 8px;
+  margin: 20px 0 8px;
   font-family: var(--serif);
   font-size: 28px;
   font-weight: 400;
@@ -1322,6 +1342,11 @@ a {
     grid-template-columns: 1fr;
   }
 
+  .video-placeholder {
+    width: 180px;
+    height: 240px;
+  }
+
   .vault-grid {
     grid-template-columns: 1fr;
   }
@@ -1482,12 +1507,10 @@ a {
     font-size: 52px;
   }
 
-  /*
-     Mobile scrapbook:
-     turn the desktop scattered pile into a clean
-     two-column archive instead of letting 26 absolute
-     cards overlap uncontrollably.
-  */
+
+  /* =====================================================
+     MOBILE SCRAPBOOK
+  ===================================================== */
 
   .photo-pile {
     min-height: auto;
@@ -1515,6 +1538,16 @@ a {
 
   .photo-caption {
     font-size: 13px;
+  }
+
+
+  /* =====================================================
+     MOBILE VIDEO THUMBNAILS
+  ===================================================== */
+
+  .video-placeholder {
+    width: 155px;
+    height: 210px;
   }
 
 }
