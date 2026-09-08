@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     drawerClose.addEventListener("click", closeDrawer);
   }
 
-  document.querySelectorAll(".index-drawer nav a").forEach(link => {
+  document.querySelectorAll(".index-drawer nav a").forEach((link) => {
     link.addEventListener("click", closeDrawer);
   });
 
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ".webp"
   ];
 
-  document.querySelectorAll(".memory-photo img").forEach(img => {
+  document.querySelectorAll(".memory-photo img").forEach((img) => {
 
     const base = img.dataset.base;
 
@@ -76,7 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const extension = photoExtensions[extensionIndex];
-
       extensionIndex++;
 
       img.src = "./" + base + extension;
@@ -89,13 +88,13 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  document.querySelectorAll(".memory-photo").forEach(photo => {
+  document.querySelectorAll(".memory-photo").forEach((photo) => {
 
     photo.addEventListener("click", () => {
 
       document
         .querySelectorAll(".memory-photo")
-        .forEach(other => {
+        .forEach((other) => {
           other.classList.remove("selected-photo");
         });
 
@@ -141,12 +140,10 @@ document.addEventListener("DOMContentLoaded", () => {
       let next;
 
       do {
-
         next =
           wishResponses[
             Math.floor(Math.random() * wishResponses.length)
           ];
-
       } while (
         next === current &&
         wishResponses.length > 1
@@ -155,10 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
       wishResponse.style.opacity = "0";
 
       setTimeout(() => {
-
         wishResponse.textContent = next;
         wishResponse.style.opacity = "1";
-
       }, 180);
 
     });
@@ -290,11 +285,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         quizAnswered = true;
 
-        document
-          .querySelectorAll(".quiz-option")
-          .forEach(btn => {
-            btn.disabled = true;
-          });
+        const allOptions =
+          quizOptions.querySelectorAll(".quiz-option");
+
+        allOptions.forEach((btn) => {
+          btn.disabled = true;
+        });
 
         if (index === question.answer) {
 
@@ -306,9 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
           button.classList.add("incorrect");
 
           const correctButton =
-            document.querySelectorAll(".quiz-option")[
-              question.answer
-            ];
+            allOptions[question.answer];
 
           if (correctButton) {
             correctButton.classList.add("correct");
@@ -325,6 +319,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
+  function finishQuiz() {
+
+    if (!quizQuestion || !quizOptions) return;
+
+    quizQuestion.textContent =
+      "Examination complete.";
+
+    quizOptions.innerHTML = "";
+
+    if (quizResult) {
+
+      quizResult.textContent =
+        `You scored ${quizScore} / ${quizQuestions.length}. ` +
+        `Official Society assessment: ` +
+        (
+          quizScore >= 4
+            ? "Excellent. You may remain members."
+            : "Further study is required. Fortunately, we have forever."
+        );
+
+    }
+
+    if (quizNext) {
+      quizNext.textContent = "START AGAIN ↻";
+    }
+
+  }
+
+
   function resetQuiz() {
 
     quizIndex = 0;
@@ -336,8 +359,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (quizNext) {
-      quizNext.textContent =
-        "NEXT QUESTION →";
+      quizNext.textContent = "NEXT QUESTION →";
     }
 
     renderQuizQuestion();
@@ -349,6 +371,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     quizNext.addEventListener("click", () => {
 
+      if (quizNext.textContent === "START AGAIN ↻") {
+        resetQuiz();
+        return;
+      }
+
+      if (!quizAnswered) {
+        return;
+      }
+
       if (quizIndex < quizQuestions.length - 1) {
 
         quizIndex++;
@@ -356,24 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       } else {
 
-        quizQuestion.textContent =
-          "Examination complete.";
-
-        quizOptions.innerHTML = "";
-
-        quizResult.textContent =
-          `You scored ${quizScore} / ${quizQuestions.length}. ` +
-          `Official Society assessment: ` +
-          (
-            quizScore >= 4
-              ? "Excellent. You may remain members."
-              : "Further study is required. Fortunately, we have forever."
-          );
-
-        quizNext.textContent =
-          "START AGAIN ↻";
-
-        quizNext.onclick = resetQuiz;
+        finishQuiz();
 
       }
 
@@ -388,15 +402,14 @@ document.addEventListener("DOMContentLoaded", () => {
      SECTION 5
      FROM THE PEOPLE WHO LOVE YOU
      
-     Videos are rendered directly into the Section 5 cards.
-     This makes them native HTML5 videos rather than relying
-     on iframes or external embeds.
+     Videos are rendered directly into the cards.
   ========================================================== */
 
   const section5Videos = [
 
     {
       title: "The love you had before you knew it: Your mom",
+
       description:
         "A message from one of the original members of the Society.",
 
@@ -406,6 +419,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     {
       title: "The love less talked about: Your dad",
+
       description:
         "A message from the Society's more quietly sentimental department.",
 
@@ -415,6 +429,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     {
       title: "Your Partner in crime: Chikki",
+
       description:
         "Evidence from someone who has clearly seen too much.",
 
@@ -424,6 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     {
       title: "12 years to togetherness: Prabhav",
+
       description:
         "Twelve years of history, memories, and probably several questionable decisions.",
 
@@ -433,6 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     {
       title: "No fare-thee-wells: Harsh",
+
       description:
         "Because apparently goodbye was never going to be quite that simple.",
 
@@ -460,20 +477,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.className = "video-card";
 
+
       const videoNumber =
         String(index + 1).padStart(2, "0");
 
 
+      /* -----------------------------------------
+         VIDEO
+      ----------------------------------------- */
+
       const videoWrap =
         document.createElement("div");
 
-      videoWrap.className = "video-placeholder";
+      videoWrap.className =
+        "video-placeholder";
 
 
       const video =
         document.createElement("video");
 
-      video.className = "section5-video";
+      video.className =
+        "section5-video";
 
       video.controls = true;
       video.playsInline = true;
@@ -499,15 +523,19 @@ document.addEventListener("DOMContentLoaded", () => {
       video.appendChild(source);
 
 
-      const fallback =
+      video.appendChild(
         document.createTextNode(
           "Your browser does not support HTML5 video."
-        );
+        )
+      );
 
-      video.appendChild(fallback);
 
       videoWrap.appendChild(video);
 
+
+      /* -----------------------------------------
+         TITLE
+      ----------------------------------------- */
 
       const title =
         document.createElement("h3");
@@ -516,6 +544,10 @@ document.addEventListener("DOMContentLoaded", () => {
         item.title;
 
 
+      /* -----------------------------------------
+         DESCRIPTION
+      ----------------------------------------- */
+
       const description =
         document.createElement("p");
 
@@ -523,18 +555,20 @@ document.addEventListener("DOMContentLoaded", () => {
         item.description;
 
 
+      /* -----------------------------------------
+         PLAY BUTTON
+      ----------------------------------------- */
+
       const playLabel =
         document.createElement("button");
 
       playLabel.type = "button";
-      playLabel.className = "video-play-label";
-      playLabel.textContent = "PLAY VIDEO →";
+      playLabel.className =
+        "video-play-label";
 
+      playLabel.textContent =
+        "PLAY VIDEO →";
 
-      /*
-        Clicking PLAY VIDEO focuses the actual video
-        and starts playback.
-      */
 
       playLabel.addEventListener("click", () => {
 
@@ -550,22 +584,19 @@ document.addEventListener("DOMContentLoaded", () => {
           playPromise &&
           typeof playPromise.catch === "function"
         ) {
+
           playPromise.catch(() => {
-            /*
-              Browser may require direct interaction
-              before playback. The native controls
-              remain available.
-            */
+            /* Browser may require native controls. */
           });
+
         }
 
       });
 
 
-      /*
-        If the video cannot be loaded, replace the
-        loading/blank appearance with a useful message.
-      */
+      /* -----------------------------------------
+         VIDEO ERROR HANDLING
+      ----------------------------------------- */
 
       video.addEventListener("error", () => {
 
@@ -596,6 +627,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       });
 
+
+      /* -----------------------------------------
+         CARD ASSEMBLY
+      ----------------------------------------- */
 
       card.appendChild(videoWrap);
       card.appendChild(title);
@@ -649,6 +684,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
   ];
+
 
   const gameGrid =
     document.getElementById("gameGrid");
@@ -720,12 +756,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gameGrid.innerHTML = "";
 
-    games.forEach(game => {
+
+    games.forEach((game) => {
 
       const card =
         document.createElement("article");
 
-      card.className = "game-card";
+      card.className =
+        "game-card";
+
 
       card.innerHTML = `
         <h3>${escapeHtml(game.title)}</h3>
@@ -741,9 +780,11 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
       `;
 
+
       gameGrid.appendChild(card);
 
     });
+
 
     if (arcadeCount) {
 
@@ -764,14 +805,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!title) return;
 
+
       const description =
         prompt("Short description?") ||
         "A game for two members of the Society.";
+
 
       const url =
         prompt("Paste the game link:");
 
       if (!url) return;
+
 
       let savedGames = [];
 
@@ -792,22 +836,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }
 
+
       savedGames.push({
         title,
         description,
         url
       });
 
+
       localStorage.setItem(
         "itsuRakhuGames",
         JSON.stringify(savedGames)
       );
+
 
       renderGames();
 
     });
 
   }
+
 
   renderGames();
 
@@ -821,6 +869,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dateResult =
     document.getElementById("dateResult");
+
 
   const dateIdeas = [
 
@@ -873,19 +922,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const randomIdea =
         dateIdeas[
-          Math.floor(
-            Math.random() * dateIdeas.length
-          )
+          Math.floor(Math.random() * dateIdeas.length)
         ];
 
+
       dateResult.style.opacity = "0";
+
 
       setTimeout(() => {
 
         dateResult.textContent =
           randomIdea;
 
-        dateResult.style.opacity = "1";
+        dateResult.style.opacity =
+          "1";
 
       }, 180);
 
@@ -913,6 +963,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalBody =
     document.getElementById("modalBody");
 
+
   let activeVideo = null;
 
 
@@ -926,8 +977,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    modalTitle.textContent = title;
-    modalBody.innerHTML = body;
+
+    modalTitle.textContent =
+      title;
+
+    modalBody.innerHTML =
+      body;
+
 
     modal.classList.add("open");
 
@@ -935,6 +991,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "aria-hidden",
       "false"
     );
+
 
     document.body.classList.add(
       "modal-open"
@@ -946,6 +1003,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function stopActiveVideo() {
 
     if (!activeVideo) return;
+
 
     try {
 
@@ -959,6 +1017,7 @@ document.addEventListener("DOMContentLoaded", () => {
       /* Nothing else required. */
     }
 
+
     activeVideo = null;
 
   }
@@ -968,18 +1027,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!modal) return;
 
+
     stopActiveVideo();
 
-    modal.classList.remove("open");
+
+    modal.classList.remove(
+      "open"
+    );
+
 
     modal.setAttribute(
       "aria-hidden",
       "true"
     );
 
+
     document.body.classList.remove(
       "modal-open"
     );
+
 
     setTimeout(() => {
 
@@ -1001,24 +1067,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   if (modalClose) {
+
     modalClose.addEventListener(
       "click",
       closeModal
     );
+
   }
 
 
   if (modalBackdrop) {
+
     modalBackdrop.addEventListener(
       "click",
       closeModal
     );
+
   }
 
 
   document.addEventListener(
     "keydown",
-    event => {
+    (event) => {
 
       if (event.key === "Escape") {
         closeModal();
@@ -1034,7 +1104,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .querySelectorAll(".envelope")
-    .forEach(envelope => {
+    .forEach((envelope) => {
 
       envelope.addEventListener(
         "click",
@@ -1043,6 +1113,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const title =
             envelope.dataset.title ||
             "Private correspondence";
+
 
           const videoUrl =
             envelope.dataset.video;
@@ -1054,8 +1125,13 @@ document.addEventListener("DOMContentLoaded", () => {
               title,
               `
                 <div class="video-error">
-                  <strong>Correspondence unavailable.</strong>
+
+                  <strong>
+                    Correspondence unavailable.
+                  </strong>
+
                   This envelope is waiting for its video.
+
                 </div>
               `
             );
@@ -1083,6 +1159,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   LOADING PRIVATE CORRESPONDENCE…
                 </div>
 
+
                 <video
                   id="sectionVideo"
                   class="modal-video"
@@ -1101,11 +1178,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 </video>
 
+
                 <div
                   class="video-error"
                   id="videoError"
                   hidden
                 >
+
                   <strong>
                     Unable to play this correspondence.
                   </strong>
@@ -1125,10 +1204,12 @@ document.addEventListener("DOMContentLoaded", () => {
               "sectionVideo"
             );
 
+
           const loadingElement =
             document.getElementById(
               "videoLoading"
             );
+
 
           const errorElement =
             document.getElementById(
@@ -1137,6 +1218,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
           if (!videoElement) return;
+
 
           activeVideo =
             videoElement;
@@ -1189,13 +1271,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (
               !videoElement ||
+              !modal ||
               !modal.classList.contains("open")
             ) {
               return;
             }
 
+
             const playPromise =
               videoElement.play();
+
 
             if (
               playPromise &&
@@ -1226,13 +1311,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document
     .querySelectorAll(".vault-card")
-    .forEach(card => {
+    .forEach((card) => {
 
       const button =
         card.querySelector(".vault-open");
 
       const status =
         card.querySelector(".vault-status");
+
 
       if (!button || !status) return;
 
@@ -1247,14 +1333,17 @@ document.addEventListener("DOMContentLoaded", () => {
           const day =
             Number(card.dataset.day);
 
+
           const today =
             new Date();
+
 
           const currentMonth =
             today.getMonth() + 1;
 
           const currentDay =
             today.getDate();
+
 
           const isUnlocked =
             currentMonth === month &&
@@ -1266,38 +1355,56 @@ document.addEventListener("DOMContentLoaded", () => {
             status.textContent =
               "UNLOCKED";
 
+
             status.style.color =
               "#e4c76b";
+
 
             button.textContent =
               "OPEN →";
 
 
-            button.onclick = () => {
+            /*
+              Remove the temporary listener by cloning
+              the button and replacing it.
+            */
 
-              const title =
-                card.querySelector("h3")?.textContent ||
-                "A message from the Society";
+            const newButton =
+              button.cloneNode(true);
 
-              openModal(
-                title,
-                `
-                  <p style="
-                    font-size:22px;
-                    line-height:1.35;
-                  ">
-                    This is where your private note for
-                    this occasion will go.
-                  </p>
-                `
-              );
+            button.replaceWith(newButton);
 
-            };
+
+            newButton.addEventListener(
+              "click",
+              () => {
+
+                const title =
+                  card.querySelector("h3")?.textContent ||
+                  "A message from the Society";
+
+
+                openModal(
+                  title,
+                  `
+                    <p style="
+                      font-size:22px;
+                      line-height:1.35;
+                    ">
+                      This is where your private note for
+                      this occasion will go.
+                    </p>
+                  `
+                );
+
+              }
+            );
 
           } else {
 
             status.textContent =
               "SEALED UNTIL THE APPOINTED DATE";
+
 
             openModal(
               "Still sealed.",
@@ -1335,9 +1442,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const observer =
       new IntersectionObserver(
-        entries => {
+        (entries) => {
 
-          entries.forEach(entry => {
+          entries.forEach((entry) => {
 
             if (entry.isIntersecting) {
 
@@ -1364,7 +1471,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .querySelectorAll(
         ".section-heading, .wish-machine, .date-machine, .quiz-box"
       )
-      .forEach(element => {
+      .forEach((element) => {
 
         observer.observe(element);
 
