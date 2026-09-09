@@ -434,7 +434,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      SHUFFLE
-     
+
      Fisher-Yates shuffle.
   ========================================================== */
 
@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      CREATE NEW QUIZ
-     
+
      Randomly selects 5 UNIQUE questions from the 16-question
      master bank.
   ========================================================== */
@@ -681,7 +681,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
      SECTION 5
      FROM THE PEOPLE WHO LOVE YOU
-     
+
      Videos are rendered directly into the Section 5 cards.
      This makes them native HTML5 videos rather than relying
      on iframes or external embeds.
@@ -742,6 +742,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       url:
         "https://res.cloudinary.com/zvcnmpyk/video/upload/RXS-Sec5-HarshVid.mp4"
+    },
+
+    {
+      title:
+        "Your first and favourite mentor: Madhur",
+
+      description:
+        "A message from the person who was there from the very beginning of your professional journey.",
+
+      url:
+        "https://res.cloudinary.com/zvcnmpyk/video/upload/Section5_MadhurVid.mp4"
     }
 
   ];
@@ -1048,6 +1059,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
       savedGames = [];
 
+    }
+
+
+    /*
+      Remove any old malformed arcade entries.
+
+      This specifically prevents cards labelled
+      "undefined" from appearing if an incomplete
+      game was previously saved in localStorage.
+    */
+
+    savedGames =
+      savedGames.filter(game => {
+
+        if (!game || typeof game !== "object") {
+          return false;
+        }
+
+        if (!game.title) {
+          return false;
+        }
+
+        if (
+          String(game.title).trim().toLowerCase() ===
+          "undefined"
+        ) {
+          return false;
+        }
+
+        if (
+          String(game.title).trim().toLowerCase() ===
+          "null"
+        ) {
+          return false;
+        }
+
+        if (!game.url) {
+          return false;
+        }
+
+        return true;
+
+      });
+
+
+    /*
+      Save the cleaned list back so the malformed
+      "undefined" entry is permanently removed.
+    */
+
+    try {
+
+      localStorage.setItem(
+        "itsuRakhuGames",
+        JSON.stringify(savedGames)
+      );
+
+    } catch (error) {
+      /* Local storage may be unavailable. */
     }
 
 
@@ -1632,6 +1702,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      VAULT
+
+     Birthday: 25 October
+     Diwali: 8 November
+
+     The dates are assigned based on the vault card title.
+     This means the existing HTML does not need to change
+     as long as the cards are labelled Birthday and Diwali.
   ========================================================== */
 
   document
@@ -1644,8 +1721,37 @@ document.addEventListener("DOMContentLoaded", () => {
       const status =
         card.querySelector(".vault-status");
 
+      const titleElement =
+        card.querySelector("h3");
+
 
       if (!button || !status) return;
+
+
+      const title =
+        titleElement?.textContent
+          ?.trim()
+          .toLowerCase() || "";
+
+
+      /*
+        Assign the correct dates to the existing vault cards.
+
+        Birthday = 25 October
+        Diwali   = 8 November
+      */
+
+      if (title.includes("birthday")) {
+
+        card.dataset.month = "10";
+        card.dataset.day = "25";
+
+      } else if (title.includes("diwali")) {
+
+        card.dataset.month = "11";
+        card.dataset.day = "8";
+
+      }
 
 
       button.addEventListener(
