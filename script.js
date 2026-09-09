@@ -168,12 +168,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      QUIZ
-     
+
      There are 16 questions in the master bank.
-     
+
      Each quiz attempt randomly selects exactly 5 UNIQUE
      questions from the bank.
-     
+
      The selected questions are then presented in random
      order.
   ========================================================== */
@@ -602,7 +602,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       /* =====================================================
          QUIZ COMPLETE
-      ===================================================== */
+      ====================================================== */
 
       quizQuestion.textContent =
         "Examination complete.";
@@ -921,6 +921,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      LONG-DISTANCE ARCADE
+
+     8 permanent games supplied for the Society.
   ========================================================== */
 
   const defaultGames = [
@@ -956,6 +958,61 @@ document.addEventListener("DOMContentLoaded", () => {
 
       url:
         "https://www.geoguessr.com/"
+    },
+
+    {
+      title:
+        "AlphaGuess",
+
+      description:
+        "Narrow down a secret mystery word by guessing words before and after it.",
+
+      url:
+        "https://alphaguess.com/"
+    },
+
+    {
+      title:
+        "City Distance",
+
+      description:
+        "Guess the precise distance between two random global cities.",
+
+      url:
+        "https://citydistance.io/quiz/distance-guess/"
+    },
+
+    {
+      title:
+        "Size It Up",
+
+      description:
+        "Resize silhouettes and objects to match their true real-world proportions.",
+
+      url:
+        "https://sizeitup.games/"
+    },
+
+    {
+      title:
+        "Stumble Guys",
+
+      description:
+        "Race and stumble through chaotic obstacle courses until only one winner remains.",
+
+      url:
+        "https://apps.apple.com/us/app/stumble-guys/id1541153375"
+    },
+
+    {
+      title:
+        "Brawlhalla",
+
+      description:
+        "Battle to knock each other off the stage.",
+
+      url:
+        "https://www.brawlhalla.com/"
     }
 
   ];
