@@ -168,47 +168,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      QUIZ
+     
+     There are 16 questions in the master bank.
+     
+     Each quiz attempt randomly selects exactly 5 UNIQUE
+     questions from the bank.
+     
+     The selected questions are then presented in random
+     order.
   ========================================================== */
 
   const quizQuestions = [
 
     {
       question:
-        "Who is more likely to say “let's just do it” before thinking it through?",
+        "Where was our first date?",
 
       options: [
-        "Itsu",
-        "Rakhu",
-        "Both of us",
-        "Neither — we're extremely sensible"
+        "Como’s 32nd",
+        "Adani B2 staircase",
+        "Starbucks 32nd",
+        "Trampoline park"
       ],
 
-      answer: 2
+      answer: 0
     },
 
     {
       question:
-        "Who is more likely to turn a tiny inconvenience into a full investigation?",
+        "Where was our first kiss?",
 
       options: [
-        "Itsu",
-        "Rakhu",
-        "Both of us",
-        "Depends how tired we are"
-      ],
-
-      answer: 2
-    },
-
-    {
-      question:
-        "What is the official founding date of the Society?",
-
-      options: [
-        "14.02.2022",
-        "16.04.2022",
-        "01.01.2023",
-        "Whenever we decided this was serious"
+        "Como’s 32nd",
+        "Adani B2 staircase",
+        "Rakhu’s car",
+        "Trampoline park"
       ],
 
       answer: 1
@@ -216,13 +210,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     {
       question:
-        "What is our greatest collective talent?",
+        "Where did Rakhu first say “I Love you”?",
 
       options: [
-        "Planning perfectly",
-        "Being on time",
-        "Making memories out of random things",
-        "Remembering where we put things"
+        "Adani B2 staircase",
+        "Satya The Hermitage",
+        "Rakhu’s car",
+        "Big Chill Cafe"
       ],
 
       answer: 2
@@ -230,23 +224,200 @@ document.addEventListener("DOMContentLoaded", () => {
 
     {
       question:
-        "What is the Society's official duration?",
+        "When did Itsu first say “I Love you”?",
 
       options: [
-        "Until Estonia",
-        "Until graduation",
-        "Five years",
-        "Forever"
+        "16th April, 2023",
+        "25th Oct, 2022",
+        "22nd June, 2022",
+        "A random Tuesday"
+      ],
+
+      answer: 1
+    },
+
+    {
+      question:
+        "When was our first date?",
+
+      options: [
+        "11th Mar, 2022",
+        "20th Feb, 2022",
+        "17th Mar, 2022",
+        "1st Apr, 2022"
+      ],
+
+      answer: 0
+    },
+
+    {
+      question:
+        "Where did we go for our 1st anniversary?",
+
+      options: [
+        "CandleLight Concert",
+        "Westin",
+        "Agra",
+        "Pullman"
       ],
 
       answer: 3
+    },
+
+    {
+      question:
+        "What is Itsu’s favourite global city?",
+
+      options: [
+        "Madrid",
+        "NYC",
+        "London",
+        "Anywhere Rakhu is ;)"
+      ],
+
+      answer: 3
+    },
+
+    {
+      question:
+        "What was the colour of Itsu’s first highlights?",
+
+      options: [
+        "Silver",
+        "Brown",
+        "Burgundy",
+        "Itsu never got highlights"
+      ],
+
+      answer: 1
+    },
+
+    {
+      question:
+        "In what year did Itsu first go abroad?",
+
+      options: [
+        "2016",
+        "2014",
+        "2015",
+        "2012"
+      ],
+
+      answer: 3
+    },
+
+    {
+      question:
+        "When did Itee join her first job?",
+
+      options: [
+        "Sept 13",
+        "Aug 13",
+        "Sept 12",
+        "Aug 15"
+      ],
+
+      answer: 2
+    },
+
+    {
+      question:
+        "How much approximately did we spend on our first date?",
+
+      options: [
+        "2000",
+        "2600",
+        "3000",
+        "3600"
+      ],
+
+      answer: 1
+    },
+
+    {
+      question:
+        "What is our song?",
+
+      options: [
+        "“Wars” by The Strumbellas",
+        "“With Me All Along” by Bronze Radio Return",
+        "“Why” by Sabrina Carpenter",
+        "We don’t have one"
+      ],
+
+      answer: 3
+    },
+
+    {
+      question:
+        "What did we celebrate when we went for the CandleLight Concert?",
+
+      options: [
+        "Prakhar’s 24th Birthday",
+        "Our 2nd Anniversary",
+        "Itsu’s 23rd birthday",
+        "2.5 years together"
+      ],
+
+      answer: 1
+    },
+
+    {
+      question:
+        "What was the first coding language Itsu learned?",
+
+      options: [
+        "SQL",
+        "R",
+        "Python",
+        "Gretl"
+      ],
+
+      answer: 1
+    },
+
+    {
+      question:
+        "Who is most likely to say “let's just do it” before thinking it through?",
+
+      options: [
+        "Itsu",
+        "Rakhu",
+        "None tbh",
+        "Both tbh"
+      ],
+
+      answer: 1
+    },
+
+    {
+      question:
+        "What was the first hill station we visited?",
+
+      options: [
+        "McLeodganj",
+        "Dalhousie",
+        "Manali",
+        "Pathankot"
+      ],
+
+      answer: 0
     }
 
   ];
 
+
+  /* =========================================================
+     QUIZ STATE
+  ========================================================== */
+
+  const QUIZ_LENGTH = 5;
+
+  let currentQuiz = [];
   let quizIndex = 0;
   let quizScore = 0;
   let quizAnswered = false;
+
 
   const quizQuestion =
     document.getElementById("quizQuestion");
@@ -261,71 +432,54 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("quizResult");
 
 
-  function renderQuizQuestion() {
+  /* =========================================================
+     SHUFFLE
+     
+     Fisher-Yates shuffle.
+  ========================================================== */
 
-    if (!quizQuestion || !quizOptions) return;
+  function shuffleArray(array) {
 
-    const question =
-      quizQuestions[quizIndex];
+    const shuffled = [...array];
 
-    quizAnswered = false;
+    for (
+      let i = shuffled.length - 1;
+      i > 0;
+      i--
+    ) {
 
-    quizQuestion.textContent =
-      `${quizIndex + 1}. ${question.question}`;
+      const j =
+        Math.floor(
+          Math.random() * (i + 1)
+        );
 
-    quizOptions.innerHTML = "";
+      [
+        shuffled[i],
+        shuffled[j]
+      ] = [
+        shuffled[j],
+        shuffled[i]
+      ];
 
-    question.options.forEach((option, index) => {
+    }
 
-      const button =
-        document.createElement("button");
-
-      button.className = "quiz-option";
-      button.type = "button";
-      button.textContent = option;
-
-      button.addEventListener("click", () => {
-
-        if (quizAnswered) return;
-
-        quizAnswered = true;
-
-        document
-          .querySelectorAll(".quiz-option")
-          .forEach(btn => {
-            btn.disabled = true;
-          });
-
-        if (index === question.answer) {
-
-          button.classList.add("correct");
-          quizScore++;
-
-        } else {
-
-          button.classList.add("incorrect");
-
-          const correctButton =
-            document.querySelectorAll(".quiz-option")[
-              question.answer
-            ];
-
-          if (correctButton) {
-            correctButton.classList.add("correct");
-          }
-
-        }
-
-      });
-
-      quizOptions.appendChild(button);
-
-    });
+    return shuffled;
 
   }
 
 
-  function resetQuiz() {
+  /* =========================================================
+     CREATE NEW QUIZ
+     
+     Randomly selects 5 UNIQUE questions from the 16-question
+     master bank.
+  ========================================================== */
+
+  function createNewQuiz() {
+
+    currentQuiz =
+      shuffleArray(quizQuestions)
+        .slice(0, QUIZ_LENGTH);
 
     quizIndex = 0;
     quizScore = 0;
@@ -336,10 +490,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (quizNext) {
-      quizNext.textContent =
-        "NEXT QUESTION →";
-
-      quizNext.onclick = null;
+      quizNext.textContent = "NEXT QUESTION →";
     }
 
     renderQuizQuestion();
@@ -347,56 +498,201 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  if (quizNext) {
+  /* =========================================================
+     RENDER CURRENT QUESTION
+  ========================================================== */
 
-    quizNext.addEventListener("click", () => {
+  function renderQuizQuestion() {
 
-      if (quizIndex < quizQuestions.length - 1) {
+    if (!quizQuestion || !quizOptions) return;
 
-        quizIndex++;
-        renderQuizQuestion();
+    const question =
+      currentQuiz[quizIndex];
 
-      } else {
+    if (!question) return;
 
-        quizQuestion.textContent =
-          "Examination complete.";
+    quizAnswered = false;
 
-        quizOptions.innerHTML = "";
+    quizQuestion.textContent =
+      `${quizIndex + 1}. ${question.question}`;
 
-        quizResult.textContent =
-          `You scored ${quizScore} / ${quizQuestions.length}. ` +
-          `Official Society assessment: ` +
-          (
-            quizScore >= 4
-              ? "Excellent. You may remain members."
-              : "Further study is required. Fortunately, we have forever."
-          );
+    quizOptions.innerHTML = "";
 
-        quizNext.textContent =
-          "START AGAIN ↻";
 
-        quizNext.onclick = resetQuiz;
+    question.options.forEach((option, index) => {
 
-      }
+      const button =
+        document.createElement("button");
+
+      button.className = "quiz-option";
+      button.type = "button";
+      button.textContent = option;
+
+
+      button.addEventListener("click", () => {
+
+        if (quizAnswered) return;
+
+        quizAnswered = true;
+
+
+        document
+          .querySelectorAll(".quiz-option")
+          .forEach(btn => {
+            btn.disabled = true;
+          });
+
+
+        if (index === question.answer) {
+
+          button.classList.add("correct");
+
+          quizScore++;
+
+        } else {
+
+          button.classList.add("incorrect");
+
+
+          const correctButton =
+            document.querySelectorAll(".quiz-option")[
+              question.answer
+            ];
+
+
+          if (correctButton) {
+            correctButton.classList.add("correct");
+          }
+
+        }
+
+      });
+
+
+      quizOptions.appendChild(button);
 
     });
 
   }
 
-  renderQuizQuestion();
+
+  /* =========================================================
+     QUIZ NEXT / FINISH
+  ========================================================== */
+
+  if (quizNext) {
+
+    quizNext.addEventListener("click", () => {
+
+      if (!quizAnswered) {
+        return;
+      }
+
+
+      if (quizIndex < currentQuiz.length - 1) {
+
+        quizIndex++;
+
+        renderQuizQuestion();
+
+        return;
+
+      }
+
+
+      /* =====================================================
+         QUIZ COMPLETE
+      ===================================================== */
+
+      quizQuestion.textContent =
+        "Examination complete.";
+
+      quizOptions.innerHTML = "";
+
+
+      let assessment;
+
+      if (quizScore === 5) {
+
+        assessment =
+          "Perfect score. The Society is extremely impressed.";
+
+      } else if (quizScore === 4) {
+
+        assessment =
+          "Excellent. You may remain members.";
+
+      } else if (quizScore === 3) {
+
+        assessment =
+          "Respectable. Some further Society research is advised.";
+
+      } else if (quizScore === 2) {
+
+        assessment =
+          "Concerning. Fortunately, we have forever to study.";
+
+      } else if (quizScore === 1) {
+
+        assessment =
+          "Further study is required. Please review the archives.";
+
+      } else {
+
+        assessment =
+          "An absolute disaster. Fortunately, love is not graded.";
+
+      }
+
+
+      if (quizResult) {
+
+        quizResult.textContent =
+          `You scored ${quizScore} / ${currentQuiz.length}. ` +
+          `Official Society assessment: ${assessment}`;
+
+      }
+
+
+      quizNext.textContent =
+        "START AGAIN ↻";
+
+
+      quizNext.onclick = () => {
+
+        quizNext.onclick = null;
+
+        createNewQuiz();
+
+      };
+
+    });
+
+  }
+
+
+  /* =========================================================
+     START FIRST QUIZ
+  ========================================================== */
+
+  createNewQuiz();
 
 
   /* =========================================================
      SECTION 5
      FROM THE PEOPLE WHO LOVE YOU
-
-     Native HTML5 videos hosted on Cloudinary.
+     
+     Videos are rendered directly into the Section 5 cards.
+     This makes them native HTML5 videos rather than relying
+     on iframes or external embeds.
   ========================================================== */
 
   const section5Videos = [
 
     {
-      title: "The love you had before you knew it: Your mom",
+      title:
+        "The love you had before you knew it: Your mom",
+
       description:
         "A message from one of the original members of the Society.",
 
@@ -405,7 +701,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
-      title: "The love less talked about: Your dad",
+      title:
+        "The love less talked about: Your dad",
+
       description:
         "A message from the Society's more quietly sentimental department.",
 
@@ -414,7 +712,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
-      title: "Your Partner in crime: Chikki",
+      title:
+        "Your Partner in crime: Chikki",
+
       description:
         "Evidence from someone who has clearly seen too much.",
 
@@ -423,7 +723,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
-      title: "12 years of togetherness: Prabhav",
+      title:
+        "12 years of togetherness: Prabhav",
+
       description:
         "Twelve years of history, memories, and probably several questionable decisions.",
 
@@ -432,7 +734,9 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
-      title: "No fare-thee-wells: Harsh",
+      title:
+        "No fare-thee-wells: Harsh",
+
       description:
         "Because apparently goodbye was never going to be quite that simple.",
 
@@ -452,6 +756,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!section5Grid) return;
 
     section5Grid.innerHTML = "";
+
 
     section5Videos.forEach((item, index) => {
 
@@ -549,8 +854,10 @@ document.addEventListener("DOMContentLoaded", () => {
           block: "center"
         });
 
+
         const playPromise =
           video.play();
+
 
         if (
           playPromise &&
@@ -558,7 +865,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ) {
 
           playPromise.catch(() => {
-            // Native controls remain available.
+            /* Native controls remain available. */
           });
 
         }
@@ -571,6 +878,7 @@ document.addEventListener("DOMContentLoaded", () => {
         videoWrap.classList.add(
           "video-load-error"
         );
+
 
         if (
           !videoWrap.querySelector(
@@ -618,7 +926,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const defaultGames = [
 
     {
-      title: "Codenames",
+      title:
+        "Codenames",
 
       description:
         "Team up, compete, and discover how differently your brains interpret one word.",
@@ -628,7 +937,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
-      title: "Gartic Phone",
+      title:
+        "Gartic Phone",
 
       description:
         "Draw badly. Guess badly. Laugh at each other's artistic crimes.",
@@ -638,7 +948,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
 
     {
-      title: "GeoGuessr",
+      title:
+        "GeoGuessr",
 
       description:
         "Drop into a random place and see who can figure out where you are.",
@@ -671,6 +982,7 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.getItem("itsuRakhuGames")
         ) || [];
 
+
       if (!Array.isArray(savedGames)) {
         savedGames = [];
       }
@@ -680,6 +992,7 @@ document.addEventListener("DOMContentLoaded", () => {
       savedGames = [];
 
     }
+
 
     return [
       ...defaultGames,
@@ -721,6 +1034,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gameGrid.innerHTML = "";
 
+
     games.forEach(game => {
 
       const card =
@@ -728,6 +1042,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.className =
         "game-card";
+
 
       card.innerHTML = `
         <h3>${escapeHtml(game.title)}</h3>
@@ -742,6 +1057,7 @@ document.addEventListener("DOMContentLoaded", () => {
           PLAY / VISIT →
         </a>
       `;
+
 
       gameGrid.appendChild(card);
 
@@ -765,6 +1081,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const title =
         prompt("What should we call the game?");
 
+
       if (!title) return;
 
 
@@ -774,12 +1091,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       const url =
-        prompt("Paste the game link:");
+        prompt("Paste the game link?");
+
 
       if (!url) return;
 
 
       let savedGames = [];
+
 
       try {
 
@@ -787,6 +1106,7 @@ document.addEventListener("DOMContentLoaded", () => {
           JSON.parse(
             localStorage.getItem("itsuRakhuGames")
           ) || [];
+
 
         if (!Array.isArray(savedGames)) {
           savedGames = [];
@@ -841,7 +1161,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     "Watch a movie of Rakhu's choice.",
 
-    "Make a grid of 9 images which show how do you see each other.",
+    "Make a grid of 9 images which show how you see each other.",
 
     "Watch the lowest rated Netflix movie and discuss.",
 
@@ -878,28 +1198,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dateButton.addEventListener("click", () => {
 
-      const current =
-        dateResult.textContent;
-
-      let randomIdea;
-
-      do {
-
-        randomIdea =
-          dateIdeas[
-            Math.floor(
-              Math.random() * dateIdeas.length
-            )
-          ];
-
-      } while (
-        randomIdea === current &&
-        dateIdeas.length > 1
-      );
+      const randomIdea =
+        dateIdeas[
+          Math.floor(
+            Math.random() * dateIdeas.length
+          )
+        ];
 
 
-      dateResult.style.opacity =
-        "0";
+      dateResult.style.opacity = "0";
 
 
       setTimeout(() => {
@@ -957,9 +1264,7 @@ document.addEventListener("DOMContentLoaded", () => {
       body;
 
 
-    modal.classList.add(
-      "open"
-    );
+    modal.classList.add("open");
 
 
     modal.setAttribute(
@@ -979,21 +1284,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!activeVideo) return;
 
+
     try {
 
       activeVideo.pause();
 
       activeVideo.removeAttribute("src");
 
-      activeVideo.querySelectorAll("source").forEach(source => {
-        source.removeAttribute("src");
-      });
-
       activeVideo.load();
 
     } catch (error) {
-      // Nothing else required.
+      /* Nothing else required. */
     }
+
 
     activeVideo = null;
 
@@ -1026,9 +1329,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setTimeout(() => {
 
-      if (
-        !modal.classList.contains("open")
-      ) {
+      if (!modal.classList.contains("open")) {
 
         if (modalBody) {
           modalBody.innerHTML = "";
@@ -1285,6 +1586,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const status =
         card.querySelector(".vault-status");
+
 
       if (!button || !status) return;
 
