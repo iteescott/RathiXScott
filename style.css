@@ -467,7 +467,7 @@ a {
 
 
 /* =========================================================
-   PHOTO ARCHIVE
+   PHOTO ARCHIVE — SECTION 2
 ========================================================= */
 
 .scrapbook {
@@ -640,8 +640,11 @@ a {
 
 .section-scattered-images img {
   position: absolute;
-  width: 130px;
-  height: 170px;
+
+  /* Slightly larger than before */
+  width: 155px;
+  height: 200px;
+
   object-fit: cover;
   box-shadow: 0 20px 45px rgba(0,0,0,0.25);
   border: 7px solid var(--paper);
@@ -685,18 +688,36 @@ a {
 
 
 /* =========================================================
-   OPEN WHEN / ENVELOPES
+   SECTION 3 — OPEN WHEN
+   TITLE + BOXES RIGHT
+   IMAGES LEFT
 ========================================================= */
 
 .correspondence {
   min-height: 900px;
 }
 
+/* Right-align heading */
+.correspondence .section-heading {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
+/* Keep lede on the right as well */
+.correspondence .section-lede {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Move envelope grid to the right */
 .envelope-grid {
   position: relative;
   z-index: 4;
   max-width: 1000px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
@@ -784,8 +805,9 @@ a {
 .microcopy {
   position: relative;
   z-index: 4;
-  margin: 45px auto 0;
-  text-align: center;
+  margin: 45px 0 0 auto;
+  max-width: 1000px;
+  text-align: right;
   font-family: var(--sans);
   font-size: 9px;
   letter-spacing: 0.12em;
@@ -903,7 +925,9 @@ a {
 
 
 /* =========================================================
-   WISH MACHINE
+   WISH MACHINE — SECTION 4
+   TITLE + CONTENT LEFT
+   IMAGES RIGHT
 ========================================================= */
 
 .wish-machine,
@@ -913,6 +937,14 @@ a {
   max-width: 850px;
   margin: 0 auto;
   text-align: center;
+}
+
+/* Section 4 is left aligned */
+.wish-machine {
+  max-width: 1000px;
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
 }
 
 .wish-machine p {
@@ -927,22 +959,48 @@ a {
 
 
 /* =========================================================
-   PEOPLE / VIDEO TESTIMONIALS
+   PEOPLE / VIDEO TESTIMONIALS — SECTION 5
+   TITLE + VIDEO BOXES RIGHT
+   IMAGES LEFT
 ========================================================= */
 
 .video-card-grid {
   position: relative;
   z-index: 4;
-
-  /* CHANGED:
-     Gives the three videos more room on desktop. */
   max-width: 1000px;
-
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
   align-items: start;
+}
+
+/* Section 5 heading on the right */
+.video-card-grid ~ * {
+  position: relative;
+}
+
+.section-burgundy .video-card-grid {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/*
+  This selector targets the heading immediately associated
+  with the video-card section when the section uses the
+  standard heading + grid structure.
+*/
+.section-burgundy:has(.video-card-grid) .section-heading {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
+.section-burgundy:has(.video-card-grid) .section-lede {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .video-card {
@@ -950,15 +1008,6 @@ a {
   border: 1px solid rgba(255,255,255,0.2);
   background: rgba(255,255,255,0.03);
 }
-
-/*
-   CHANGED:
-   Videos now fill the available width of each card
-   instead of being locked to 180px × 240px.
-
-   The 9:16 ratio is appropriate for the vertical
-   phone videos used in this section.
-*/
 
 .video-placeholder {
   width: 100%;
@@ -1008,17 +1057,34 @@ a {
 
 
 /* =========================================================
-   QUIZ
+   QUIZ — SECTION 6
+   TITLE + QUIZ LEFT
+   IMAGES RIGHT
 ========================================================= */
 
 .quiz-box {
   position: relative;
   z-index: 4;
   max-width: 760px;
-  margin: 0 auto;
+  margin-left: 0;
+  margin-right: auto;
   padding: 45px;
   border: 1px solid rgba(32,36,43,0.2);
   background: rgba(255,255,255,0.3);
+}
+
+/* Left-align the section heading */
+.section-ivory:has(.quiz-box) .section-heading {
+  max-width: 900px;
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+}
+
+.section-ivory:has(.quiz-box) .section-lede {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
 }
 
 #quizQuestion {
@@ -1074,34 +1140,47 @@ a {
 
 
 /* =========================================================
-   ARCADE
+   ARCADE — SECTION 7
+   TITLE + GAME BOXES RIGHT
+   IMAGES LEFT
 ========================================================= */
 
 .arcade-tools {
   position: relative;
   z-index: 4;
   max-width: 1000px;
-  margin: 0 auto 35px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 35px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
 }
 
-.arcade-tools > span {
-  font-family: var(--sans);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-}
-
 .game-grid {
   position: relative;
   z-index: 4;
   max-width: 1000px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
+}
+
+/* Right-align Arcade heading */
+.section-navy:has(.game-grid) .section-heading {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
+.section-navy:has(.game-grid) .section-lede {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
 }
 
 .game-card {
@@ -1135,8 +1214,31 @@ a {
 
 
 /* =========================================================
-   DATE GENERATOR
+   DATE GENERATOR — SECTION 8
+   TITLE + CONTENT LEFT
+   IMAGES LEFT
 ========================================================= */
+
+.date-machine {
+  max-width: 1000px;
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+}
+
+/* Left-align Section 8 heading */
+.section-olive:has(.date-machine) .section-heading {
+  max-width: 1000px;
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+}
+
+.section-olive:has(.date-machine) .section-lede {
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+}
 
 .date-label {
   margin: 0 0 25px;
@@ -1162,17 +1264,34 @@ a {
 
 
 /* =========================================================
-   VAULT
+   VAULT — SECTION 9
+   TITLE + BOXES RIGHT
+   IMAGES LEFT
 ========================================================= */
 
 .vault-grid {
   position: relative;
   z-index: 4;
   max-width: 1050px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
+}
+
+/* Right-align Section 9 heading */
+.section-burgundy:has(.vault-grid) .section-heading {
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
+}
+
+.section-burgundy:has(.vault-grid) .section-lede {
+  margin-left: auto;
+  margin-right: 0;
+  text-align: right;
 }
 
 .vault-card {
@@ -1227,7 +1346,7 @@ a {
 
 
 /* =========================================================
-   FINAL NOTE
+   FINAL NOTE — SECTION 10
 ========================================================= */
 
 .final-note {
@@ -1338,7 +1457,7 @@ a {
 
 
 /* =========================================================
-   RESPONSIVE
+   RESPONSIVE — TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -1358,11 +1477,6 @@ a {
   .game-grid {
     grid-template-columns: 1fr;
   }
-
-  /*
-     On tablets, the video gets a sensible width while
-     preserving the vertical-video ratio.
-  */
 
   .video-placeholder {
     width: 100%;
@@ -1427,6 +1541,31 @@ a {
   .memory-photo:nth-child(10) {
     right: 0;
   }
+
+  /*
+    On tablet, keep the directional composition,
+    but give content a little more breathing room.
+  */
+
+  .correspondence .section-heading,
+  .section-burgundy:has(.video-card-grid) .section-heading,
+  .section-navy:has(.game-grid) .section-heading,
+  .section-burgundy:has(.vault-grid) .section-heading {
+    max-width: 80%;
+  }
+
+  .envelope-grid,
+  .video-card-grid,
+  .game-grid,
+  .vault-grid {
+    max-width: 88%;
+  }
+
+  .wish-machine,
+  .date-machine,
+  .quiz-box {
+    max-width: 88%;
+  }
 }
 
 
@@ -1479,13 +1618,236 @@ a {
     font-size: clamp(48px, 15vw, 78px);
   }
 
+
+  /* =====================================================
+     MOBILE — SECTION 3
+     Keep right alignment
+  ===================================================== */
+
+  .correspondence .section-heading {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  .correspondence .section-lede {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
   .envelope-grid {
     grid-template-columns: 1fr;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
   }
 
   .envelope {
     min-height: 230px;
   }
+
+  .microcopy {
+    max-width: 100%;
+    text-align: right;
+  }
+
+
+  /* =====================================================
+     MOBILE — SECTION 4
+     Keep left alignment
+  ===================================================== */
+
+  .wish-machine {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+
+
+  /* =====================================================
+     MOBILE — SECTION 5
+     Keep right alignment
+  ===================================================== */
+
+  .section-burgundy:has(.video-card-grid) .section-heading {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  .section-burgundy:has(.video-card-grid) .section-lede {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  .video-card-grid {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .video-card {
+    width: 100%;
+  }
+
+  .video-placeholder {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 9 / 16;
+    height: auto;
+    margin: 0;
+  }
+
+  .video-card h3 {
+    font-size: 30px;
+  }
+
+  .video-card p {
+    font-size: 18px;
+  }
+
+
+  /* =====================================================
+     MOBILE — SECTION 6
+     Keep left alignment
+  ===================================================== */
+
+  .section-ivory:has(.quiz-box) .section-heading {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .section-ivory:has(.quiz-box) .section-lede {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .quiz-box {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 25px;
+  }
+
+
+  /* =====================================================
+     MOBILE — SECTION 7
+     Keep right alignment
+  ===================================================== */
+
+  .section-navy:has(.game-grid) .section-heading {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  .section-navy:has(.game-grid) .section-lede {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  .arcade-tools {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .game-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+
+  /* =====================================================
+     MOBILE — SECTION 8
+     Keep left alignment
+  ===================================================== */
+
+  .section-olive:has(.date-machine) .section-heading {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .section-olive:has(.date-machine) .section-lede {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+
+  .date-machine {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+
+
+  /* =====================================================
+     MOBILE — SECTION 9
+     Keep right alignment
+  ===================================================== */
+
+  .section-burgundy:has(.vault-grid) .section-heading {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  .section-burgundy:has(.vault-grid) .section-lede {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+  }
+
+  .vault-grid {
+    grid-template-columns: 1fr;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+
+  /* =====================================================
+     MOBILE — SCATTERED IMAGES
+  ===================================================== */
+
+  .section-scattered-images {
+    opacity: 0.35;
+  }
+
+  .section-scattered-images img {
+    width: 90px;
+    height: 120px;
+  }
+
+  .section-10-images img {
+    width: 95px;
+    height: 125px;
+    border-width: 5px;
+  }
+
+
+  /* =====================================================
+     MOBILE — MODAL
+  ===================================================== */
 
   .modal {
     padding: 10px;
@@ -1503,29 +1865,10 @@ a {
     max-height: 65vh;
   }
 
-  .quiz-box {
-    padding: 25px;
-  }
 
-  .arcade-tools {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .section-scattered-images {
-    opacity: 0.35;
-  }
-
-  .section-scattered-images img {
-    width: 90px;
-    height: 120px;
-  }
-
-  .section-10-images img {
-    width: 95px;
-    height: 125px;
-    border-width: 5px;
-  }
+  /* =====================================================
+     MOBILE — DRAWER
+  ===================================================== */
 
   .drawer-inner {
     padding: 30px 25px;
@@ -1537,7 +1880,7 @@ a {
 
 
   /* =====================================================
-     MOBILE SCRAPBOOK
+     MOBILE — SCRAPBOOK
   ===================================================== */
 
   .photo-pile {
@@ -1567,41 +1910,4 @@ a {
   .photo-caption {
     font-size: 13px;
   }
-
-
-  /* =====================================================
-     MOBILE VIDEO TESTIMONIALS
-  ===================================================== */
-
-  /*
-     CHANGED:
-     The videos now use the full available card width.
-     No more 155px × 210px restriction.
-  */
-
-  .video-card-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .video-card {
-    width: 100%;
-  }
-
-  .video-placeholder {
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 9 / 16;
-    height: auto;
-    margin: 0;
-  }
-
-  .video-card h3 {
-    font-size: 30px;
-  }
-
-  .video-card p {
-    font-size: 18px;
-  }
-
 }
