@@ -418,7 +418,6 @@ document.addEventListener("DOMContentLoaded", () => {
   let quizScore = 0;
   let quizAnswered = false;
 
-
   const quizQuestion =
     document.getElementById("quizQuestion");
 
@@ -434,7 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      SHUFFLE
-
+     
      Fisher-Yates shuffle.
   ========================================================== */
 
@@ -470,7 +469,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================================================
      CREATE NEW QUIZ
-
+     
      Randomly selects 5 UNIQUE questions from the 16-question
      master bank.
   ========================================================== */
@@ -518,7 +517,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     quizOptions.innerHTML = "";
 
-
     question.options.forEach((option, index) => {
 
       const button =
@@ -528,20 +526,17 @@ document.addEventListener("DOMContentLoaded", () => {
       button.type = "button";
       button.textContent = option;
 
-
       button.addEventListener("click", () => {
 
         if (quizAnswered) return;
 
         quizAnswered = true;
 
-
         document
           .querySelectorAll(".quiz-option")
           .forEach(btn => {
             btn.disabled = true;
           });
-
 
         if (index === question.answer) {
 
@@ -553,12 +548,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
           button.classList.add("incorrect");
 
-
           const correctButton =
             document.querySelectorAll(".quiz-option")[
               question.answer
             ];
-
 
           if (correctButton) {
             correctButton.classList.add("correct");
@@ -567,7 +560,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
       });
-
 
       quizOptions.appendChild(button);
 
@@ -588,7 +580,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-
       if (quizIndex < currentQuiz.length - 1) {
 
         quizIndex++;
@@ -599,7 +590,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }
 
-
       /* =====================================================
          QUIZ COMPLETE
       ====================================================== */
@@ -608,7 +598,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "Examination complete.";
 
       quizOptions.innerHTML = "";
-
 
       let assessment;
 
@@ -644,7 +633,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }
 
-
       if (quizResult) {
 
         quizResult.textContent =
@@ -653,10 +641,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }
 
-
       quizNext.textContent =
         "START AGAIN ↻";
-
 
       quizNext.onclick = () => {
 
@@ -681,10 +667,8 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
      SECTION 5
      FROM THE PEOPLE WHO LOVE YOU
-
+     
      Videos are rendered directly into the Section 5 cards.
-     This makes them native HTML5 videos rather than relying
-     on iframes or external embeds.
   ========================================================== */
 
   const section5Videos = [
@@ -749,7 +733,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "Your first and favourite mentor: Madhur",
 
       description:
-        "A message from the person who was there from the very beginning of your professional journey.",
+        "A message from one of the people who helped shape the person you became.",
 
       url:
         "https://res.cloudinary.com/zvcnmpyk/video/upload/Section5_MadhurVid.mp4"
@@ -768,7 +752,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     section5Grid.innerHTML = "";
 
-
     section5Videos.forEach((item, index) => {
 
       const card =
@@ -776,17 +759,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       card.className = "video-card";
 
-
-      const videoNumber =
-        String(index + 1).padStart(2, "0");
-
-
       const videoWrap =
         document.createElement("div");
 
       videoWrap.className =
         "video-placeholder";
-
 
       const video =
         document.createElement("video");
@@ -808,7 +785,6 @@ document.addEventListener("DOMContentLoaded", () => {
         item.title
       );
 
-
       const source =
         document.createElement("source");
 
@@ -820,7 +796,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       video.appendChild(source);
 
-
       const fallback =
         document.createTextNode(
           "Your browser does not support HTML5 video."
@@ -830,20 +805,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
       videoWrap.appendChild(video);
 
-
       const title =
         document.createElement("h3");
 
       title.textContent =
         item.title;
 
-
       const description =
         document.createElement("p");
 
       description.textContent =
         item.description;
-
 
       const playLabel =
         document.createElement("button");
@@ -857,7 +829,6 @@ document.addEventListener("DOMContentLoaded", () => {
       playLabel.textContent =
         "PLAY VIDEO →";
 
-
       playLabel.addEventListener("click", () => {
 
         video.scrollIntoView({
@@ -865,10 +836,8 @@ document.addEventListener("DOMContentLoaded", () => {
           block: "center"
         });
 
-
         const playPromise =
           video.play();
-
 
         if (
           playPromise &&
@@ -883,13 +852,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       });
 
-
       video.addEventListener("error", () => {
 
         videoWrap.classList.add(
           "video-load-error"
         );
-
 
         if (
           !videoWrap.querySelector(
@@ -913,7 +880,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
       });
-
 
       card.appendChild(videoWrap);
       card.appendChild(title);
@@ -1050,7 +1016,6 @@ document.addEventListener("DOMContentLoaded", () => {
           localStorage.getItem("itsuRakhuGames")
         ) || [];
 
-
       if (!Array.isArray(savedGames)) {
         savedGames = [];
       }
@@ -1060,66 +1025,6 @@ document.addEventListener("DOMContentLoaded", () => {
       savedGames = [];
 
     }
-
-
-    /*
-      Remove any old malformed arcade entries.
-
-      This specifically prevents cards labelled
-      "undefined" from appearing if an incomplete
-      game was previously saved in localStorage.
-    */
-
-    savedGames =
-      savedGames.filter(game => {
-
-        if (!game || typeof game !== "object") {
-          return false;
-        }
-
-        if (!game.title) {
-          return false;
-        }
-
-        if (
-          String(game.title).trim().toLowerCase() ===
-          "undefined"
-        ) {
-          return false;
-        }
-
-        if (
-          String(game.title).trim().toLowerCase() ===
-          "null"
-        ) {
-          return false;
-        }
-
-        if (!game.url) {
-          return false;
-        }
-
-        return true;
-
-      });
-
-
-    /*
-      Save the cleaned list back so the malformed
-      "undefined" entry is permanently removed.
-    */
-
-    try {
-
-      localStorage.setItem(
-        "itsuRakhuGames",
-        JSON.stringify(savedGames)
-      );
-
-    } catch (error) {
-      /* Local storage may be unavailable. */
-    }
-
 
     return [
       ...defaultGames,
@@ -1161,15 +1066,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     gameGrid.innerHTML = "";
 
-
     games.forEach(game => {
+
+      /* Ignore malformed / empty saved games.
+         This prevents an "undefined" card from appearing. */
+      if (
+        !game ||
+        !game.title ||
+        !game.description ||
+        !game.url
+      ) {
+        return;
+      }
 
       const card =
         document.createElement("article");
 
       card.className =
         "game-card";
-
 
       card.innerHTML = `
         <h3>${escapeHtml(game.title)}</h3>
@@ -1185,16 +1099,22 @@ document.addEventListener("DOMContentLoaded", () => {
         </a>
       `;
 
-
       gameGrid.appendChild(card);
 
     });
 
-
     if (arcadeCount) {
 
+      const validGames =
+        games.filter(game =>
+          game &&
+          game.title &&
+          game.description &&
+          game.url
+        );
+
       arcadeCount.textContent =
-        `${String(games.length).padStart(2, "0")} APPROVED GAMES`;
+        `${String(validGames.length).padStart(2, "0")} APPROVED GAMES`;
 
     }
 
@@ -1208,24 +1128,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const title =
         prompt("What should we call the game?");
 
-
       if (!title) return;
-
 
       const description =
         prompt("Short description?") ||
         "A game for two members of the Society.";
 
-
       const url =
         prompt("Paste the game link?");
 
-
       if (!url) return;
 
-
       let savedGames = [];
-
 
       try {
 
@@ -1233,7 +1147,6 @@ document.addEventListener("DOMContentLoaded", () => {
           JSON.parse(
             localStorage.getItem("itsuRakhuGames")
           ) || [];
-
 
         if (!Array.isArray(savedGames)) {
           savedGames = [];
@@ -1245,19 +1158,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }
 
-
       savedGames.push({
         title,
         description,
         url
       });
 
-
       localStorage.setItem(
         "itsuRakhuGames",
         JSON.stringify(savedGames)
       );
-
 
       renderGames();
 
@@ -1278,7 +1188,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const dateResult =
     document.getElementById("dateResult");
-
 
   const dateIdeas = [
 
@@ -1332,9 +1241,7 @@ document.addEventListener("DOMContentLoaded", () => {
           )
         ];
 
-
       dateResult.style.opacity = "0";
-
 
       setTimeout(() => {
 
@@ -1383,22 +1290,18 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-
     modalTitle.textContent =
       title;
 
     modalBody.innerHTML =
       body;
 
-
     modal.classList.add("open");
-
 
     modal.setAttribute(
       "aria-hidden",
       "false"
     );
-
 
     document.body.classList.add(
       "modal-open"
@@ -1410,7 +1313,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function stopActiveVideo() {
 
     if (!activeVideo) return;
-
 
     try {
 
@@ -1424,7 +1326,6 @@ document.addEventListener("DOMContentLoaded", () => {
       /* Nothing else required. */
     }
 
-
     activeVideo = null;
 
   }
@@ -1434,25 +1335,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!modal) return;
 
-
     stopActiveVideo();
-
 
     modal.classList.remove(
       "open"
     );
-
 
     modal.setAttribute(
       "aria-hidden",
       "true"
     );
 
-
     document.body.classList.remove(
       "modal-open"
     );
-
 
     setTimeout(() => {
 
@@ -1524,7 +1420,6 @@ document.addEventListener("DOMContentLoaded", () => {
           const videoUrl =
             envelope.dataset.video;
 
-
           if (!videoUrl) {
 
             openModal(
@@ -1540,13 +1435,11 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
           }
 
-
           const safeTitle =
             escapeAttribute(title);
 
           const safeUrl =
             escapeAttribute(videoUrl);
-
 
           openModal(
             title,
@@ -1596,7 +1489,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `
           );
 
-
           const videoElement =
             document.getElementById(
               "sectionVideo"
@@ -1612,13 +1504,10 @@ document.addEventListener("DOMContentLoaded", () => {
               "videoError"
             );
 
-
           if (!videoElement) return;
-
 
           activeVideo =
             videoElement;
-
 
           videoElement.addEventListener(
             "loadedmetadata",
@@ -1632,7 +1521,6 @@ document.addEventListener("DOMContentLoaded", () => {
             { once: true }
           );
 
-
           videoElement.addEventListener(
             "playing",
             () => {
@@ -1644,7 +1532,6 @@ document.addEventListener("DOMContentLoaded", () => {
             },
             { once: true }
           );
-
 
           videoElement.addEventListener(
             "error",
@@ -1662,7 +1549,6 @@ document.addEventListener("DOMContentLoaded", () => {
             { once: true }
           );
 
-
           setTimeout(() => {
 
             if (
@@ -1672,10 +1558,8 @@ document.addEventListener("DOMContentLoaded", () => {
               return;
             }
 
-
             const playPromise =
               videoElement.play();
-
 
             if (
               playPromise &&
@@ -1703,12 +1587,11 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================================================
      VAULT
 
-     Birthday: 25 October
-     Diwali: 8 November
-
-     The dates are assigned based on the vault card title.
-     This means the existing HTML does not need to change
-     as long as the cards are labelled Birthday and Diwali.
+     Birthday: 25 OCT
+     Diwali: 8 NOV
+     
+     The dates are also used to determine when each card
+     unlocks.
   ========================================================== */
 
   document
@@ -1721,35 +1604,70 @@ document.addEventListener("DOMContentLoaded", () => {
       const status =
         card.querySelector(".vault-status");
 
-      const titleElement =
-        card.querySelector("h3");
-
-
       if (!button || !status) return;
 
 
-      const title =
-        titleElement?.textContent
-          ?.trim()
-          .toLowerCase() || "";
+      /* -------------------------------------------------------
+         ADD DISPLAY DATE ABOVE THE VAULT CARD CONTENT
+         
+         Birthday → 25 OCT
+         Diwali   → 8 NOV
+         
+         We identify the cards from their existing heading
+         rather than requiring another HTML change.
+      ------------------------------------------------------- */
 
+      const heading =
+        card.querySelector("h3");
 
-      /*
-        Assign the correct dates to the existing vault cards.
+      if (heading) {
 
-        Birthday = 25 October
-        Diwali   = 8 November
-      */
+        const headingText =
+          heading.textContent.trim().toLowerCase();
 
-      if (title.includes("birthday")) {
+        let vaultDate = null;
 
-        card.dataset.month = "10";
-        card.dataset.day = "25";
+        if (
+          headingText.includes("birthday") ||
+          headingText.includes("birth")
+        ) {
 
-      } else if (title.includes("diwali")) {
+          vaultDate = "25 OCT";
 
-        card.dataset.month = "11";
-        card.dataset.day = "8";
+        } else if (
+          headingText.includes("diwali")
+        ) {
+
+          vaultDate = "8 NOV";
+
+        }
+
+        if (
+          vaultDate &&
+          !card.querySelector(".vault-date")
+        ) {
+
+          const dateLabel =
+            document.createElement("div");
+
+          dateLabel.className =
+            "vault-date";
+
+          dateLabel.textContent =
+            vaultDate;
+
+          /*
+            Insert the date immediately before the heading.
+            Existing CSS is untouched; the new element simply
+            becomes part of the existing card structure.
+          */
+
+          heading.parentNode.insertBefore(
+            dateLabel,
+            heading
+          );
+
+        }
 
       }
 
@@ -1764,10 +1682,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const day =
             Number(card.dataset.day);
 
-
           const today =
             new Date();
-
 
           const currentMonth =
             today.getMonth() + 1;
@@ -1775,11 +1691,9 @@ document.addEventListener("DOMContentLoaded", () => {
           const currentDay =
             today.getDate();
 
-
           const isUnlocked =
             currentMonth === month &&
             currentDay === day;
-
 
           if (isUnlocked) {
 
@@ -1792,13 +1706,11 @@ document.addEventListener("DOMContentLoaded", () => {
             button.textContent =
               "OPEN →";
 
-
             button.onclick = () => {
 
               const title =
                 card.querySelector("h3")?.textContent ||
                 "A message from the Society";
-
 
               openModal(
                 title,
@@ -1819,7 +1731,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             status.textContent =
               "SEALED UNTIL THE APPOINTED DATE";
-
 
             openModal(
               "Still sealed.",
@@ -1880,7 +1791,6 @@ document.addEventListener("DOMContentLoaded", () => {
           threshold: 0.12
         }
       );
-
 
     document
       .querySelectorAll(
