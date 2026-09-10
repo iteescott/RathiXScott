@@ -285,7 +285,7 @@ a {
 
 
 /* =========================================================
-   HERO — SECTION 1
+   HERO
 ========================================================= */
 
 .hero {
@@ -351,12 +351,6 @@ a {
   place-items: center;
   position: relative;
   margin-bottom: 8px;
-
-  /* More visible tilt */
-  transform: rotate(-14deg);
-
-  /* Pull stamp closer to the title/image area */
-  margin-left: -12px;
 }
 
 .seal span {
@@ -366,20 +360,15 @@ a {
 
 .seal small {
   position: absolute;
-
-  /* Keep the date INSIDE the stamp */
-  bottom: 15px;
+  bottom: -8px;
   left: 50%;
   transform: translateX(-50%);
-
-  width: 82%;
+  width: 100%;
   text-align: center;
-
   font-family: var(--sans);
   font-size: 7px;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-  white-space: nowrap;
+  letter-spacing: 0.1em;
+  line-height: 1.3;
 }
 
 .hero-intro {
@@ -478,7 +467,7 @@ a {
 
 
 /* =========================================================
-   GOOD STUFF / PHOTO ARCHIVE — SECTION 2
+   PHOTO ARCHIVE — SECTION 2
 ========================================================= */
 
 .scrapbook {
@@ -488,7 +477,7 @@ a {
 .photo-pile {
   position: relative;
   max-width: 1200px;
-  min-height: 950px;
+  min-height: 1250px;
   margin: 0 auto;
 }
 
@@ -545,91 +534,98 @@ a {
 }
 
 
-/* ---------------------------------------------------------
-   NEW SCRAPBOOK SCATTER
-   Same photo sizes — only positions changed
---------------------------------------------------------- */
+/* =========================================================
+   GOOD STUFF — NEW SCRAPBOOK SCATTER
+   Same photo sizes — positions only changed
+========================================================= */
 
+/* Row 1 */
 .memory-photo:nth-child(1) {
-  left: 3%;
-  top: 25px;
-  transform: rotate(-7deg);
+  left: 1%;
+  top: 20px;
+  transform: rotate(-6deg);
 }
 
 .memory-photo:nth-child(2) {
-  left: 27%;
-  top: 95px;
-  transform: rotate(6deg);
+  left: 26%;
+  top: 55px;
+  transform: rotate(5deg);
 }
 
 .memory-photo:nth-child(3) {
-  right: 4%;
-  top: 25px;
-  transform: rotate(9deg);
+  left: 51%;
+  top: 10px;
+  transform: rotate(7deg);
 }
 
 .memory-photo:nth-child(4) {
+  left: 76%;
+  top: 70px;
+  transform: rotate(-5deg);
+}
+
+
+/* Row 2 */
+.memory-photo:nth-child(5) {
   left: 12%;
-  top: 310px;
+  top: 325px;
   transform: rotate(4deg);
 }
 
-.memory-photo:nth-child(5) {
-  left: 43%;
-  top: 275px;
-  transform: rotate(-8deg);
-}
-
 .memory-photo:nth-child(6) {
-  right: 10%;
-  top: 335px;
-  transform: rotate(6deg);
+  left: 38%;
+  top: 300px;
+  transform: rotate(-6deg);
 }
 
 .memory-photo:nth-child(7) {
-  left: 1%;
-  top: 585px;
-  transform: rotate(8deg);
+  left: 63%;
+  top: 340px;
+  transform: rotate(6deg);
 }
 
+
+/* Row 3 */
 .memory-photo:nth-child(8) {
-  left: 29%;
-  top: 535px;
+  left: 2%;
+  top: 635px;
   transform: rotate(-5deg);
 }
 
 .memory-photo:nth-child(9) {
-  right: 28%;
-  top: 590px;
-  transform: rotate(7deg);
+  left: 27%;
+  top: 610px;
+  transform: rotate(5deg);
 }
 
 .memory-photo:nth-child(10) {
-  right: 1%;
-  top: 555px;
-  transform: rotate(-8deg);
-}
-
-.memory-photo:nth-child(n+11) {
-  position: absolute;
+  left: 52%;
+  top: 650px;
+  transform: rotate(-7deg);
 }
 
 .memory-photo:nth-child(11) {
-  left: 8%;
-  top: 800px;
-  transform: rotate(-4deg);
+  left: 77%;
+  top: 620px;
+  transform: rotate(4deg);
 }
 
+
+/* Row 4 */
 .memory-photo:nth-child(12) {
-  left: 37%;
-  top: 765px;
-  transform: rotate(6deg);
+  left: 14%;
+  top: 940px;
+  transform: rotate(5deg);
 }
 
 .memory-photo:nth-child(13) {
-  right: 8%;
-  top: 800px;
+  left: 47%;
+  top: 965px;
   transform: rotate(-6deg);
+}
+
+.memory-photo:nth-child(n+14) {
+  position: absolute;
 }
 
 .scroll-note {
@@ -664,52 +660,38 @@ a {
   border: 7px solid var(--paper);
 }
 
-
-/* ---------------------------------------------------------
-   LEFT IMAGE GROUP
-   Used by Sections 3, 5, 7, 9
-   Move images INWARD from the left edge
---------------------------------------------------------- */
-
 .section-images-left img:nth-child(1) {
-  left: 7%;
+  left: 2%;
   top: 12%;
   transform: rotate(-9deg);
 }
 
 .section-images-left img:nth-child(2) {
-  left: 10%;
+  left: 5%;
   top: 45%;
   transform: rotate(7deg);
 }
 
 .section-images-left img:nth-child(3) {
-  left: 6%;
+  left: 1%;
   bottom: 8%;
   transform: rotate(-4deg);
 }
 
-
-/* ---------------------------------------------------------
-   RIGHT IMAGE GROUP
-   Used by Sections 4, 6, 8
-   Move images INWARD from the right edge
---------------------------------------------------------- */
-
 .section-images-right img:nth-child(1) {
-  right: 7%;
+  right: 2%;
   top: 12%;
   transform: rotate(8deg);
 }
 
 .section-images-right img:nth-child(2) {
-  right: 10%;
+  right: 5%;
   top: 45%;
   transform: rotate(-7deg);
 }
 
 .section-images-right img:nth-child(3) {
-  right: 6%;
+  right: 1%;
   bottom: 8%;
   transform: rotate(5deg);
 }
@@ -717,20 +699,17 @@ a {
 
 /* =========================================================
    SECTION 3 — OPEN WHEN
-   TITLE + BOXES RIGHT
-   IMAGES LEFT
+   UNCHANGED
 ========================================================= */
 
 .correspondence {
   min-height: 900px;
 }
 
-
-/* Content moved slightly LEFT from right edge */
 .correspondence .section-heading {
   max-width: 900px;
   margin-left: auto;
-  margin-right: 3%;
+  margin-right: 0;
   text-align: right;
 }
 
@@ -743,11 +722,8 @@ a {
   position: relative;
   z-index: 4;
   max-width: 1000px;
-
-  /* Move content inward */
   margin-left: auto;
-  margin-right: 3%;
-
+  margin-right: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 28px;
@@ -835,7 +811,7 @@ a {
 .microcopy {
   position: relative;
   z-index: 4;
-  margin: 45px 3% 0 auto;
+  margin: 45px 0 0 auto;
   max-width: 1000px;
   text-align: right;
   font-family: var(--sans);
@@ -955,7 +931,7 @@ a {
 
 
 /* =========================================================
-   SECTION 4 — I WISH YOU WERE HERE
+   WISH MACHINE — SECTION 4
    TITLE + CONTENT LEFT
    IMAGES RIGHT
 ========================================================= */
@@ -970,9 +946,27 @@ a {
 }
 
 
-/* Content stays LEFT */
+/* =========================================================
+   SECTION 4 — I WISH YOU WERE HERE
+   ONLY HEADING + BYLINE ALIGNMENT CHANGED
+========================================================= */
+
 .wish-machine {
   max-width: 1000px;
+  margin-left: 0;
+  margin-right: auto;
+  text-align: left;
+}
+
+.section-ivory:has(.wish-machine) .section-heading {
+  max-width: none;
+  width: calc(100% - 0.5cm);
+  margin-left: 0.5cm;
+  margin-right: 0;
+  text-align: left;
+}
+
+.section-ivory:has(.wish-machine) .section-lede {
   margin-left: 0;
   margin-right: auto;
   text-align: left;
@@ -990,20 +984,15 @@ a {
 
 
 /* =========================================================
-   SECTION 5 — FROM THE PEOPLE WHO LOVE YOU
-   TITLE + VIDEO BOXES RIGHT
-   IMAGES LEFT
+   PEOPLE / VIDEO TESTIMONIALS — SECTION 5
 ========================================================= */
 
 .video-card-grid {
   position: relative;
   z-index: 4;
   max-width: 1000px;
-
-  /* Move content inward from right */
   margin-left: auto;
-  margin-right: 3%;
-
+  margin-right: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
@@ -1016,21 +1005,27 @@ a {
 
 .section-burgundy .video-card-grid {
   margin-left: auto;
-  margin-right: 3%;
+  margin-right: 0;
 }
 
 
-/* Right title, but pulled inward */
+/* =========================================================
+   SECTION 5 — FROM THE PEOPLE WHO LOVE YOU
+   ONLY HEADING + BYLINE ALIGNMENT CHANGED
+========================================================= */
+
 .section-burgundy:has(.video-card-grid) .section-heading {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: 3%;
+  max-width: none;
+  width: calc(100% - 0.5cm);
+  margin-left: 0;
+  margin-right: 0.5cm;
   text-align: right;
 }
 
 .section-burgundy:has(.video-card-grid) .section-lede {
   margin-left: auto;
   margin-right: 0;
+  text-align: right;
 }
 
 .video-card {
@@ -1087,9 +1082,8 @@ a {
 
 
 /* =========================================================
-   SECTION 6 — HOW WELL DO WE KNOW EACH OTHER
-   TITLE + QUIZ LEFT
-   IMAGES RIGHT
+   QUIZ — SECTION 6
+   UNCHANGED
 ========================================================= */
 
 .quiz-box {
@@ -1103,8 +1097,6 @@ a {
   background: rgba(255,255,255,0.3);
 }
 
-
-/* Left content */
 .section-ivory:has(.quiz-box) .section-heading {
   max-width: 900px;
   margin-left: 0;
@@ -1171,20 +1163,15 @@ a {
 
 
 /* =========================================================
-   SECTION 7 — THE LONG DISTANCE ARCADE
-   TITLE + GAME BOXES RIGHT
-   IMAGES LEFT
+   ARCADE — SECTION 7
 ========================================================= */
 
 .arcade-tools {
   position: relative;
   z-index: 4;
   max-width: 1000px;
-
-  /* Move content inward */
   margin-left: auto;
-  margin-right: 3%;
-
+  margin-right: 0;
   margin-bottom: 35px;
   display: flex;
   align-items: center;
@@ -1196,22 +1183,24 @@ a {
   position: relative;
   z-index: 4;
   max-width: 1000px;
-
-  /* Move content inward */
   margin-left: auto;
-  margin-right: 3%;
-
+  margin-right: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
 }
 
 
-/* Right-align Arcade heading, but pull it inward */
+/* =========================================================
+   SECTION 7 — LONG DISTANCE ARCADE
+   ONLY HEADING + BYLINE ALIGNMENT CHANGED
+========================================================= */
+
 .section-navy:has(.game-grid) .section-heading {
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: 3%;
+  max-width: none;
+  width: calc(100% - 0.5cm);
+  margin-left: 0;
+  margin-right: 0.5cm;
   text-align: right;
 }
 
@@ -1252,9 +1241,8 @@ a {
 
 
 /* =========================================================
-   SECTION 8 — DATE GENERATOR
-   TITLE + CONTENT LEFT
-   IMAGES RIGHT
+   DATE GENERATOR — SECTION 8
+   UNCHANGED
 ========================================================= */
 
 .date-machine {
@@ -1264,8 +1252,6 @@ a {
   text-align: left;
 }
 
-
-/* Left-align Section 8 heading */
 .section-olive:has(.date-machine) .section-heading {
   max-width: 1000px;
   margin-left: 0;
@@ -1303,31 +1289,31 @@ a {
 
 
 /* =========================================================
-   SECTION 9 — THE VAULT
-   TITLE + BOXES RIGHT
-   IMAGES LEFT
+   VAULT — SECTION 9
 ========================================================= */
 
 .vault-grid {
   position: relative;
   z-index: 4;
   max-width: 1050px;
-
-  /* Move content inward */
   margin-left: auto;
-  margin-right: 3%;
-
+  margin-right: 0;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 22px;
 }
 
 
-/* Right-align Section 9 heading, pulled inward */
+/* =========================================================
+   SECTION 9 — THE VAULT
+   ONLY HEADING + BYLINE ALIGNMENT CHANGED
+========================================================= */
+
 .section-burgundy:has(.vault-grid) .section-heading {
-  max-width: 1050px;
-  margin-left: auto;
-  margin-right: 3%;
+  max-width: none;
+  width: calc(100% - 0.5cm);
+  margin-left: 0;
+  margin-right: 0.5cm;
   text-align: right;
 }
 
@@ -1390,7 +1376,7 @@ a {
 
 /* =========================================================
    FINAL NOTE — SECTION 10
-   DO NOT CHANGE
+   CONTENT UNCHANGED
 ========================================================= */
 
 .final-note {
@@ -1460,6 +1446,13 @@ a {
   opacity: 0.5;
 }
 
+
+/* =========================================================
+   SECTION 10 IMAGES
+   IMG 1 + IMG 2 = TOP RIGHT
+   IMG 3 + IMG 4 = BOTTOM LEFT
+========================================================= */
+
 .section-10-images {
   position: absolute;
   inset: 0;
@@ -1475,27 +1468,39 @@ a {
   box-shadow: 0 20px 45px rgba(0,0,0,0.15);
 }
 
+
+/* IMG 1 — TOP RIGHT */
 .section-10-top img:nth-child(1) {
   top: 8%;
-  left: 5%;
+  right: 12%;
+  left: auto;
   transform: rotate(-8deg);
 }
 
+
+/* IMG 2 — ALSO TOP RIGHT */
 .section-10-top img:nth-child(2) {
-  top: 13%;
-  right: 6%;
+  top: 15%;
+  right: 2%;
+  left: auto;
   transform: rotate(7deg);
 }
 
+
+/* IMG 3 — BOTTOM LEFT */
 .section-10-bottom img:nth-child(1) {
   bottom: 10%;
-  left: 7%;
+  left: 2%;
+  right: auto;
   transform: rotate(6deg);
 }
 
+
+/* IMG 4 — ALSO BOTTOM LEFT */
 .section-10-bottom img:nth-child(2) {
-  bottom: 8%;
-  right: 6%;
+  bottom: 7%;
+  left: 12%;
+  right: auto;
   transform: rotate(-6deg);
 }
 
@@ -1546,33 +1551,30 @@ a {
     min-height: 1050px;
   }
 
-
-  /* -------------------------------------------------------
-     TABLET — SCRAPBOOK
-  ------------------------------------------------------- */
-
   .memory-photo:nth-child(1) {
     left: 2%;
   }
 
   .memory-photo:nth-child(2) {
-    left: 33%;
+    left: 35%;
   }
 
   .memory-photo:nth-child(3) {
     right: 2%;
+    left: auto;
   }
 
   .memory-photo:nth-child(4) {
-    left: 8%;
+    left: 10%;
   }
 
   .memory-photo:nth-child(5) {
-    left: 42%;
+    left: 43%;
   }
 
   .memory-photo:nth-child(6) {
-    right: 4%;
+    right: 3%;
+    left: auto;
   }
 
   .memory-photo:nth-child(7) {
@@ -1580,21 +1582,34 @@ a {
   }
 
   .memory-photo:nth-child(8) {
-    left: 31%;
+    left: 34%;
   }
 
   .memory-photo:nth-child(9) {
-    right: 17%;
+    right: 18%;
+    left: auto;
   }
 
   .memory-photo:nth-child(10) {
     right: 0;
+    left: auto;
+  }
+
+  .memory-photo:nth-child(11) {
+    left: 10%;
+  }
+
+  .memory-photo:nth-child(12) {
+    left: 35%;
+  }
+
+  .memory-photo:nth-child(13) {
+    right: 10%;
+    left: auto;
   }
 
 
-  /* -------------------------------------------------------
-     TABLET — directional composition
-  ------------------------------------------------------- */
+  /* Keep the directional compositions on tablet */
 
   .correspondence .section-heading,
   .section-burgundy:has(.video-card-grid) .section-heading,
@@ -1616,48 +1631,36 @@ a {
     max-width: 88%;
   }
 
-
-  /* Bring left-side images further inward on tablet */
-  .section-images-left img:nth-child(1) {
-    left: 4%;
+  /* Section 4 heading */
+  .section-ivory:has(.wish-machine) .section-heading {
+    width: calc(100% - 0.5cm);
+    margin-left: 0.5cm;
+    margin-right: 0;
+    text-align: left;
   }
 
-  .section-images-left img:nth-child(2) {
-    left: 7%;
+  /* Section 5 heading */
+  .section-burgundy:has(.video-card-grid) .section-heading {
+    width: calc(100% - 0.5cm);
+    margin-left: 0;
+    margin-right: 0.5cm;
+    text-align: right;
   }
 
-  .section-images-left img:nth-child(3) {
-    left: 4%;
+  /* Section 7 heading */
+  .section-navy:has(.game-grid) .section-heading {
+    width: calc(100% - 0.5cm);
+    margin-left: 0;
+    margin-right: 0.5cm;
+    text-align: right;
   }
 
-
-  /* Bring right-side images further inward on tablet */
-  .section-images-right img:nth-child(1) {
-    right: 4%;
-  }
-
-  .section-images-right img:nth-child(2) {
-    right: 7%;
-  }
-
-  .section-images-right img:nth-child(3) {
-    right: 4%;
-  }
-
-
-  /* Pull right-side content slightly inward */
-  .correspondence .section-heading,
-  .section-burgundy:has(.video-card-grid) .section-heading,
-  .section-navy:has(.game-grid) .section-heading,
+  /* Section 9 heading */
   .section-burgundy:has(.vault-grid) .section-heading {
-    margin-right: 2%;
-  }
-
-  .envelope-grid,
-  .video-card-grid,
-  .game-grid,
-  .vault-grid {
-    margin-right: 2%;
+    width: calc(100% - 0.5cm);
+    margin-left: 0;
+    margin-right: 0.5cm;
+    text-align: right;
   }
 }
 
@@ -1692,18 +1695,10 @@ a {
   .seal {
     width: 70px;
     height: 70px;
-    margin-left: -5px;
-    transform: rotate(-14deg);
   }
 
   .seal span {
     font-size: 20px;
-  }
-
-  .seal small {
-    bottom: 10px;
-    font-size: 5.5px;
-    letter-spacing: 0.05em;
   }
 
   .hero-meta {
@@ -1722,11 +1717,11 @@ a {
 
   /* =====================================================
      MOBILE — SECTION 3
-     Keep right alignment, but move content inward
+     UNCHANGED
   ===================================================== */
 
   .correspondence .section-heading {
-    max-width: 94%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: 0;
     text-align: right;
@@ -1739,7 +1734,7 @@ a {
 
   .envelope-grid {
     grid-template-columns: 1fr;
-    max-width: 94%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: 0;
   }
@@ -1749,16 +1744,14 @@ a {
   }
 
   .microcopy {
-    max-width: 94%;
-    margin-left: auto;
-    margin-right: 0;
+    max-width: 100%;
     text-align: right;
   }
 
 
   /* =====================================================
      MOBILE — SECTION 4
-     Keep left alignment
+     LEFT ALIGN
   ===================================================== */
 
   .wish-machine {
@@ -1768,16 +1761,31 @@ a {
     text-align: left;
   }
 
+  .section-ivory:has(.wish-machine) .section-heading {
+    max-width: 100%;
+    width: calc(100% - 0.5cm);
+    margin-left: 0.5cm;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .section-ivory:has(.wish-machine) .section-lede {
+    margin-left: 0;
+    margin-right: auto;
+    text-align: left;
+  }
+
 
   /* =====================================================
      MOBILE — SECTION 5
-     Keep right alignment
+     RIGHT ALIGN
   ===================================================== */
 
   .section-burgundy:has(.video-card-grid) .section-heading {
-    max-width: 94%;
-    margin-left: auto;
-    margin-right: 0;
+    max-width: 100%;
+    width: calc(100% - 0.5cm);
+    margin-left: 0;
+    margin-right: 0.5cm;
     text-align: right;
   }
 
@@ -1790,7 +1798,7 @@ a {
   .video-card-grid {
     grid-template-columns: 1fr;
     gap: 35px;
-    max-width: 94%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: 0;
   }
@@ -1818,7 +1826,7 @@ a {
 
   /* =====================================================
      MOBILE — SECTION 6
-     Keep left alignment
+     UNCHANGED
   ===================================================== */
 
   .section-ivory:has(.quiz-box) .section-heading {
@@ -1844,13 +1852,14 @@ a {
 
   /* =====================================================
      MOBILE — SECTION 7
-     Keep right alignment
+     RIGHT ALIGN
   ===================================================== */
 
   .section-navy:has(.game-grid) .section-heading {
-    max-width: 94%;
-    margin-left: auto;
-    margin-right: 0;
+    max-width: 100%;
+    width: calc(100% - 0.5cm);
+    margin-left: 0;
+    margin-right: 0.5cm;
     text-align: right;
   }
 
@@ -1861,7 +1870,7 @@ a {
   }
 
   .arcade-tools {
-    max-width: 94%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: 0;
     flex-direction: column;
@@ -1870,7 +1879,7 @@ a {
 
   .game-grid {
     grid-template-columns: 1fr;
-    max-width: 94%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: 0;
   }
@@ -1878,7 +1887,7 @@ a {
 
   /* =====================================================
      MOBILE — SECTION 8
-     Keep left alignment
+     UNCHANGED
   ===================================================== */
 
   .section-olive:has(.date-machine) .section-heading {
@@ -1904,13 +1913,14 @@ a {
 
   /* =====================================================
      MOBILE — SECTION 9
-     Keep right alignment
+     RIGHT ALIGN
   ===================================================== */
 
   .section-burgundy:has(.vault-grid) .section-heading {
-    max-width: 94%;
-    margin-left: auto;
-    margin-right: 0;
+    max-width: 100%;
+    width: calc(100% - 0.5cm);
+    margin-left: 0;
+    margin-right: 0.5cm;
     text-align: right;
   }
 
@@ -1922,7 +1932,7 @@ a {
 
   .vault-grid {
     grid-template-columns: 1fr;
-    max-width: 94%;
+    max-width: 100%;
     margin-left: auto;
     margin-right: 0;
   }
@@ -1941,16 +1951,45 @@ a {
     height: 120px;
   }
 
-
-  /* =====================================================
-     MOBILE — SECTION 10
-     UNCHANGED
-  ===================================================== */
-
   .section-10-images img {
     width: 95px;
     height: 125px;
     border-width: 5px;
+  }
+
+
+  /* =====================================================
+     MOBILE — SECTION 10 IMAGE PLACEMENT
+     Keep 1 + 2 TOP RIGHT
+     Keep 3 + 4 BOTTOM LEFT
+  ===================================================== */
+
+  .section-10-top img:nth-child(1) {
+    top: 8%;
+    right: 18%;
+    left: auto;
+    transform: rotate(-8deg);
+  }
+
+  .section-10-top img:nth-child(2) {
+    top: 15%;
+    right: 2%;
+    left: auto;
+    transform: rotate(7deg);
+  }
+
+  .section-10-bottom img:nth-child(1) {
+    bottom: 10%;
+    left: 2%;
+    right: auto;
+    transform: rotate(6deg);
+  }
+
+  .section-10-bottom img:nth-child(2) {
+    bottom: 7%;
+    left: 18%;
+    right: auto;
+    transform: rotate(-6deg);
   }
 
 
