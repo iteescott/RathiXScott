@@ -495,6 +495,8 @@ a {
 
 /* =========================================================
    PHOTO ARCHIVE — SECTION 2
+   GOOD STUFF — SCATTERED TABLE LAYOUT
+   Only Section 2
 ========================================================= */
 
 .scrapbook {
@@ -504,7 +506,7 @@ a {
 .photo-pile {
   position: relative;
   max-width: 1200px;
-  min-height: 1250px;
+  min-height: 2050px;
   margin: 0 auto;
 }
 
@@ -562,108 +564,203 @@ a {
 
 
 /* =========================================================
-   GOOD STUFF — SECTION 2
-   MORE NATURAL SCATTER
-   ONLY DESKTOP POSITIONS CHANGED
+   GOOD STUFF — SCATTERED
+   Photos are separated like prints spread across a table.
+   Very limited overlap, so every image remains visible.
 ========================================================= */
 
-/* Photo 1 */
+
+/* ---------------------------------------------------------
+   ROW 1
+--------------------------------------------------------- */
+
 .memory-photo:nth-child(1) {
-  left: 3%;
-  top: 30px;
-  transform: rotate(-7deg);
-}
-
-/* Photo 2 */
-.memory-photo:nth-child(2) {
-  left: 23%;
-  top: 82px;
-  transform: rotate(4deg);
-}
-
-/* Photo 3 */
-.memory-photo:nth-child(3) {
-  left: 47%;
-  top: 25px;
-  transform: rotate(7deg);
-}
-
-/* Photo 4 */
-.memory-photo:nth-child(4) {
-  left: 72%;
-  top: 92px;
-  transform: rotate(-5deg);
-}
-
-
-/* Photo 5 */
-.memory-photo:nth-child(5) {
-  left: 10%;
-  top: 300px;
-  transform: rotate(5deg);
-}
-
-/* Photo 6 */
-.memory-photo:nth-child(6) {
-  left: 34%;
-  top: 335px;
+  left: 1%;
+  top: 20px;
   transform: rotate(-6deg);
 }
 
-/* Photo 7 */
-.memory-photo:nth-child(7) {
-  left: 59%;
-  top: 290px;
-  transform: rotate(5deg);
+.memory-photo:nth-child(2) {
+  left: 26%;
+  top: 55px;
+  transform: rotate(4deg);
 }
 
-
-/* Photo 8 */
-.memory-photo:nth-child(8) {
-  left: 2%;
-  top: 585px;
-  transform: rotate(-5deg);
-}
-
-/* Photo 9 */
-.memory-photo:nth-child(9) {
-  left: 25%;
-  top: 625px;
+.memory-photo:nth-child(3) {
+  left: 51%;
+  top: 15px;
   transform: rotate(6deg);
 }
 
-/* Photo 10 */
-.memory-photo:nth-child(10) {
-  left: 50%;
-  top: 575px;
-  transform: rotate(-7deg);
+.memory-photo:nth-child(4) {
+  left: 76%;
+  top: 70px;
+  transform: rotate(-5deg);
 }
 
-/* Photo 11 */
+
+/* ---------------------------------------------------------
+   ROW 2
+--------------------------------------------------------- */
+
+.memory-photo:nth-child(5) {
+  left: 8%;
+  top: 320px;
+  transform: rotate(4deg);
+}
+
+.memory-photo:nth-child(6) {
+  left: 33%;
+  top: 345px;
+  transform: rotate(-5deg);
+}
+
+.memory-photo:nth-child(7) {
+  left: 58%;
+  top: 310px;
+  transform: rotate(6deg);
+}
+
+.memory-photo:nth-child(8) {
+  left: 82%;
+  top: 355px;
+  transform: rotate(-4deg);
+}
+
+
+/* ---------------------------------------------------------
+   ROW 3
+--------------------------------------------------------- */
+
+.memory-photo:nth-child(9) {
+  left: 1%;
+  top: 625px;
+  transform: rotate(-5deg);
+}
+
+.memory-photo:nth-child(10) {
+  left: 27%;
+  top: 650px;
+  transform: rotate(5deg);
+}
+
 .memory-photo:nth-child(11) {
-  left: 75%;
-  top: 640px;
+  left: 52%;
+  top: 615px;
+  transform: rotate(-6deg);
+}
+
+.memory-photo:nth-child(12) {
+  left: 77%;
+  top: 660px;
   transform: rotate(4deg);
 }
 
 
-/* Photo 12 */
-.memory-photo:nth-child(12) {
-  left: 13%;
-  top: 885px;
+/* ---------------------------------------------------------
+   ROW 4
+--------------------------------------------------------- */
+
+.memory-photo:nth-child(13) {
+  left: 7%;
+  top: 935px;
   transform: rotate(5deg);
 }
 
-/* Photo 13 */
-.memory-photo:nth-child(13) {
-  left: 45%;
-  top: 930px;
+.memory-photo:nth-child(14) {
+  left: 32%;
+  top: 970px;
+  transform: rotate(-4deg);
+}
+
+.memory-photo:nth-child(15) {
+  left: 57%;
+  top: 925px;
+  transform: rotate(6deg);
+}
+
+.memory-photo:nth-child(16) {
+  left: 82%;
+  top: 975px;
+  transform: rotate(-5deg);
+}
+
+
+/* ---------------------------------------------------------
+   ROW 5
+--------------------------------------------------------- */
+
+.memory-photo:nth-child(17) {
+  left: 1%;
+  top: 1245px;
   transform: rotate(-6deg);
 }
 
-.memory-photo:nth-child(n+14) {
-  position: absolute;
+.memory-photo:nth-child(18) {
+  left: 27%;
+  top: 1275px;
+  transform: rotate(4deg);
 }
+
+.memory-photo:nth-child(19) {
+  left: 52%;
+  top: 1235px;
+  transform: rotate(-5deg);
+}
+
+.memory-photo:nth-child(20) {
+  left: 77%;
+  top: 1280px;
+  transform: rotate(5deg);
+}
+
+
+/* ---------------------------------------------------------
+   ROW 6
+--------------------------------------------------------- */
+
+.memory-photo:nth-child(21) {
+  left: 7%;
+  top: 1555px;
+  transform: rotate(5deg);
+}
+
+.memory-photo:nth-child(22) {
+  left: 32%;
+  top: 1585px;
+  transform: rotate(-6deg);
+}
+
+.memory-photo:nth-child(23) {
+  left: 57%;
+  top: 1545px;
+  transform: rotate(4deg);
+}
+
+.memory-photo:nth-child(24) {
+  left: 82%;
+  top: 1595px;
+  transform: rotate(-5deg);
+}
+
+
+/* ---------------------------------------------------------
+   ROW 7
+   Final two photos
+--------------------------------------------------------- */
+
+.memory-photo:nth-child(25) {
+  left: 24%;
+  top: 1870px;
+  transform: rotate(-5deg);
+}
+
+.memory-photo:nth-child(26) {
+  left: 55%;
+  top: 1895px;
+  transform: rotate(6deg);
+}
+
 
 .scroll-note {
   position: relative;
@@ -678,61 +775,145 @@ a {
 
 
 /* =========================================================
-   SCATTERED SECTION IMAGES
+   GOOD STUFF — TABLET
+   Keep photos separated instead of stacking.
 ========================================================= */
 
-.section-scattered-images {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-}
+@media (max-width: 900px) {
 
-.section-scattered-images img {
-  position: absolute;
-  width: 155px;
-  height: 200px;
-  object-fit: cover;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.25);
-  border: 7px solid var(--paper);
-}
+  .memory-photo {
+    width: 200px;
+  }
 
-.section-images-left img:nth-child(1) {
-  left: 2%;
-  top: 12%;
-  transform: rotate(-9deg);
-}
+  .photo-pile {
+    min-height: 1750px;
+  }
 
-.section-images-left img:nth-child(2) {
-  left: 5%;
-  top: 45%;
-  transform: rotate(7deg);
-}
+  .memory-photo:nth-child(1) {
+    left: 1%;
+    top: 20px;
+  }
 
-.section-images-left img:nth-child(3) {
-  left: 1%;
-  bottom: 8%;
-  transform: rotate(-4deg);
-}
+  .memory-photo:nth-child(2) {
+    left: 35%;
+    top: 45px;
+  }
 
-.section-images-right img:nth-child(1) {
-  right: 2%;
-  top: 12%;
-  transform: rotate(8deg);
-}
+  .memory-photo:nth-child(3) {
+    right: 1%;
+    left: auto;
+    top: 15px;
+  }
 
-.section-images-right img:nth-child(2) {
-  right: 5%;
-  top: 45%;
-  transform: rotate(-7deg);
-}
+  .memory-photo:nth-child(4) {
+    left: 10%;
+    top: 275px;
+  }
 
-.section-images-right img:nth-child(3) {
-  right: 1%;
-  bottom: 8%;
-  transform: rotate(5deg);
-}
+  .memory-photo:nth-child(5) {
+    left: 43%;
+    top: 300px;
+  }
 
+  .memory-photo:nth-child(6) {
+    right: 1%;
+    left: auto;
+    top: 270px;
+  }
+
+  .memory-photo:nth-child(7) {
+    left: 1%;
+    top: 530px;
+  }
+
+  .memory-photo:nth-child(8) {
+    left: 34%;
+    top: 555px;
+  }
+
+  .memory-photo:nth-child(9) {
+    right: 18%;
+    left: auto;
+    top: 525px;
+  }
+
+  .memory-photo:nth-child(10) {
+    right: 0;
+    left: auto;
+    top: 565px;
+  }
+
+  .memory-photo:nth-child(11) {
+    left: 8%;
+    top: 795px;
+  }
+
+  .memory-photo:nth-child(12) {
+    left: 42%;
+    top: 825px;
+  }
+
+  .memory-photo:nth-child(13) {
+    right: 1%;
+    left: auto;
+    top: 800px;
+  }
+
+  .memory-photo:nth-child(14) {
+    left: 2%;
+    top: 1065px;
+  }
+
+  .memory-photo:nth-child(15) {
+    left: 36%;
+    top: 1095px;
+  }
+
+  .memory-photo:nth-child(16) {
+    right: 1%;
+    left: auto;
+    top: 1070px;
+  }
+
+  .memory-photo:nth-child(17) {
+    left: 8%;
+    top: 1335px;
+  }
+
+  .memory-photo:nth-child(18) {
+    left: 42%;
+    top: 1360px;
+  }
+
+  .memory-photo:nth-child(19) {
+    right: 1%;
+    left: auto;
+    top: 1330px;
+  }
+
+  .memory-photo:nth-child(20) {
+    left: 2%;
+    top: 1600px;
+  }
+
+  .memory-photo:nth-child(21) {
+    left: 36%;
+    top: 1625px;
+  }
+
+  .memory-photo:nth-child(22) {
+    right: 1%;
+    left: auto;
+    top: 1605px;
+  }
+
+  .memory-photo:nth-child(23),
+  .memory-photo:nth-child(24),
+  .memory-photo:nth-child(25),
+  .memory-photo:nth-child(26) {
+    display: none;
+  }
+}
 
 /* =========================================================
    SECTION 3 — OPEN WHEN
