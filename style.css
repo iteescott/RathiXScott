@@ -1,5 +1,5 @@
 /* =========================================================
-   THE ITSU × RAKHU SOCIETY
+   THE ITSU Ã— RAKHU SOCIETY
    Main stylesheet
 ========================================================= */
 
@@ -467,8 +467,8 @@ a {
 
 
 /* =========================================================
-   PHOTO ARCHIVE — SECTION 2
-   GOOD STUFF — SCATTERED TABLE LAYOUT
+   PHOTO ARCHIVE â€” SECTION 2
+   GOOD STUFF â€” SCATTERED TABLE LAYOUT
 
    ONLY SECTION 2 HAS BEEN CHANGED
 ========================================================= */
@@ -538,7 +538,7 @@ a {
 
 
 /* =========================================================
-   GOOD STUFF — SCATTERED
+   GOOD STUFF â€” SCATTERED
    Photos are spread across the section like prints
    scattered on a table, with very limited overlap.
 ========================================================= */
@@ -806,7 +806,7 @@ a {
 
 
 /* =========================================================
-   SECTION 3 — OPEN WHEN
+   SECTION 3 â€” OPEN WHEN
    UNCHANGED
 ========================================================= */
 
@@ -1039,7 +1039,7 @@ a {
 
 
 /* =========================================================
-   WISH MACHINE — SECTION 4
+   WISH MACHINE â€” SECTION 4
    TITLE + CONTENT LEFT
    IMAGES RIGHT
 ========================================================= */
@@ -1055,7 +1055,7 @@ a {
 
 
 /* =========================================================
-   SECTION 4 — I WISH YOU WERE HERE
+   SECTION 4 â€” I WISH YOU WERE HERE
    ONLY HEADING + BYLINE ALIGNMENT CHANGED
 ========================================================= */
 
@@ -1092,7 +1092,7 @@ a {
 
 
 /* =========================================================
-   PEOPLE / VIDEO TESTIMONIALS — SECTION 5
+   PEOPLE / VIDEO TESTIMONIALS â€” SECTION 5
 ========================================================= */
 
 .video-card-grid {
@@ -1118,15 +1118,15 @@ a {
 
 
 /* =========================================================
-   SECTION 5 — FROM THE PEOPLE WHO LOVE YOU
+   SECTION 5 â€” FROM THE PEOPLE WHO LOVE YOU
    ONLY HEADING + BYLINE ALIGNMENT CHANGED
 ========================================================= */
 
 .section-burgundy:has(.video-card-grid) .section-heading {
   max-width: none;
-  width: calc(100% - 0.5cm);
+  width: calc(100% - 1.5cm);
   margin-left: 0;
-  margin-right: 0.5cm;
+  margin-right: 1.5cm;
   text-align: right;
 }
 
@@ -1190,7 +1190,7 @@ a {
 
 
 /* =========================================================
-   QUIZ — SECTION 6
+   QUIZ â€” SECTION 6
    UNCHANGED
 ========================================================= */
 
@@ -1271,7 +1271,7 @@ a {
 
 
 /* =========================================================
-   ARCADE — SECTION 7
+   ARCADE â€” SECTION 7
 ========================================================= */
 
 .arcade-tools {
@@ -1300,15 +1300,15 @@ a {
 
 
 /* =========================================================
-   SECTION 7 — LONG DISTANCE ARCADE
+   SECTION 7 â€” LONG DISTANCE ARCADE
    ONLY HEADING + BYLINE ALIGNMENT CHANGED
 ========================================================= */
 
 .section-navy:has(.game-grid) .section-heading {
   max-width: none;
-  width: calc(100% - 0.5cm);
+  width: calc(100% - 1.5cm);
   margin-left: 0;
-  margin-right: 0.5cm;
+  margin-right: 1.5cm;
   text-align: right;
 }
 
@@ -1349,7 +1349,7 @@ a {
 
 
 /* =========================================================
-   DATE GENERATOR — SECTION 8
+   DATE GENERATOR â€” SECTION 8
    UNCHANGED
 ========================================================= */
 
@@ -1397,7 +1397,7 @@ a {
 
 
 /* =========================================================
-   VAULT — SECTION 9
+   VAULT â€” SECTION 9
 ========================================================= */
 
 .vault-grid {
@@ -1413,15 +1413,15 @@ a {
 
 
 /* =========================================================
-   SECTION 9 — THE VAULT
+   SECTION 9 â€” THE VAULT
    ONLY HEADING + BYLINE ALIGNMENT CHANGED
 ========================================================= */
 
 .section-burgundy:has(.vault-grid) .section-heading {
   max-width: none;
-  width: calc(100% - 0.5cm);
+  width: calc(100% - 1.5cm);
   margin-left: 0;
-  margin-right: 0.5cm;
+  margin-right: 1.5cm;
   text-align: right;
 }
 
@@ -1483,7 +1483,7 @@ a {
 
 
 /* =========================================================
-   FINAL NOTE — SECTION 10
+   FINAL NOTE â€” SECTION 10
    CONTENT UNCHANGED
 ========================================================= */
 
@@ -1577,7 +1577,7 @@ a {
 }
 
 
-/* IMG 1 — TOP RIGHT */
+/* IMG 1 â€” TOP RIGHT */
 
 .section-10-top img:nth-child(1) {
   top: 8%;
@@ -1587,7 +1587,7 @@ a {
 }
 
 
-/* IMG 2 — ALSO TOP RIGHT */
+/* IMG 2 â€” ALSO TOP RIGHT */
 
 .section-10-top img:nth-child(2) {
   top: 15%;
@@ -1597,7 +1597,7 @@ a {
 }
 
 
-/* IMG 3 — BOTTOM LEFT */
+/* IMG 3 â€” BOTTOM LEFT */
 
 .section-10-bottom img:nth-child(1) {
   bottom: 10%;
@@ -1607,7 +1607,7 @@ a {
 }
 
 
-/* IMG 4 — ALSO BOTTOM LEFT */
+/* IMG 4 â€” ALSO BOTTOM LEFT */
 
 .section-10-bottom img:nth-child(2) {
   bottom: 7%;
@@ -1618,7 +1618,7 @@ a {
 
 
 /* =========================================================
-   RESPONSIVE — TABLET
+   RESPONSIVE â€” TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -1657,7 +1657,7 @@ a {
 
 
   /* =====================================================
-     TABLET — SECTION 2 / GOOD STUFF
+     TABLET â€” SECTION 2 / GOOD STUFF
      Keep photos separated instead of stacking.
   ===================================================== */
 
@@ -1910,7 +1910,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SECTION 3
+     MOBILE â€” SECTION 3
      UNCHANGED
   ===================================================== */
 
@@ -1944,7 +1944,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SECTION 4
+     MOBILE â€” SECTION 4
      LEFT ALIGN
   ===================================================== */
 
@@ -1971,7 +1971,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SECTION 5
+     MOBILE â€” SECTION 5
      RIGHT ALIGN
   ===================================================== */
 
@@ -2019,7 +2019,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SECTION 6
+     MOBILE â€” SECTION 6
      UNCHANGED
   ===================================================== */
 
@@ -2045,7 +2045,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SECTION 7
+     MOBILE â€” SECTION 7
      RIGHT ALIGN
   ===================================================== */
 
@@ -2080,7 +2080,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SECTION 8
+     MOBILE â€” SECTION 8
      UNCHANGED
   ===================================================== */
 
@@ -2106,7 +2106,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SECTION 9
+     MOBILE â€” SECTION 9
      RIGHT ALIGN
   ===================================================== */
 
@@ -2133,7 +2133,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SCATTERED IMAGES
+     MOBILE â€” SCATTERED IMAGES
   ===================================================== */
 
   .section-scattered-images {
@@ -2153,7 +2153,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SECTION 10 IMAGE PLACEMENT
+     MOBILE â€” SECTION 10 IMAGE PLACEMENT
      Keep 1 + 2 TOP RIGHT
      Keep 3 + 4 BOTTOM LEFT
   ===================================================== */
@@ -2188,7 +2188,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — MODAL
+     MOBILE â€” MODAL
   ===================================================== */
 
   .modal {
@@ -2209,7 +2209,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — DRAWER
+     MOBILE â€” DRAWER
   ===================================================== */
 
   .drawer-inner {
@@ -2222,7 +2222,7 @@ a {
 
 
   /* =====================================================
-     MOBILE — SCRAPBOOK
+     MOBILE â€” SCRAPBOOK
   ===================================================== */
 
   .photo-pile {
