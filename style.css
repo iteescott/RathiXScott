@@ -1061,22 +1061,22 @@ a {
 
 .wish-machine {
   max-width: 1000px;
-  margin-left: 0;
-  margin-right: auto;
+  margin-left: 1.5cm;
+  margin-right: 0;
   text-align: left;
 }
 
 .section-ivory:has(.wish-machine) .section-heading {
   max-width: none;
   width: calc(100% - 0.5cm);
-  margin-left: 0.5cm;
+  margin-left: 1.5cm;
   margin-right: 0;
   text-align: left;
 }
 
 .section-ivory:has(.wish-machine) .section-lede {
-  margin-left: 0;
-  margin-right: auto;
+  margin-left: 1.5;
+  margin-right: 0;
   text-align: left;
 }
 
